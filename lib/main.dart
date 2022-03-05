@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/data/data.dart';
+import 'package:jemina_capital/mockups/amazing_ui.dart';
 import 'package:jemina_capital/views/auth/login.dart';
 import 'package:jemina_capital/views/auth/register.dart';
+import 'package:jemina_capital/views/contact/contact.dart';
+import 'package:jemina_capital/views/onboarding/onboarding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +19,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Jemina Capital',
       theme: ThemeData(
+        fontFamily: 'Circular',
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: const Color(0XFFEFF3F6),
+        // scaffoldBackgroundColor: primaryColor,
       ),
       home: const MyHomePage(title: 'Jemina Capital'),
 
@@ -25,9 +31,11 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const Login(),
         '/register': (context) => const Register(),
+        '/contact': (context) => const Contact(),
+        '/onboarding': (context) => const Onboarding(),
 
         //mockups
-        '/button-press': (context) => const Register(),
+        '/amazing-ui': (context) => const AmazingUI(),
       },
     );
   }
