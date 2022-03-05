@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/data/constants/theme_colors.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: lightBackground,
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(
@@ -152,9 +154,9 @@ class _LoginState extends State<Login> {
                   width: 20.0,
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/register');
-                  },
+                  // onTap: () {
+                  //   Navigator.pushNamed(context, '/register');
+                  // },
                   child: Text(
                     "Register",
                     style: TextStyle(

@@ -1,10 +1,14 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:jemina_capital/data/data.dart';
 import 'package:jemina_capital/mockups/amazing_ui.dart';
 import 'package:jemina_capital/views/auth/login.dart';
 import 'package:jemina_capital/views/auth/register.dart';
+import 'package:jemina_capital/views/auth/verify_email.dart';
 import 'package:jemina_capital/views/contact/contact.dart';
+import 'package:jemina_capital/views/home/home.dart';
 import 'package:jemina_capital/views/onboarding/onboarding.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +28,20 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0XFFEFF3F6),
         // scaffoldBackgroundColor: primaryColor,
       ),
-      home: const MyHomePage(title: 'Jemina Capital'),
+      // home: const MyHomePage(title: 'Jemina Capital'),
+
+      // splash screen
+      home: AnimatedSplashScreen(
+        duration: 1, // remove this
+        animationDuration: Duration(microseconds: 1), // remove this
+        splashIconSize: 200,
+        splash: Image.asset(
+          'assets/images/logo-no-bg.png',
+        ),
+        splashTransition: SplashTransition.fadeTransition,
+        // pageTransitionType: PageTransitionType.scale,
+        nextScreen: Home(),
+      ),
 
       //routes
       initialRoute: '/',
@@ -33,6 +50,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const Register(),
         '/contact': (context) => const Contact(),
         '/onboarding': (context) => const Onboarding(),
+        '/verify-email': (context) => const VerifyEmail(),
 
         //mockups
         '/amazing-ui': (context) => const AmazingUI(),

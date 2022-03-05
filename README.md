@@ -8,3 +8,7 @@
 * Register
 * Wallet // shows user's wallet balances and transactions
 * Contact Us // shows contact details
+
+
+#ref
+* Curved navigation: https://www.youtube.com/watch?v=TX2x41h47fE

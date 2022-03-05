@@ -1,4 +1,6 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, unnecessary_new, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, unnecessary_new, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, avoid_renaming_method_parameters
+
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
@@ -38,7 +40,7 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: grayBackground,
       body: SafeArea(
         child: Container(
           child: PageView(
@@ -155,8 +157,8 @@ class ProgressButton extends StatelessWidget {
         children: [
           AnimatedIndicator(
             duration: const Duration(seconds: 10),
-            size: 75,
-            callBack: onNext,
+            size: 100.0,
+            callback: onNext,
           ),
           Center(
             child: GestureDetector(
@@ -197,16 +199,90 @@ class AnimatedIndicator extends StatefulWidget {
   State<AnimatedIndicator> createState() => _AnimatedIndicatorState();
 }
 
-class _AnimatedIndicatorState extends State<AnimatedIndicator> {
+class _AnimatedIndicatorState extends State<AnimatedIndicator>
+    with TickerProviderStateMixin {
+  late Animation<double> animation;
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    controller = AnimationController(duration: widget.duration, vsync: this);
+    animation = Tween(begin: 0.0, end: 100.0).animate(controller)
+      ..addListener(() {
+        setState(() {});
+      })
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          controller.reset();
+          widget.callback();
+        }
+      });
+    controller.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomPaint(
-        size: Size(widget.size, widget.size),
-        painter: ProgressPainter(
-          20.0,
-        ),
-      ),
+    return AnimatedBuilder(
+      animation: animation,
+      builder: (context, child) {
+        return CustomPaint(
+          size: Size(widget.size, widget.size),
+          painter: ProgressPainter(animation.value),
+        );
+      },
     );
   }
+}
+
+class ProgressPainter extends CustomPainter {
+  final double progress;
+
+  ProgressPainter(this.progress);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    // setup
+    var linePaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3
+      ..color = techBlue;
+
+    var circlePaint = Paint()
+      ..style = PaintingStyle.fill
+      ..color = techBlue;
+
+    final radians = (progress / 100) * 2 * pi;
+    _drawShape(canvas, linePaint, circlePaint, -pi / 2, radians, size);
+  }
+
+  void _drawShape(
+    Canvas canvas,
+    Paint linePaint,
+    Paint circlePaint,
+    double startRadian,
+    double sweepRadian,
+    Size size,
+  ) {
+    final centerX = size.width / 2, centerY = size.height / 2;
+    final centerOffset = Offset(centerX, centerY);
+    final double radius = min(size.width, size.height) / 2;
+
+    canvas.drawArc(Rect.fromCircle(center: centerOffset, radius: radius),
+        startRadian, sweepRadian, false, linePaint);
+
+    final x = radius * (1 + sin(sweepRadian)),
+        y = radius * (1 - cos(sweepRadian));
+    final circleOffset = Offset(x, y);
+    canvas.drawCircle(circleOffset, 5, circlePaint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter old) => true;
 }

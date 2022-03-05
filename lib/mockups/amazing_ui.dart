@@ -1,6 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/data.dart';
 
 import '../widgets/card_section.dart';
@@ -18,7 +19,7 @@ class _AmazingUIState extends State<AmazingUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: lightBackground,
       body: Column(
         children: [
           SizedBox(
