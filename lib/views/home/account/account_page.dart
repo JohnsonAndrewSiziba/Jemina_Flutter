@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import '../../../data/constants/theme_colors.dart';
 
 class AccountPage extends StatefulWidget {
-  AccountPage({Key? key}) : super(key: key);
+  VoidCallback onOpenMenu;
+  AccountPage({Key? key, required this.onOpenMenu}) : super(key: key);
 
   @override
   State<AccountPage> createState() => _AccountPageState();
@@ -44,9 +45,14 @@ class _AccountPageState extends State<AccountPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(
-                            Icons.menu,
-                            color: Colors.white,
+                          GestureDetector(
+                            onTap: (() {
+                              widget.onOpenMenu();
+                            }),
+                            child: Icon(
+                              Icons.menu,
+                              color: Colors.white,
+                            ),
                           ),
                           Text(
                             "My Account",
@@ -88,7 +94,8 @@ class _AccountPageState extends State<AccountPage> {
                             padding: EdgeInsets.all(5),
                             child: CircleAvatar(
                               backgroundImage: NetworkImage(
-                                  "https://images.pexels.com/photos/2167673/pexels-photo-2167673.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"),
+                                "https://images.pexels.com/photos/2167673/pexels-photo-2167673.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -150,6 +157,7 @@ class _AccountPageState extends State<AccountPage> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   color: Colors.grey.shade100,
                   child: ListView(
+                    controller: ScrollController(),
                     padding: EdgeInsets.only(top: 75),
                     children: [
                       Text(
