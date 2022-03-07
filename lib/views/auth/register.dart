@@ -169,11 +169,11 @@ class _RegisterState extends State<Register> {
                     ),
                     decoration: BoxDecoration(
                       // color: Color(0XFF2596be),
-                      color: Color(0XFF2596be),
+                      color: techBlue,
                       borderRadius: BorderRadius.circular(100.0),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Color(0XFF2596be),
+                          color: techBlue,
                           offset: Offset(6, 2),
                           blurRadius: 1.0,
                           spreadRadius: 2.0,
@@ -193,13 +193,13 @@ class _RegisterState extends State<Register> {
                   width: 20.0,
                 ),
                 InkWell(
-                  // onTap: () {
-                  //   Navigator.pushNamed(context, '/login');
-                  // },
+                  onTap: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
                   child: Text(
                     "Sign In",
                     style: TextStyle(
-                        color: Color(0XFF2596be),
+                        color: techBlue,
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500),
                   ),

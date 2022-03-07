@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
@@ -130,11 +130,11 @@ class _LoginState extends State<Login> {
                     ),
                     decoration: BoxDecoration(
                       // color: Color(0XFF2596be),
-                      color: Color(0XFF2596be),
+                      color: techBlue,
                       borderRadius: BorderRadius.circular(100.0),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                          color: Color(0XFF2596be),
+                          color: techBlue,
                           offset: Offset(6, 2),
                           blurRadius: 1.0,
                           spreadRadius: 2.0,
@@ -154,13 +154,13 @@ class _LoginState extends State<Login> {
                   width: 20.0,
                 ),
                 InkWell(
-                  // onTap: () {
-                  //   Navigator.pushNamed(context, '/register');
-                  // },
+                  onTap: () {
+                    Navigator.pushNamed(context, '/register');
+                  },
                   child: Text(
                     "Register",
                     style: TextStyle(
-                        color: Color(0XFF2596be),
+                        color: techBlue,
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500),
                   ),

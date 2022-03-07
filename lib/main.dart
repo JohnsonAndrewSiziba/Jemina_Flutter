@@ -9,6 +9,7 @@ import 'package:jemina_capital/views/contact/contact.dart';
 import 'package:jemina_capital/views/home/home.dart';
 import 'package:jemina_capital/views/onboarding/onboarding.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:jemina_capital/widgets/sidenav.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         '/contact': (context) => const Contact(),
         '/onboarding': (context) => const Onboarding(),
         '/verify-email': (context) => const VerifyEmail(),
+        '/sidenav': (context) => const SideNav(),
 
         //mockups
         '/amazing-ui': (context) => const AmazingUI(),

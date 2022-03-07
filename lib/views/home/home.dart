@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
                 buttonBackgroundColor: lightBackground,
                 items: navBarItems,
                 height: 50.0,
-                animationDuration: Duration(milliseconds: 300),
+                animationDuration: Duration(milliseconds: 80),
                 animationCurve: Curves.easeInOut,
                 index: index,
                 onTap: (index) => setState(() => this.index = index),
@@ -81,8 +81,9 @@ class _HomeState extends State<Home> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        techBlue,
-                        techBlue.withOpacity(0.7),
+                        jeminaBlue,
+                        // lightBackground.withOpacity(0.7),
+                        techBlue
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -120,37 +121,75 @@ class _HomeState extends State<Home> {
                           child: ListView(
                             children: [
                               ListTile(
-                                onTap: () {},
                                 leading: Icon(
-                                  Icons.home,
+                                  Icons.favorite,
                                   color: Colors.white,
                                 ),
                                 title: Text(
-                                  "Home",
-                                  style: TextStyle(color: Colors.white),
+                                  'Favorites',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
                                 ),
+                                onTap: () => null,
                               ),
                               ListTile(
-                                onTap: () {},
+                                leading: Icon(
+                                  Icons.notifications,
+                                  color: Colors.white,
+                                ),
+                                title: Text(
+                                  'Notifications',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                onTap: () => null,
+                              ),
+                              Divider(
+                                color: lightBackground,
+                              ),
+                              ListTile(
                                 leading: Icon(
                                   Icons.settings,
                                   color: Colors.white,
                                 ),
                                 title: Text(
-                                  "Settings",
-                                  style: TextStyle(color: Colors.white),
+                                  'Settings',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
                                 ),
+                                onTap: () => null,
                               ),
                               ListTile(
-                                onTap: () {},
                                 leading: Icon(
-                                  Icons.logout,
+                                  Icons.description,
                                   color: Colors.white,
                                 ),
                                 title: Text(
-                                  "Logout",
-                                  style: TextStyle(color: Colors.white),
+                                  'Policies',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
                                 ),
+                                onTap: () => null,
+                              ),
+                              Divider(
+                                color: lightBackground,
+                              ),
+                              ListTile(
+                                title: Text(
+                                  'Exit',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                leading: Icon(
+                                  Icons.exit_to_app,
+                                  color: Colors.white,
+                                ),
+                                onTap: () => null,
                               ),
                             ],
                           ),
@@ -165,7 +204,7 @@ class _HomeState extends State<Home> {
                 // main screen
                 TweenAnimationBuilder(
                     tween: Tween<double>(begin: 0, end: value),
-                    duration: Duration(milliseconds: 500),
+                    duration: Duration(milliseconds: 100),
                     curve: Curves.easeInOut,
                     builder: (_, double val, __) {
                       return (Transform(

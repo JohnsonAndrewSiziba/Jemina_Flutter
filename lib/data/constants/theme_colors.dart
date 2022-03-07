@@ -13,3 +13,5 @@ Color success = Color(0XFF00B686);
 Color grayBackground = Color(0xFFCADCED);
 Color grey = Colors.grey;
 Color lightBackground = Color(0xfff7f6fb);
+
+Color jeminaBlue = Color(0XFF2596be);
