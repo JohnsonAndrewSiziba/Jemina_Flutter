@@ -6,7 +6,9 @@ import '../../../data/constants/theme_colors.dart';
 
 class AccountPage extends StatefulWidget {
   VoidCallback onOpenMenu;
-  AccountPage({Key? key, required this.onOpenMenu}) : super(key: key);
+  double state;
+  AccountPage({Key? key, required this.onOpenMenu, required this.state})
+      : super(key: key);
 
   @override
   State<AccountPage> createState() => _AccountPageState();
@@ -48,10 +50,18 @@ class _AccountPageState extends State<AccountPage> {
                           GestureDetector(
                             onTap: (() {
                               widget.onOpenMenu();
+                              setState(() {
+                                widget.state == 0
+                                    ? widget.state = 1
+                                    : widget.state = 0;
+                              });
                             }),
                             child: Icon(
-                              Icons.list,
-                              color: Colors.white,
+                              widget.state == 0
+                                  ? Icons.list_rounded
+                                  : Icons.close_rounded,
+                              color:
+                                  widget.state == 0 ? Colors.white : Colors.red,
                             ),
                           ),
                           Text(

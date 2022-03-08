@@ -207,11 +207,11 @@ class _HomeState extends State<Home> {
                           ..rotateY((pi / 6) * val),
                         child: Scaffold(
                           body: [
-                            AccountPage(onOpenMenu: toggleMenu),
+                            AccountPage(onOpenMenu: toggleMenu, state: value),
                             ReportsPage(onOpenMenu: toggleMenu, state: value),
-                            TradingPage(onOpenMenu: toggleMenu),
-                            CountersPage(onOpenMenu: toggleMenu),
-                            StatsPage(onOpenMenu: toggleMenu),
+                            TradingPage(onOpenMenu: toggleMenu, state: value),
+                            CountersPage(onOpenMenu: toggleMenu, state: value),
+                            StatsPage(onOpenMenu: toggleMenu, state: value),
                           ][index],
                         ),
                       ));

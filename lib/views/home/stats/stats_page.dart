@@ -6,7 +6,9 @@ import '../../../data/constants/theme_colors.dart';
 
 class StatsPage extends StatefulWidget {
   VoidCallback onOpenMenu;
-  StatsPage({Key? key, required this.onOpenMenu}) : super(key: key);
+  double state;
+  StatsPage({Key? key, required this.onOpenMenu, required this.state})
+      : super(key: key);
 
   @override
   State<StatsPage> createState() => _StatsPageState();
@@ -27,10 +29,13 @@ class _StatsPageState extends State<StatsPage> {
         leading: GestureDetector(
           onTap: (() {
             widget.onOpenMenu();
+            setState(() {
+              widget.state == 0 ? widget.state = 1 : widget.state = 0;
+            });
           }),
           child: Icon(
-            Icons.list_rounded,
-            color: Colors.black,
+            widget.state == 0 ? Icons.list_rounded : Icons.close_rounded,
+            color: widget.state == 0 ? Colors.black : Colors.red,
           ),
         ),
         actions: [
