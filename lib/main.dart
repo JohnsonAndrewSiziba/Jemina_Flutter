@@ -22,11 +22,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Jemina Capital',
       theme: ThemeData(
         fontFamily: 'Circular',
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: const Color(0XFFEFF3F6),
+
+        // more
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+
+        // theme data
+
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: 30,
+            color: Colors.black87,
+          ),
+          headline2: TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: 18,
+            color: Colors.grey,
+          ),
+          headline4: TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: 18,
+            color: Colors.black,
+          ),
+          headline5: TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w300,
+            fontSize: 15,
+          ),
+          caption: TextStyle(
+            fontFamily: 'Poppins',
+            color: Colors.grey,
+            fontSize: 13,
+          ),
+          button: TextStyle(
+            fontFamily: 'Poppins',
+            color: Colors.white,
+          ),
+        ),
+
+        // end theme data
         // scaffoldBackgroundColor: primaryColor,
       ),
       // home: const MyHomePage(title: 'Jemina Capital'),

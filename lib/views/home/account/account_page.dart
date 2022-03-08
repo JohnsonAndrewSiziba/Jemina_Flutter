@@ -77,7 +77,7 @@ class _AccountPageState extends State<AccountPage> {
                             width: 80.0,
                             height: 80.0,
                             decoration: BoxDecoration(
-                              color: complement,
+                              color: grayBackground,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(.1),

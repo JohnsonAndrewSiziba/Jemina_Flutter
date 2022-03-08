@@ -19,7 +19,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int index = 2;
+  int index = 1;
   double value = 0;
 
   final navBarItems = <Widget>[
