@@ -5,7 +5,9 @@ import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/data.dart';
 
 class CountersPage extends StatefulWidget {
-  CountersPage({Key? key}) : super(key: key);
+  VoidCallback onOpenMenu;
+
+  CountersPage({Key? key, required this.onOpenMenu}) : super(key: key);
 
   @override
   State<CountersPage> createState() => _CountersPageState();
@@ -49,7 +51,36 @@ class _CountersPageState extends State<CountersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: scaffoldBackgroundColor,
+      appBar: AppBar(
+        elevation: 0.0,
+        centerTitle: false,
+        backgroundColor: scaffoldBackgroundColor,
+        title: Text(
+          "Listed Securities",
+          style: TextStyle(color: Colors.black),
+        ),
+        leading: GestureDetector(
+          onTap: (() {
+            widget.onOpenMenu();
+          }),
+          child: Icon(
+            Icons.list_rounded,
+            color: Colors.black,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications_outlined),
+            color: techBlue,
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('No notifications')));
+            },
+          ),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -61,10 +92,6 @@ class _CountersPageState extends State<CountersPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Listed Securities",
-                        style: Theme.of(context).textTheme.headline1,
-                      ),
                       Text(
                         "Listed Securities on the ZSE and VFEX",
                         style: Theme.of(context).textTheme.headline2,
@@ -84,7 +111,7 @@ class _CountersPageState extends State<CountersPage> {
                                   labelText: "Search counter...",
                                   contentPadding: EdgeInsets.zero,
                                   filled: true,
-                                  fillColor: lightGrey,
+                                  fillColor: Colors.white,
                                   border: InputBorder.none,
                                 ),
                               ),
@@ -94,7 +121,7 @@ class _CountersPageState extends State<CountersPage> {
                             width: 10.0,
                           ),
                           customIconButton(
-                            backgroundColor: lightGrey,
+                            backgroundColor: Colors.white,
                             child: Image.asset('assets/icons/filter.png'),
                             onTap: () {},
                             radius: BorderRadius.circular(12.0),
@@ -230,16 +257,11 @@ Widget customOpenButton() {
       width: 60,
       height: 30,
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: lightGrey,
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: Center(
-        child: Text(
-          "Open",
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
+        child: Icon(Icons.arrow_right_outlined),
       ),
     ),
   );

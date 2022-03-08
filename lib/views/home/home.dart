@@ -23,20 +23,12 @@ class _HomeState extends State<Home> {
   double value = 0;
 
   final navBarItems = <Widget>[
-    Icon(Icons.person_outline),
+    Icon(Icons.person_rounded),
     Icon(Icons.chrome_reader_mode_outlined),
     Icon(Icons.home_outlined),
     Icon(Icons.business_center_outlined),
     Icon(Icons.pie_chart_outline),
   ];
-
-  // final screens = [
-  //   AccountPage(onOpenMenu: toggleMenu()),
-  //   ReportsPage(),
-  //   TradingPage(),
-  //   CountersPage(),
-  //   StatsPage(),
-  // ];
 
   void toggleMenu() {
     setState(() {
@@ -204,7 +196,7 @@ class _HomeState extends State<Home> {
                 // main screen
                 TweenAnimationBuilder(
                     tween: Tween<double>(begin: 0, end: value),
-                    duration: Duration(milliseconds: 100),
+                    duration: Duration(milliseconds: 250),
                     curve: Curves.easeInOut,
                     builder: (_, double val, __) {
                       return (Transform(
@@ -216,19 +208,15 @@ class _HomeState extends State<Home> {
                         child: Scaffold(
                           body: [
                             AccountPage(onOpenMenu: toggleMenu),
-                            ReportsPage(),
-                            TradingPage(),
-                            CountersPage(),
-                            StatsPage(),
+                            ReportsPage(onOpenMenu: toggleMenu, state: value),
+                            TradingPage(onOpenMenu: toggleMenu),
+                            CountersPage(onOpenMenu: toggleMenu),
+                            StatsPage(onOpenMenu: toggleMenu),
                           ][index],
                         ),
                       ));
                     }),
 
-                //// Opening the drawer
-                //// Opening the drawer
-                //// Opening the drawer
-                ///
                 GestureDetector(
                   // onTap: () {
                   //   setState(() {
@@ -236,15 +224,15 @@ class _HomeState extends State<Home> {
                   //   });
                   // },
                   onHorizontalDragUpdate: (e) {
-                    if (e.delta.dx > 0) {
-                      setState(() {
-                        value = 1;
-                      });
-                    } else {
-                      setState(() {
-                        value = 0;
-                      });
-                    }
+                    // if (e.delta.dx > 0) {
+                    //   setState(() {
+                    //     value = 1;
+                    //   });
+                    // } else {
+                    //   setState(() {
+                    //     value = 0;
+                    //   });
+                    // }
                   },
                 ),
               ],

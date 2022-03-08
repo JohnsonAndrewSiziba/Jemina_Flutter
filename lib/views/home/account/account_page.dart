@@ -50,7 +50,7 @@ class _AccountPageState extends State<AccountPage> {
                               widget.onOpenMenu();
                             }),
                             child: Icon(
-                              Icons.menu,
+                              Icons.list,
                               color: Colors.white,
                             ),
                           ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/mockups/amazing_ui.dart';
+import 'package:jemina_capital/mockups/sidenav_design.dart';
 import 'package:jemina_capital/views/auth/login.dart';
 import 'package:jemina_capital/views/auth/register.dart';
 import 'package:jemina_capital/views/auth/verify_email.dart';
@@ -93,6 +94,7 @@ class MyApp extends StatelessWidget {
         '/onboarding': (context) => const Onboarding(),
         '/verify-email': (context) => const VerifyEmail(),
         '/sidenav': (context) => const SideNav(),
+        '/sidenav-design': (context) => const SidenavDesign(),
 
         //mockups
         '/amazing-ui': (context) => const AmazingUI(),

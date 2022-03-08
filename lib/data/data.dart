@@ -59,7 +59,7 @@ List<CounterDataModel> countersData = [
     price: '100.02',
     image: 'assets/images/customer_service.png',
     tagLine: "Part Time",
-    backgroundColor: grayBackground,
+    backgroundColor: Colors.white,
   ),
   CounterDataModel(
     id: 2,
@@ -68,7 +68,7 @@ List<CounterDataModel> countersData = [
     price: '100.02',
     image: 'assets/images/customer_service.png',
     tagLine: "Part Time",
-    backgroundColor: lightGrey,
+    backgroundColor: Colors.white,
   ),
   CounterDataModel(
     id: 2,
@@ -77,7 +77,7 @@ List<CounterDataModel> countersData = [
     price: '100.02',
     image: 'assets/images/customer_service.png',
     tagLine: "Part Time",
-    backgroundColor: grayBackground,
+    backgroundColor: Colors.white,
   ),
 ];
 

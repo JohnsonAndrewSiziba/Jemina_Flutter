@@ -15,6 +15,8 @@ Color grey = Colors.grey;
 Color lightBackground = Color(0xfff7f6fb);
 Color lightGrey = Color(0xfff5f6f8);
 
+Color scaffoldBackgroundColor = const Color(0XFFEFF3F6);
+
 Color jeminaBlue = Color(0XFF2596be);
 
 // list of colors that we use in our app
