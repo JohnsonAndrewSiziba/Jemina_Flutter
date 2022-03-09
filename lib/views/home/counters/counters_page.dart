@@ -17,7 +17,7 @@ class CountersPage extends StatefulWidget {
 
 class _CountersPageState extends State<CountersPage> {
   List<String> _categories = [
-    "All",
+    "ALL",
     "ZSE",
     "VFEX",
   ];
@@ -37,7 +37,7 @@ class _CountersPageState extends State<CountersPage> {
           vertical: 5.0,
         ),
         decoration: BoxDecoration(
-          color: _selectedCategory == index ? techBlue : grayBackground,
+          color: _selectedCategory == index ? techBlue : Colors.white,
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: Text(
@@ -88,6 +88,7 @@ class _CountersPageState extends State<CountersPage> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          controller: ScrollController(),
           child: Padding(
             padding: EdgeInsets.all(20.0),
             child: Column(
@@ -297,3 +298,10 @@ Widget customIconButton({
     );
   }
 }
+
+
+
+// Clarify,
+// Web app, only research, 
+// Trading: ZSE API ,
+// Mobile 
