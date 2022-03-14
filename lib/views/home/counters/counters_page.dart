@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, unused_element, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, unused_element, sized_box_for_whitespace, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
@@ -38,7 +38,7 @@ class _CountersPageState extends State<CountersPage> {
         ),
         decoration: BoxDecoration(
           color: _selectedCategory == index ? techBlue : Colors.white,
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(8.0),
         ),
         child: Text(
           _categories[index],
@@ -162,23 +162,24 @@ class _CountersPageState extends State<CountersPage> {
 
   Widget _buildCountersListView() {
     return ListView.builder(
-        itemCount: countersData.length,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              GestureDetector(
-                onTap: () {},
-                child: CounterCard(
-                  counter: countersData[index],
-                ),
+      itemCount: countersData.length,
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return Column(
+          children: [
+            GestureDetector(
+              onTap: () {},
+              child: CounterCard(
+                counter: countersData[index],
               ),
-              SizedBox(
-                height: 10.0,
-              ),
-            ],
-          );
-        });
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 
@@ -300,8 +301,7 @@ Widget customIconButton({
 }
 
 
-
 // Clarify,
 // Web app, only research, 
 // Trading: ZSE API ,
-// Mobile 
+// Mobile
