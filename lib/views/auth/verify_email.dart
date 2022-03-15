@@ -19,132 +19,137 @@ class _VerifyEmailState extends State<VerifyEmail> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 24, horizontal: 32),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.topLeft,
-                child: GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Icon(
-                    Icons.arrow_back,
-                    size: 32,
-                    color: Colors.black54,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: 22,
+                      color: Colors.black54,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
+                SizedBox(
+                  height: 18,
                 ),
-                child: Image.asset(
-                  'assets/images/logo-no-bg.png',
+                Container(
+                  width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Image.asset(
+                    'assets/images/logo-no-bg.png',
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              Text(
-                'Email Verification',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
+                SizedBox(
+                  height: 24,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                "Enter verification code number sent to email address siziba.uz@outlook.com",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black38,
+                Text(
+                  'Email Verification',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 28,
-              ),
-              Container(
-                padding: EdgeInsets.all(28),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
+                SizedBox(
+                  height: 10,
                 ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _textFieldOTP(first: true, last: false),
-                        _textFieldOTP(first: false, last: false),
-                        _textFieldOTP(first: false, last: false),
-                        _textFieldOTP(first: false, last: true),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 22,
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                          foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            techBlue,
+                Text(
+                  "Enter verification code number sent to email address siziba.uz@outlook.com",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black38,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 28,
+                ),
+                Container(
+                  padding: EdgeInsets.all(28),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _textFieldOTP(first: true, last: false),
+                          _textFieldOTP(first: false, last: false),
+                          _textFieldOTP(first: false, last: false),
+                          _textFieldOTP(first: false, last: true),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 22,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            foregroundColor:
+                                MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              techBlue,
+                            ),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                            ),
                           ),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(24.0),
+                          child: Padding(
+                            padding: EdgeInsets.all(14.0),
+                            child: Text(
+                              'Verify',
+                              style: TextStyle(fontSize: 16),
                             ),
                           ),
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.all(14.0),
-                          child: Text(
-                            'Verify',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Text(
-                "Didn't get a code?",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black38,
+                SizedBox(
+                  height: 18,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 18,
-              ),
-              Text(
-                "Resend New Code",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: techBlue,
+                Text(
+                  "Didn't get a code?",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black38,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+                SizedBox(
+                  height: 18,
+                ),
+                Text(
+                  "Resend New Code",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: techBlue,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 300.0,
+                ),
+              ],
+            ),
           ),
         ),
       ),

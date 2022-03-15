@@ -40,7 +40,7 @@ class _OnboardingState extends State<Onboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: grayBackground,
+      backgroundColor: scaffoldBackgroundColor,
       body: SafeArea(
         child: Container(
           child: PageView(
@@ -49,9 +49,9 @@ class _OnboardingState extends State<Onboarding> {
             children: [
               Slide(
                 hero: Image.asset("assets/images/hero-1.png"),
-                title: "This is the title",
+                title: "Jemina Capital Trading Platform",
                 subtitle:
-                    "Lalala lalala lalala la lalalalalala... la laaaaaa lalalalala lalalalala lalalalalala",
+                    "Welcome to Jemina Capital Trading Platform; our data, analytics and information-delivery web app developed in-house by our research team.",
                 onNext: nextPage,
               ),
               Slide(
@@ -116,6 +116,7 @@ class Slide extends StatelessWidget {
                 Text(
                   title,
                   style: kTitleStyle,
+                  textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 20.0),
                 Text(

@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
         ),
         splashTransition: SplashTransition.fadeTransition,
         // pageTransitionType: PageTransitionType.scale,
-        nextScreen: Home(),
+        nextScreen: Onboarding(),
       ),
 
       //routes
@@ -99,31 +99,6 @@ class MyApp extends StatelessWidget {
         //mockups
         '/amazing-ui': (context) => const AmazingUI(),
       },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text("Welcome"),
-          ],
-        ),
-      ),
     );
   }
 }
