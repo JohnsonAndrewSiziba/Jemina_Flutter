@@ -7,6 +7,7 @@ import 'package:jemina_capital/views/auth/login.dart';
 import 'package:jemina_capital/views/auth/register.dart';
 import 'package:jemina_capital/views/auth/verify_email.dart';
 import 'package:jemina_capital/views/contact/contact.dart';
+import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/home.dart';
 import 'package:jemina_capital/views/onboarding/onboarding.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -82,12 +83,13 @@ class MyApp extends StatelessWidget {
         ),
         splashTransition: SplashTransition.fadeTransition,
         // pageTransitionType: PageTransitionType.scale,
-        nextScreen: Onboarding(),
+        nextScreen: Home(),
       ),
 
       //routes
       initialRoute: '/',
       routes: {
+        '/home': (context) => const Home(),
         '/login': (context) => const Login(),
         '/register': (context) => const Register(),
         '/contact': (context) => const Contact(),
@@ -95,6 +97,7 @@ class MyApp extends StatelessWidget {
         '/verify-email': (context) => const VerifyEmail(),
         '/sidenav': (context) => const SideNav(),
         '/sidenav-design': (context) => const SidenavDesign(),
+        '/account': (context) => AccountPage(),
 
         //mockups
         '/amazing-ui': (context) => const AmazingUI(),

@@ -3,8 +3,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../data/constants/theme_colors.dart';
+import '../../../widgets/go_to_profile.dart';
 
 class TradingPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -22,39 +24,28 @@ class _TradingPageState extends State<TradingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: false,
-        backgroundColor: scaffoldBackgroundColor,
-        title: Text(
-          "Trading",
-          style: TextStyle(color: Colors.black),
-        ),
-        leading: GestureDetector(
-          onTap: (() {
-            widget.onOpenMenu();
-            setState(() {
-              widget.state == 0 ? widget.state = 1 : widget.state = 0;
-            });
-          }),
-          child: Icon(
-            widget.state == 0 ? Icons.list_rounded : Icons.close_rounded,
-            color: widget.state == 0 ? Colors.black : Colors.red,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            color: techBlue,
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('No notifications')));
-            },
-          ),
-        ],
-      ),
+      appBar: buildAppBar(context),
       body: Text("Hello"),
+    );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: techBlue,
+      elevation: 0,
+      leading: IconButton(
+        onPressed: () {
+          widget.onOpenMenu();
+          setState(() {
+            widget.state == 0 ? widget.state = 1 : widget.state = 0;
+          });
+        },
+        icon: SvgPicture.asset("assets/icons/menu.svg"),
+      ),
+      title: Text("Trading"),
+      actions: [
+        GotoProfile(),
+      ],
     );
   }
 }

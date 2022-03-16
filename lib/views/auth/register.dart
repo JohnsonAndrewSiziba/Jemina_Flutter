@@ -161,29 +161,34 @@ class _RegisterState extends State<Register> {
                 Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        padding: EdgeInsets.all(13.0),
-                        child: Center(
-                          child: Text(
-                            "Register",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.0,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/verify-email');
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(13.0),
+                          child: Center(
+                            child: Text(
+                              "Register",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.0,
+                              ),
                             ),
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                          // color: Color(0XFF2596be),
-                          color: techBlue,
-                          borderRadius: BorderRadius.circular(100.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: techBlue,
-                              offset: Offset(6, 2),
-                              blurRadius: 1.0,
-                              spreadRadius: 2.0,
-                            ),
-                          ],
+                          decoration: BoxDecoration(
+                            // color: Color(0XFF2596be),
+                            color: techBlue,
+                            borderRadius: BorderRadius.circular(100.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: techBlue,
+                                offset: Offset(6, 2),
+                                blurRadius: 1.0,
+                                spreadRadius: 2.0,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

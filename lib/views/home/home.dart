@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
   double value = 0;
 
   final navBarItems = <Widget>[
-    Icon(Icons.person_rounded),
+    // Icon(Icons.person_rounded),
     Icon(Icons.chrome_reader_mode_outlined),
     Icon(Icons.home_outlined),
     Icon(Icons.business_center_outlined),
@@ -207,7 +207,6 @@ class _HomeState extends State<Home> {
                           ..rotateY((pi / 6) * val),
                         child: Scaffold(
                           body: [
-                            AccountPage(onOpenMenu: toggleMenu, state: value),
                             ReportsPage(onOpenMenu: toggleMenu, state: value),
                             TradingPage(onOpenMenu: toggleMenu, state: value),
                             CountersPage(onOpenMenu: toggleMenu, state: value),

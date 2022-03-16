@@ -5,10 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../data/constants/theme_colors.dart';
 
 class AccountPage extends StatefulWidget {
-  VoidCallback onOpenMenu;
-  double state;
-  AccountPage({Key? key, required this.onOpenMenu, required this.state})
-      : super(key: key);
+  AccountPage({Key? key}) : super(key: key);
 
   @override
   State<AccountPage> createState() => _AccountPageState();
@@ -20,6 +17,20 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: techBlue,
+        title: Text("My Account"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: Icon(
+              Icons.notifications,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
       body: Stack(
         children: [
           Column(
@@ -29,8 +40,6 @@ class _AccountPageState extends State<AccountPage> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      // Color(0XFF00B686),
-                      // Color(0XFF00838F),
                       techBlue,
                       palatinanteBlue,
                     ],
@@ -44,43 +53,6 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: (() {
-                              widget.onOpenMenu();
-                              setState(() {
-                                widget.state == 0
-                                    ? widget.state = 1
-                                    : widget.state = 0;
-                              });
-                            }),
-                            child: Icon(
-                              widget.state == 0
-                                  ? Icons.list_rounded
-                                  : Icons.close_rounded,
-                              color:
-                                  widget.state == 0 ? Colors.white : Colors.red,
-                            ),
-                          ),
-                          Text(
-                            "My Account",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Icon(
-                            Icons.notifications,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
                       Row(
                         children: [
                           Container(

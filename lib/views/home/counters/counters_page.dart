@@ -3,6 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/data.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:jemina_capital/widgets/go_to_profile.dart';
+
+import '../../../widgets/header_with_search_bar.dart';
 
 class CountersPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -52,111 +56,65 @@ class _CountersPageState extends State<CountersPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: scaffoldBackgroundColor,
-      appBar: AppBar(
-        elevation: 0.0,
-        centerTitle: false,
-        backgroundColor: scaffoldBackgroundColor,
-        title: Text(
-          "Listed Securities",
-          style: TextStyle(color: Colors.black),
-        ),
-        leading: GestureDetector(
-          onTap: (() {
-            widget.onOpenMenu();
-            setState(() {
-              widget.state == 0 ? widget.state = 1 : widget.state = 0;
-            });
-          }),
-          child: Icon(
-            widget.state == 0 ? Icons.list_rounded : Icons.close_rounded,
-            color: widget.state == 0 ? Colors.black : Colors.red,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined),
-            color: techBlue,
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('No notifications')));
-            },
-          ),
-        ],
-      ),
+      appBar: buildAppBar(context),
       body: SafeArea(
         child: SingleChildScrollView(
           controller: ScrollController(),
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(0.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Listed Securities on the ZSE and VFEX",
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      SizedBox(
-                        height: 25.0,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            flex: 5,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(15.0),
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.search),
-                                  labelText: "Search counter...",
-                                  contentPadding: EdgeInsets.zero,
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  border: InputBorder.none,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          customIconButton(
-                            backgroundColor: Colors.white,
-                            child: Image.asset('assets/icons/filter.png'),
-                            onTap: () {},
-                            radius: BorderRadius.circular(12.0),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                HeaderWithSearchBar(size: size),
                 SizedBox(
                   height: 25.0,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: _categories
-                      .asMap()
-                      .entries
-                      .map((MapEntry map) => _buildCategories(map.key))
-                      .toList(),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: _categories
+                        .asMap()
+                        .entries
+                        .map((MapEntry map) => _buildCategories(map.key))
+                        .toList(),
+                  ),
                 ),
                 SizedBox(
                   height: 25,
                 ),
-                _buildCountersListView(),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: _buildCountersListView(),
+                ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: techBlue,
+      elevation: 0,
+      leading: IconButton(
+        onPressed: () {
+          widget.onOpenMenu();
+          setState(() {
+            widget.state == 0 ? widget.state = 1 : widget.state = 0;
+          });
+        },
+        icon: SvgPicture.asset("assets/icons/menu.svg"),
+      ),
+      title: Text("Listed Securities"),
+      actions: [
+        GotoProfile(),
+      ],
     );
   }
 

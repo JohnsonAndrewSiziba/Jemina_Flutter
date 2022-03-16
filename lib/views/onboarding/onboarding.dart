@@ -15,6 +15,7 @@ final kTitleStyle = TextStyle(
 final kSubtitleStyle = TextStyle(
   fontSize: 18.0,
   color: Color(0xFF88869f),
+  // color: Colors.blueGrey,
   fontWeight: FontWeight.w400,
 );
 
@@ -52,7 +53,7 @@ class _OnboardingState extends State<Onboarding> {
                 hero: Image.asset("assets/images/finance_app.png"),
                 title: "Jemina Capital Trading Platform",
                 subtitle:
-                    "Welcome to Jemina Capital Trading Platform -- data, analytics and information-delivery app developed in-house by our research team.",
+                    "Welcome to Jemina Capital Trading Platform; our in-house app developed by our talented research team, with the help of our experienced dealers. ",
                 onNext: nextPage,
               ),
               Slide(
@@ -62,7 +63,7 @@ class _OnboardingState extends State<Onboarding> {
                 ),
                 title: "Data and Analytics",
                 subtitle:
-                    "Lalala lalala lalala la lalalalalala... la laaaaaa lalalalala lalalalala lalalalalala",
+                    "Jemina Direct provides you with free access to data, analytics and capital markets information to help you identify strategies that will lead to your success in the capital markets.",
                 onNext: nextPage,
               ),
               Slide(
@@ -72,7 +73,7 @@ class _OnboardingState extends State<Onboarding> {
                 ),
                 title: "News and Reports",
                 subtitle:
-                    "Lalala lalala lalala la lalalalalala... la laaaaaa lalalalala lalalalala lalalalalala",
+                    "Ensure that your strategies will adapt to the ever changing market conditions by keeping up to date on all the imortant business news and trading updates.",
                 onNext: nextPage,
               ),
               Slide(
@@ -82,7 +83,7 @@ class _OnboardingState extends State<Onboarding> {
                 ),
                 title: "Trading",
                 subtitle:
-                    "Lalala lalala lalala la lalalalalala... la laaaaaa lalalalala lalalalala lalalalalala",
+                    "Jemina Direct allows you to get direct access to the Zimbabwe Stock Exchange. You can safely and securely buy and sell stocks on the exchange on the with our experienced stock brokers and research team on the ready to assist you whenever you need.",
                 onNext: nextPage,
               ),
               Container(
@@ -117,11 +118,7 @@ class _OnboardingState extends State<Onboarding> {
                       child: Text(
                         "Our enthusiasm and skill motivates us to deliver cutting edge investment solutions premised on state of the art technology, adding value to the investing public. Login/Register to get started today.",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.blueGrey,
-                        ),
+                        style: kSubtitleStyle,
                       ),
                     ),
                     SizedBox(
