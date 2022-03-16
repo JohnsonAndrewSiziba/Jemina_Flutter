@@ -24,6 +24,7 @@ class _TradingPageState extends State<TradingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: buildAppBar(context),
       body: Text("Hello"),
     );

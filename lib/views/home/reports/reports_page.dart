@@ -22,6 +22,7 @@ class _ReportsPageState extends State<ReportsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -52,7 +53,7 @@ class _ReportsPageState extends State<ReportsPage> {
         },
         icon: SvgPicture.asset("assets/icons/menu.svg"),
       ),
-      title: Text("News and Reports"),
+      title: Text("Reports"),
       actions: [
         GotoProfile(),
       ],

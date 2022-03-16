@@ -58,7 +58,7 @@ class _CountersPageState extends State<CountersPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: Colors.white,
       appBar: buildAppBar(context),
       body: SafeArea(
         child: SingleChildScrollView(

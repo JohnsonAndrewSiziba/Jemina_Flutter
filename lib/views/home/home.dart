@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/counters/counters_page.dart';
+import 'package:jemina_capital/views/home/news/news_page.dart';
 import 'package:jemina_capital/views/home/reports/reports_page.dart';
 import 'package:jemina_capital/views/home/stats/stats_page.dart';
 import 'package:jemina_capital/views/home/trading/trading_page.dart';
@@ -24,10 +25,11 @@ class _HomeState extends State<Home> {
 
   final navBarItems = <Widget>[
     // Icon(Icons.person_rounded),
-    Icon(Icons.chrome_reader_mode_outlined),
+    Icon(Icons.pie_chart_outline),
+    Icon(Icons.speaker_notes_outlined),
     Icon(Icons.home_outlined),
     Icon(Icons.business_center_outlined),
-    Icon(Icons.pie_chart_outline),
+    Icon(Icons.chrome_reader_mode_outlined),
   ];
 
   void toggleMenu() {
@@ -53,9 +55,9 @@ class _HomeState extends State<Home> {
               ),
               child: CurvedNavigationBar(
                 color: grayBackground,
-                buttonBackgroundColor: lightBackground,
+                buttonBackgroundColor: scaffoldBackgroundColor,
                 items: navBarItems,
-                height: 50.0,
+                height: 45.0,
                 animationDuration: Duration(milliseconds: 80),
                 animationCurve: Curves.easeInOut,
                 index: index,
@@ -207,10 +209,11 @@ class _HomeState extends State<Home> {
                           ..rotateY((pi / 6) * val),
                         child: Scaffold(
                           body: [
+                            StatsPage(onOpenMenu: toggleMenu, state: value),
                             ReportsPage(onOpenMenu: toggleMenu, state: value),
                             TradingPage(onOpenMenu: toggleMenu, state: value),
                             CountersPage(onOpenMenu: toggleMenu, state: value),
-                            StatsPage(onOpenMenu: toggleMenu, state: value),
+                            NewsPage(onOpenMenu: toggleMenu, state: value),
                           ][index],
                         ),
                       ));
