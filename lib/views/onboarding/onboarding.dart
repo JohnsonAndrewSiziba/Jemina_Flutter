@@ -94,7 +94,7 @@ class _OnboardingState extends State<Onboarding> {
                     Center(
                       child: Image.asset(
                         "assets/images/logo-no-bg.png",
-                        width: size.width - 150.0,
+                        width: size.width - 100.0,
                       ),
                     ),
                     Padding(
@@ -103,7 +103,7 @@ class _OnboardingState extends State<Onboarding> {
                         "Think Wealth Creation, Think Jemina!",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: techBlue,
+                          color: Colors.blueGrey,
                           fontSize: 19.0,
                           fontWeight: FontWeight.w600,
                         ),
@@ -112,14 +112,61 @@ class _OnboardingState extends State<Onboarding> {
                     SizedBox(
                       height: 25.0,
                     ),
-                    Text(
-                      "Login/Register and get started today.",
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black.withOpacity(0.65),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 27.0),
+                      child: Text(
+                        "Our enthusiasm and skill motivates us to deliver cutting edge investment solutions premised on state of the art technology, adding value to the investing public. Login/Register to get started today.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.blueGrey,
+                        ),
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      height: 50.0,
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: size.width - 350.0),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/login');
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(13.0),
+                                child: Center(
+                                  child: Text(
+                                    "Get Started",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                ),
+                                decoration: BoxDecoration(
+                                  // color: Color(0XFF2596be),
+                                  color: techBlue,
+                                  borderRadius: BorderRadius.circular(100.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: techBlue,
+                                      offset: Offset(6, 2),
+                                      blurRadius: 1.0,
+                                      spreadRadius: 2.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

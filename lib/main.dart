@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
         ),
         splashTransition: SplashTransition.fadeTransition,
         // pageTransitionType: PageTransitionType.scale,
-        nextScreen: Register(),
+        nextScreen: Onboarding(),
       ),
 
       //routes
