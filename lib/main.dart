@@ -74,15 +74,15 @@ class MyApp extends StatelessWidget {
 
       // splash screen
       home: AnimatedSplashScreen(
-        duration: 1, // remove this
-        animationDuration: Duration(microseconds: 1), // remove this
+        // duration: 1, // remove this
+        // animationDuration: Duration(microseconds: 1), // remove this
         splashIconSize: 200,
         splash: Image.asset(
           'assets/images/logo-no-bg.png',
         ),
         splashTransition: SplashTransition.fadeTransition,
         // pageTransitionType: PageTransitionType.scale,
-        nextScreen: Onboarding(),
+        nextScreen: Register(),
       ),
 
       //routes

@@ -39,6 +39,7 @@ class _OnboardingState extends State<Onboarding> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: scaffoldBackgroundColor,
       body: SafeArea(
@@ -48,36 +49,78 @@ class _OnboardingState extends State<Onboarding> {
             physics: NeverScrollableScrollPhysics(),
             children: [
               Slide(
-                hero: Image.asset("assets/images/hero-1.png"),
+                hero: Image.asset("assets/images/finance_app.png"),
                 title: "Jemina Capital Trading Platform",
                 subtitle:
-                    "Welcome to Jemina Capital Trading Platform; our data, analytics and information-delivery web app developed in-house by our research team.",
+                    "Welcome to Jemina Capital Trading Platform -- data, analytics and information-delivery app developed in-house by our research team.",
                 onNext: nextPage,
               ),
               Slide(
-                hero: Image.asset("assets/images/hero-2.png"),
-                title: "This is title 2",
+                hero: Image.asset(
+                  "assets/images/smart_phone_data.png",
+                  width: 300.0,
+                ),
+                title: "Data and Analytics",
                 subtitle:
                     "Lalala lalala lalala la lalalalalala... la laaaaaa lalalalala lalalalala lalalalalala",
                 onNext: nextPage,
               ),
               Slide(
-                hero: Image.asset("assets/images/hero-3.png"),
-                title: "This is title 3",
+                hero: Image.asset(
+                  "assets/images/report_analysis.png",
+                  width: 300.0,
+                ),
+                title: "News and Reports",
                 subtitle:
                     "Lalala lalala lalala la lalalalalala... la laaaaaa lalalalala lalalalala lalalalalala",
                 onNext: nextPage,
               ),
               Slide(
-                hero: Image.asset("assets/images/hero-1.png"),
-                title: "This is the title 4",
+                hero: Image.asset(
+                  "assets/images/finance.png",
+                  width: 300.0,
+                ),
+                title: "Trading",
                 subtitle:
                     "Lalala lalala lalala la lalalalalala... la laaaaaa lalalalala lalalalala lalalalalala",
                 onNext: nextPage,
               ),
               Container(
-                child: Center(
-                  child: Text("Think Wealth Creation, Think Jemina."),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 60.0,
+                    ),
+                    Center(
+                      child: Image.asset(
+                        "assets/images/logo-no-bg.png",
+                        width: size.width - 150.0,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                      child: Text(
+                        "Think Wealth Creation, Think Jemina!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: techBlue,
+                          fontSize: 19.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25.0,
+                    ),
+                    Text(
+                      "Login/Register and get started today.",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black.withOpacity(0.65),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ],
