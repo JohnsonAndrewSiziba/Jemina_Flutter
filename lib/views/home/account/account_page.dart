@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/views/home/account/wallet/wallet.dart';
 
 import '../../../data/constants/theme_colors.dart';
 
@@ -17,20 +18,7 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: techBlue,
-        title: Text("My Account"),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Icon(
-              Icons.notifications,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
+      appBar: buildAppBar(),
       body: Stack(
         children: [
           Column(
@@ -368,6 +356,20 @@ class _AccountPageState extends State<AccountPage> {
           )
         ],
       ),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: techBlue,
+      title: Text("My Account"),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: NotificationsIcon(),
+        ),
+      ],
     );
   }
 
