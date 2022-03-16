@@ -27,10 +27,16 @@ class CardDetails extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Container(
+              child: Center(
+                child: Image.asset(
+                  "assets/images/piggy_bank.png",
+                  width: 45.0,
+                ),
+              ),
               height: 50,
               width: 60,
               decoration: BoxDecoration(
-                  color: primaryColor,
+                  color: grayBackground,
                   boxShadow: customShadow,
                   borderRadius: BorderRadius.circular(15.0)),
             ),
@@ -65,9 +71,10 @@ class CardDetails extends StatelessWidget {
                 Text(
                   "ZWL \$",
                   style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                      color: techBlue),
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    color: techBlue,
+                  ),
                 ),
               ],
             ),

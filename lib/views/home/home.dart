@@ -12,6 +12,8 @@ import 'package:jemina_capital/views/home/reports/reports_page.dart';
 import 'package:jemina_capital/views/home/stats/stats_page.dart';
 import 'package:jemina_capital/views/home/trading/trading_page.dart';
 
+import '../../widgets/side_navigation_items.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -26,7 +28,7 @@ class _HomeState extends State<Home> {
   final navBarItems = <Widget>[
     // Icon(Icons.person_rounded),
     Icon(Icons.pie_chart_outline),
-    Icon(Icons.speaker_notes_outlined),
+    Icon(Icons.history_edu_outlined),
     Icon(Icons.home_outlined),
     Icon(Icons.business_center_outlined),
     Icon(Icons.chrome_reader_mode_outlined),
@@ -88,108 +90,7 @@ class _HomeState extends State<Home> {
                   child: Container(
                     width: 200.0,
                     padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        DrawerHeader(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 50.0,
-                                backgroundImage: NetworkImage(
-                                  "https://images.pexels.com/photos/2167673/pexels-photo-2167673.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-                                ),
-                              ),
-                              SizedBox(height: 10.0),
-                              Text(
-                                "Eren Yeager!",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          child: ListView(
-                            children: [
-                              ListTile(
-                                leading: Icon(
-                                  Icons.favorite,
-                                  color: Colors.white,
-                                ),
-                                title: Text(
-                                  'Favorites',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onTap: () => null,
-                              ),
-                              ListTile(
-                                leading: Icon(
-                                  Icons.notifications,
-                                  color: Colors.white,
-                                ),
-                                title: Text(
-                                  'Notifications',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onTap: () => null,
-                              ),
-                              Divider(
-                                color: lightBackground,
-                              ),
-                              ListTile(
-                                leading: Icon(
-                                  Icons.settings,
-                                  color: Colors.white,
-                                ),
-                                title: Text(
-                                  'Settings',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onTap: () => null,
-                              ),
-                              ListTile(
-                                leading: Icon(
-                                  Icons.description,
-                                  color: Colors.white,
-                                ),
-                                title: Text(
-                                  'Policies',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onTap: () => null,
-                              ),
-                              Divider(
-                                color: lightBackground,
-                              ),
-                              ListTile(
-                                title: Text(
-                                  'Exit',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                leading: Icon(
-                                  Icons.exit_to_app,
-                                  color: Colors.white,
-                                ),
-                                onTap: () => null,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: SideNavigationItems(),
                   ),
                 ),
 

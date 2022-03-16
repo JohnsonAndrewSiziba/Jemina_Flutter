@@ -16,12 +16,12 @@ class CardSection extends StatelessWidget {
           margin: EdgeInsets.symmetric(
             horizontal: 20.0,
           ),
-          alignment: Alignment.topLeft,
-          child: Text(
-            "Balances",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
+          alignment: Alignment.topCenter,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Text(
+              "Balances",
+              style: Theme.of(context).textTheme.headline2,
             ),
           ),
         ),

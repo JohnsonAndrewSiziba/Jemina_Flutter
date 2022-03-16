@@ -335,26 +335,31 @@ class _AccountPageState extends State<AccountPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "See more",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/wallet');
+                    },
+                    child: Container(
+                      alignment: Alignment.centerRight,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            "See more",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: techBlue,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 1.0,
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
                             color: techBlue,
                           ),
-                        ),
-                        SizedBox(
-                          width: 1.0,
-                        ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: techBlue,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   )
                 ],

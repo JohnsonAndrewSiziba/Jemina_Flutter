@@ -61,37 +61,34 @@ class _CountersPageState extends State<CountersPage> {
       backgroundColor: Colors.white,
       appBar: buildAppBar(context),
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: ScrollController(),
-          child: Padding(
-            padding: EdgeInsets.all(0.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HeaderWithSearchBar(size: size),
-                SizedBox(
-                  height: 25.0,
+        child: Padding(
+          padding: EdgeInsets.all(0.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HeaderWithSearchBar(size: size),
+              SizedBox(
+                height: 25.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: _categories
+                      .asMap()
+                      .entries
+                      .map((MapEntry map) => _buildCategories(map.key))
+                      .toList(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: _categories
-                        .asMap()
-                        .entries
-                        .map((MapEntry map) => _buildCategories(map.key))
-                        .toList(),
-                  ),
-                ),
-                SizedBox(
-                  height: 25,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: _buildCountersListView(),
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: _buildCountersListView(),
+              ),
+            ],
           ),
         ),
       ),
