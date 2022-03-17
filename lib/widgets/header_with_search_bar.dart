@@ -17,7 +17,7 @@ class HeaderWithSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: kDefaultPadding * 2.5),
-      height: size.height * 0.2 - 60.0,
+      height: size.height * 0.2 - 98.0,
       child: Stack(
         children: [
           Container(
@@ -26,26 +26,13 @@ class HeaderWithSearchBar extends StatelessWidget {
               right: kDefaultPadding,
               bottom: 36 + kDefaultPadding,
             ),
-            height: size.height * 0.2 - 80.0,
+            height: size.height * 0.2 - 124.0,
             decoration: BoxDecoration(
               color: techBlue,
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(15.0),
-                bottomRight: Radius.circular(15.0),
+                bottomLeft: Radius.circular(11.0),
+                bottomRight: Radius.circular(11.0),
               ),
-            ),
-            child: Row(
-              children: [
-                Text(
-                  "Hi, Jemina",
-                  style: Theme.of(context).textTheme.headline5?.copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                Spacer(),
-                // GotoProfile(),
-              ],
             ),
           ),
           Positioned(

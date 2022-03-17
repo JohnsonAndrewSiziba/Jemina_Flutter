@@ -70,16 +70,13 @@ class _HomeState extends State<Home> {
             // body: screens[index],
             body: Stack(
               children: [
-                /// sudenav
-                /// sudenav
-                /// sudenav
                 Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
                         jeminaBlue,
-                        // lightBackground.withOpacity(0.7),
-                        techBlue
+                        grey,
+                        grayBackground,
                       ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -95,8 +92,6 @@ class _HomeState extends State<Home> {
                 ),
 
                 // main screen
-                // main screen
-                // main screen
                 TweenAnimationBuilder(
                     tween: Tween<double>(begin: 0, end: value),
                     duration: Duration(milliseconds: 250),
@@ -108,8 +103,8 @@ class _HomeState extends State<Home> {
                           ..setEntry(3, 2, 0.001)
                           ..setEntry(0, 3, 200 * val)
                           ..rotateY((pi / 6) * val),
-                        child: Scaffold(
-                          body: [
+                        child: Container(
+                          child: [
                             StatsPage(onOpenMenu: toggleMenu, state: value),
                             ReportsPage(onOpenMenu: toggleMenu, state: value),
                             TradingPage(onOpenMenu: toggleMenu, state: value),
@@ -119,25 +114,6 @@ class _HomeState extends State<Home> {
                         ),
                       ));
                     }),
-
-                GestureDetector(
-                  // onTap: () {
-                  //   setState(() {
-                  //     value == 0 ? value = 1 : value = 0;
-                  //   });
-                  // },
-                  onHorizontalDragUpdate: (e) {
-                    // if (e.delta.dx > 0) {
-                    //   setState(() {
-                    //     value = 1;
-                    //   });
-                    // } else {
-                    //   setState(() {
-                    //     value = 0;
-                    //   });
-                    // }
-                  },
-                ),
               ],
             ),
           ),

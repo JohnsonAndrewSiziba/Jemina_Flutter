@@ -9,6 +9,7 @@ import 'package:jemina_capital/views/contact/contact.dart';
 import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/account/wallet/wallet.dart';
 import 'package:jemina_capital/views/home/home.dart';
+import 'package:jemina_capital/views/home/reports/views/view_report.dart';
 import 'package:jemina_capital/views/onboarding/onboarding.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:jemina_capital/widgets/sidenav.dart';
