@@ -133,6 +133,7 @@ class _WalletState extends State<Wallet> {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
+      backgroundColor: techBlue,
       title: Text("My Wallet"),
       actions: [
         Padding(

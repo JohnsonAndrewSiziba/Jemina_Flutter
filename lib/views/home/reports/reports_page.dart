@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
-import 'package:jemina_capital/views/home/reports/views/view_report.dart';
+import 'package:jemina_capital/views/home/reports/views/view_reports/view_report.dart';
 
 import '../../../widgets/go_to_profile.dart';
 

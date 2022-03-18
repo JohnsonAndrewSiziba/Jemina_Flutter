@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/views/home/reports/views/view_reports/components/body.dart';
 
-import '../../../../widgets/notification_icon.dart';
+import '../../../../../widgets/notification_icon.dart';
 
 class ViewReport extends StatefulWidget {
   ViewReport({Key? key}) : super(key: key);
@@ -16,17 +17,8 @@ class _ViewReportState extends State<ViewReport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: techBlue,
-        title: const Text("Report Title"),
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(right: 8.0),
-            child: NotificationsIcon(),
-          ),
-        ],
-      ),
+      backgroundColor: Colors.white,
+      body: Body(),
     );
   }
 }
