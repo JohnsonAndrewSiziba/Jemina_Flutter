@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:jemina_capital/views/home/account/wallet/wallet.dart';
 
 import '../../../data/constants/theme_colors.dart';
+import '../../../widgets/notification_icon.dart';
 
 class AccountPage extends StatefulWidget {
   AccountPage({Key? key}) : super(key: key);
