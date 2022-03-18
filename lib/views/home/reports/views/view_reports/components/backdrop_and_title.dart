@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/data/constants/theme_colors.dart';
 
 class BackdropAndTitle extends StatelessWidget {
   const BackdropAndTitle({
@@ -56,7 +57,7 @@ class BackdropAndTitle extends StatelessWidget {
                       "Daily Trading Update",
                       style: Theme.of(context).textTheme.headline6?.copyWith(
                             fontWeight: FontWeight.w700,
-                            color: Colors.blueGrey,
+                            color: techBlue,
                           ),
                     ),
                   ),

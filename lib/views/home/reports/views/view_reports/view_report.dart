@@ -18,7 +18,10 @@ class _ViewReportState extends State<ViewReport> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Body(),
+      body: SafeArea(
+        top: false,
+        child: Body(),
+      ),
     );
   }
 }
