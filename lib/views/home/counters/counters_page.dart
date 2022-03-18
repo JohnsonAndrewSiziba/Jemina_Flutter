@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:jemina_capital/views/home/counters/views/view_counter.dart';
 import 'package:jemina_capital/widgets/go_to_profile.dart';
 
 import '../../../widgets/header_with_search_bar.dart';
@@ -31,7 +32,7 @@ class _CountersPageState extends State<CountersPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: scaffoldBackgroundColor,
       appBar: buildAppBar(context),
       body: SafeArea(
         child: Column(
@@ -51,6 +52,167 @@ class _CountersPageState extends State<CountersPage> {
                 ),
               ),
             ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: kDefaultPadding - 10.0),
+                child: Container(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                        buildCategoryCard(
+                          Icons.timeline,
+                          "African Sun",
+                          120,
+                          20,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  GestureDetector buildCategoryCard(
+      IconData icon, String title, int amount, int percentage) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ViewCounter(),
+          ),
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.all(15),
+        margin: EdgeInsets.only(bottom: 12.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white,
+        ),
+        height: 85,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      icon,
+                      color: grayBackground,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "\$$amount",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "($percentage shares)",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey),
+                    )
+                  ],
+                )
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Stack(
+              children: [
+                Container(
+                  height: 5,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2),
+                    // color: Colors.grey.shade300,
+                  ),
+                ),
+                Container(
+                  height: 5,
+                  width: 80,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2),
+                    // color: Color(0XFF00B686),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),

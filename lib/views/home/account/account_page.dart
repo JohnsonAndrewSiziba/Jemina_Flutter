@@ -25,12 +25,14 @@ class _AccountPageState extends State<AccountPage> {
           Column(
             children: [
               Container(
-                height: 300,
+                height: 225,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                     colors: [
                       techBlue,
-                      palatinanteBlue,
+                      techBlue.withOpacity(0.7),
                     ],
                   ),
                 ),
@@ -211,7 +213,7 @@ class _AccountPageState extends State<AccountPage> {
             ],
           ),
           Positioned(
-            top: 185,
+            top: 125,
             right: 0,
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
