@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/data.dart';
 
 import 'card_details.dart';
@@ -21,7 +22,10 @@ class CardSection extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
               "Balances",
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline2
+                  ?.copyWith(color: techBlue, fontWeight: FontWeight.bold),
             ),
           ),
         ),
