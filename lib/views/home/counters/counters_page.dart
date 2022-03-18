@@ -34,27 +34,24 @@ class _CountersPageState extends State<CountersPage> {
       backgroundColor: Colors.white,
       appBar: buildAppBar(context),
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(0.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeaderWithSearchBar(size: size),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: kDefaultPadding - 10.0,
-                ),
-                child: SizedBox(
-                  height: 25,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: categories.length,
-                    itemBuilder: (context, index) => buildCategory(index),
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            HeaderWithSearchBar(placeholder: "Search counter...", size: size),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: kDefaultPadding - 10.0,
+              ),
+              child: SizedBox(
+                height: 25,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) => buildCategory(index),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

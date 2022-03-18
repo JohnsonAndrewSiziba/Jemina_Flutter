@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../data/constants/theme_colors.dart';
 import '../../../widgets/go_to_profile.dart';
+import '../../../widgets/header_with_search_bar.dart';
 
 class NewsPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -19,9 +20,17 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildAppBar(context),
+      body: SafeArea(
+        child: Column(
+          children: [
+            HeaderWithSearchBar(placeholder: "Search news...", size: size),
+          ],
+        ),
+      ),
     );
   }
 

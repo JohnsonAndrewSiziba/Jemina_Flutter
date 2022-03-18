@@ -6,9 +6,11 @@ import '../data/constants/theme_colors.dart';
 import 'go_to_profile.dart';
 
 class HeaderWithSearchBar extends StatelessWidget {
-  const HeaderWithSearchBar({
+  String placeholder;
+  HeaderWithSearchBar({
     Key? key,
     required this.size,
+    required this.placeholder,
   }) : super(key: key);
 
   final Size size;
@@ -58,7 +60,7 @@ class HeaderWithSearchBar extends StatelessWidget {
               child: TextField(
                 onChanged: (value) {},
                 decoration: InputDecoration(
-                  hintText: "Search...",
+                  hintText: placeholder,
                   hintStyle: TextStyle(
                     color: kPrimaryColor.withOpacity(0.5),
                   ),
