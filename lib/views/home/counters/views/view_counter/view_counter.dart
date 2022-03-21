@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/views/home/counters/views/view_counter/components/body.dart';
 
 class ViewCounter extends StatefulWidget {
   ViewCounter({Key? key}) : super(key: key);
@@ -14,18 +15,25 @@ class _ViewCounterState extends State<ViewCounter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      backgroundColor: techBlue,
+      appBar: buildAppBar(context),
       body: SafeArea(
-        child: Container(),
+        child: Body(),
       ),
     );
   }
 
-  AppBar buildAppBar() {
+  AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      elevation: 0,
       backgroundColor: techBlue,
-      title: Text("Company Name"),
+      elevation: 0,
+      leading: IconButton(
+        icon: Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ),
+        onPressed: () => Navigator.pop(context),
+      ),
     );
   }
 }
