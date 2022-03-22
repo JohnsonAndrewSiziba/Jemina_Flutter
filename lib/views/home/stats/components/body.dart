@@ -148,35 +148,7 @@ class MainBody extends StatelessWidget {
       ),
       child: Row(
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              SizedBox(
-                width: 60,
-                height: 60,
-                child: CircularProgressIndicator(
-                  value: progress / 100,
-                  strokeWidth: 6,
-                  backgroundColor: techBlue.withOpacity(0.2),
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    techBlue,
-                  ),
-                ),
-              ),
-              Container(
-                width: 60,
-                height: 60,
-                alignment: Alignment.center,
-                child: Text(
-                  progress.toString() + '%',
-                  style: TextStyle(
-                    color: techBlue,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          Container(),
           SizedBox(
             width: 30,
           ),
