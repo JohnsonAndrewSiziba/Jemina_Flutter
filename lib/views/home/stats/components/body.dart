@@ -150,25 +150,62 @@ class MainBody extends StatelessWidget {
         children: <Widget>[
           Container(),
           SizedBox(
-            width: 30,
+            width: 5.0,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                title,
+                "BAT",
                 style: TextStyle(
-                  color: Colors.white,
+                  color: techBlue,
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                 ),
               ),
               SizedBox(
-                height: 12,
+                height: 8.0,
               ),
               Row(
                 children: <Widget>[
+                  Container(
+                    // decoration: BoxDecoration(
+                    //   borderRadius: BorderRadius.all(
+                    //     Radius.circular(8.0),
+                    //   ),
+                    // ),
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 24.5,
+                          color: Colors.red,
+                          child: Center(
+                            child: Text(
+                              "200.0",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Divider(
+                          color: Colors.white,
+                          height: 0.1,
+                        ),
+                        Container(
+                          height: 24.5,
+                          color: Colors.green,
+                        )
+                      ],
+                    ),
+                    width: 50.0,
+                    height: 50.0,
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
                   _reportInnerCell(
                     title: 'Deposit',
                     value: deposit,
