@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/data/data.dart';
 import 'package:jemina_capital/views/home/stats/components/team_datagrid_source.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
@@ -23,10 +24,16 @@ class _PricesDataTableState extends State<PricesDataTable> {
     return Expanded(
       child: SfDataGridTheme(
         data: SfDataGridThemeData(
-            gridLineColor: techBlue, gridLineStrokeWidth: 0.07),
+          gridLineColor: scaffoldBackgroundColor,
+          gridLineStrokeWidth: 0.01,
+          frozenPaneElevation: 0.0,
+          frozenPaneLineColor: scaffoldBackgroundColor,
+          frozenPaneLineWidth: 1.5,
+        ),
         child: SfDataGrid(
           source: teamDataGridSource,
-          columnWidthMode: ColumnWidthMode.fill,
+          frozenColumnsCount: 2,
+          // columnWidthMode: ColumnWidthMode.fill,
           rowHeight: 50,
           columns: <GridColumn>[
             GridColumn(

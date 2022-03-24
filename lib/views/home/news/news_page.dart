@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jemina_capital/views/home/news/components/news_page_body.dart';
 
 import '../../../data/constants/theme_colors.dart';
 import '../../../widgets/go_to_profile.dart';
@@ -22,12 +23,13 @@ class _NewsPageState extends State<NewsPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: scaffoldBackgroundColor,
       appBar: buildAppBar(context),
       body: SafeArea(
         child: Column(
           children: [
             HeaderWithSearchBar(placeholder: "Search news...", size: size),
+            NewsPageBody(),
           ],
         ),
       ),

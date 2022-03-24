@@ -22,14 +22,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int index = 1;
+  int index = 0;
   double value = 0;
 
   final navBarItems = <Widget>[
     // Icon(Icons.person_rounded),
     Icon(Icons.pie_chart_outline),
     Icon(Icons.history_edu_outlined),
-    Icon(Icons.home_outlined),
+    // Icon(Icons.dashboard_outlined),
     Icon(Icons.business_center_outlined),
     Icon(Icons.chrome_reader_mode_outlined),
   ];

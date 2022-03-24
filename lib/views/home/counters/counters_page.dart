@@ -61,6 +61,7 @@ class _CountersPageState extends State<CountersPage> {
                     child: Column(
                       children: [
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -69,6 +70,7 @@ class _CountersPageState extends State<CountersPage> {
                           precent: 4.32,
                         ),
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -77,6 +79,7 @@ class _CountersPageState extends State<CountersPage> {
                           precent: 4.32,
                         ),
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -85,6 +88,7 @@ class _CountersPageState extends State<CountersPage> {
                           precent: 4.32,
                         ),
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -93,6 +97,7 @@ class _CountersPageState extends State<CountersPage> {
                           precent: 4.32,
                         ),
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -101,6 +106,7 @@ class _CountersPageState extends State<CountersPage> {
                           precent: 4.32,
                         ),
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -109,6 +115,7 @@ class _CountersPageState extends State<CountersPage> {
                           precent: 4.32,
                         ),
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -117,6 +124,7 @@ class _CountersPageState extends State<CountersPage> {
                           precent: 4.32,
                         ),
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -125,6 +133,7 @@ class _CountersPageState extends State<CountersPage> {
                           precent: 4.32,
                         ),
                         company(
+                          context: context,
                           iconUrl:
                               'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
                           myCrypto: 'First Mutual',
@@ -297,7 +306,8 @@ Widget company(
     required String myCrypto,
     required String myBalance,
     required String myProfit,
-    required double precent}) {
+    required double precent,
+    required BuildContext context}) {
   return GestureDetector(
     onTap: () {
       Navigator.push(
