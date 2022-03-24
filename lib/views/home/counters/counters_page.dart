@@ -60,59 +60,77 @@ class _CountersPageState extends State<CountersPage> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
-                        buildCategoryCard(
-                          Icons.timeline,
-                          "African Sun",
-                          120,
-                          20,
+                        company(
+                          iconUrl:
+                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
+                          myCrypto: 'First Mutual',
+                          myBalance: '\$ 5.441',
+                          myProfit: '\$19.153',
+                          precent: 4.32,
                         ),
                       ],
                     ),
@@ -272,4 +290,89 @@ class _CountersPageState extends State<CountersPage> {
       ],
     );
   }
+}
+
+Widget company(
+    {required String iconUrl,
+    required String myCrypto,
+    required String myBalance,
+    required String myProfit,
+    required double precent}) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ViewCounter(),
+        ),
+      );
+    },
+    child: Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: card(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.network(
+              '$iconUrl',
+              width: 50,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    '$myCrypto',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  Text(
+                    '$myProfit',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black45,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  '$myBalance',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Text(
+                  precent >= 0 ? '+ $precent %' : '$precent %',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: precent >= 0 ? Colors.green : Colors.pink,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget card(
+    {double width = double.infinity,
+    double padding = 20,
+    required Widget child}) {
+  return Container(
+    width: width,
+    padding: EdgeInsets.all(padding),
+    decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(15))),
+    child: child,
+  );
 }

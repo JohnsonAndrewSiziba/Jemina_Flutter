@@ -11,11 +11,13 @@ Color flourescentBlue = Color(0xFF27D8EA);
 Color success = Color(0XFF00B686);
 
 Color grayBackground = Color(0xFFCADCED);
+Color grayBackground2 = grayBackground.withOpacity(0.2);
 Color grey = Colors.grey;
 Color lightBackground = Color(0xfff7f6fb);
 Color lightGrey = Color(0xfff5f6f8);
 
-Color scaffoldBackgroundColor = const Color(0XFFEFF3F6);
+// Color scaffoldBackgroundColor = const Color(0XFFEFF3F6);
+Color scaffoldBackgroundColor = Color.fromARGB(255, 242, 244, 245);
 
 Color jeminaBlue = Color(0XFF2596be);
 

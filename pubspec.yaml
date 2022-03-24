@@ -41,6 +41,11 @@ dependencies:
   page_transition: ^2.0.5
   flutter_svg: ^1.0.3
   flutter_widget_from_html_core: ^0.8.5+1
+  syncfusion_flutter_core: ^19.4.56
+  syncfusion_flutter_datagrid: ^19.4.56
+  intl: ^0.17.0
+  syncfusion_flutter_datagrid_export: ^19.4.56-beta
+
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +60,7 @@ dev_dependencies:
 
   # my dependenciew
   google_fonts: ^2.3.1
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
