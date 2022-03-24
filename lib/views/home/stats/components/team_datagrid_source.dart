@@ -20,7 +20,7 @@ class TeamDataGridSource extends DataGridSource {
   void buildDataGridRows() {
     _dataGridRows = _teams.map<DataGridRow>((Team team) {
       return DataGridRow(cells: <DataGridCell>[
-        DataGridCell<Image>(columnName: 'image', value: team.image),
+        DataGridCell<String>(columnName: 'image', value: team.image),
         DataGridCell<String>(columnName: 'team', value: team.team),
         DataGridCell<int>(columnName: 'wins', value: team.wins),
         DataGridCell<int>(columnName: 'losses', value: team.losses),
@@ -40,8 +40,14 @@ class TeamDataGridSource extends DataGridSource {
       color: Colors.white,
       cells: <Widget>[
         Container(
-          padding: const EdgeInsets.all(8.0),
-          child: row.getCells()[0].value,
+          height: 200.0,
+          width: 200.0,
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Image.network(
+            row.getCells()[0].value,
+            height: 300.0,
+            width: 300.0,
+          ),
         ),
         Container(
           alignment: Alignment.centerLeft,
@@ -104,21 +110,36 @@ class TeamDataGridSource extends DataGridSource {
     'ASUN.ZW',
   ];
 
-  final List<Image> _teamLogos = <Image>[
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
-    Image.asset('assets/images/AfricanSun.png'),
+  final List<String> _teamLogos = <String>[
+    // Image.asset('assets/images/AfricanSun.png'),
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642430541.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642428782.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642430127.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429301.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+    "http://www.africansunhotels.com/web/images/facebook-og.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+    "https://jemina.capital/storage/company_logos/company-logo1642429062.png",
+
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
+    // Image.asset('assets/images/AfricanSun.png'),
   ];
 
   final List<double> _gb = <double>[

@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
                           child: [
                             StatsPage(onOpenMenu: toggleMenu, state: value),
                             ReportsPage(onOpenMenu: toggleMenu, state: value),
-                            TradingPage(onOpenMenu: toggleMenu, state: value),
+                            // TradingPage(onOpenMenu: toggleMenu, state: value),
                             CountersPage(onOpenMenu: toggleMenu, state: value),
                             NewsPage(onOpenMenu: toggleMenu, state: value),
                           ][index],

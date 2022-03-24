@@ -36,12 +36,16 @@ Widget listWidget(NewsItem item) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.newsTitle,
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: techBlue,
-                      fontWeight: FontWeight.w400,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      item.newsTitle,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        // color: techBlue,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                   SizedBox(
