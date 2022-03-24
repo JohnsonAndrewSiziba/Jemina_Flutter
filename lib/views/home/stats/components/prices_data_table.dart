@@ -24,16 +24,18 @@ class _PricesDataTableState extends State<PricesDataTable> {
     return Expanded(
       child: SfDataGridTheme(
         data: SfDataGridThemeData(
-          gridLineColor: scaffoldBackgroundColor,
-          gridLineStrokeWidth: 0.01,
+          selectionColor: techBlue,
+          headerColor: Colors.white,
+          gridLineColor: techBlue,
+          gridLineStrokeWidth: 0.03,
           frozenPaneElevation: 0.0,
-          frozenPaneLineColor: scaffoldBackgroundColor,
-          frozenPaneLineWidth: 1.5,
+          frozenPaneLineColor: techBlue,
+          frozenPaneLineWidth: 0.05,
         ),
         child: SfDataGrid(
           source: teamDataGridSource,
           frozenColumnsCount: 2,
-          // columnWidthMode: ColumnWidthMode.fill,
+          // columnWidthMode: ColumnWidthMode.auto,
           rowHeight: 50,
           columns: <GridColumn>[
             GridColumn(

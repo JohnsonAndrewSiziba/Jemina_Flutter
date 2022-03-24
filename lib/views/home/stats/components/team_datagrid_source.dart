@@ -37,7 +37,7 @@ class TeamDataGridSource extends DataGridSource {
   @override
   DataGridRowAdapter buildRow(DataGridRow row) {
     return DataGridRowAdapter(
-      color: grayBackground.withOpacity(0.2),
+      color: Colors.white,
       cells: <Widget>[
         Container(
           padding: const EdgeInsets.all(8.0),
