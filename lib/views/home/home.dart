@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/counters/counters_page.dart';
+import 'package:jemina_capital/views/home/landing/landing_page.dart';
 import 'package:jemina_capital/views/home/news/news_page.dart';
 import 'package:jemina_capital/views/home/reports/reports_page.dart';
 import 'package:jemina_capital/views/home/stats/stats_page.dart';
-import 'package:jemina_capital/views/home/trading/trading_page.dart';
 
 import '../../widgets/side_navigation_items.dart';
 
@@ -22,14 +22,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int index = 0;
+  int index = 2;
   double value = 0;
 
   final navBarItems = <Widget>[
     // Icon(Icons.person_rounded),
     Icon(Icons.pie_chart_outline),
     Icon(Icons.history_edu_outlined),
-    // Icon(Icons.dashboard_outlined),
+    Icon(Icons.home_outlined),
     Icon(Icons.business_center_outlined),
     Icon(Icons.chrome_reader_mode_outlined),
   ];
@@ -74,8 +74,8 @@ class _HomeState extends State<Home> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
+                        techBlue,
                         jeminaBlue,
-                        grey,
                         grayBackground,
                       ],
                       begin: Alignment.topCenter,
@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
                           child: [
                             StatsPage(onOpenMenu: toggleMenu, state: value),
                             ReportsPage(onOpenMenu: toggleMenu, state: value),
-                            // TradingPage(onOpenMenu: toggleMenu, state: value),
+                            LandingPage(onOpenMenu: toggleMenu, state: value),
                             CountersPage(onOpenMenu: toggleMenu, state: value),
                             NewsPage(onOpenMenu: toggleMenu, state: value),
                           ][index],

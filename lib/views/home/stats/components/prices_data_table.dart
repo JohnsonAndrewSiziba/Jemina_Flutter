@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/data.dart';
-import 'package:jemina_capital/views/home/stats/components/team_datagrid_source.dart';
+import 'package:jemina_capital/views/home/stats/components/prices_datagrid_source.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
@@ -15,7 +15,7 @@ class PricesDataTable extends StatefulWidget {
 }
 
 class _PricesDataTableState extends State<PricesDataTable> {
-  TeamDataGridSource teamDataGridSource = TeamDataGridSource();
+  PricesDataGridSource teamDataGridSource = PricesDataGridSource();
 
   final GlobalKey<SfDataGridState> key = GlobalKey<SfDataGridState>();
 
@@ -35,7 +35,7 @@ class _PricesDataTableState extends State<PricesDataTable> {
         child: SfDataGrid(
           source: teamDataGridSource,
           frozenColumnsCount: 2,
-          // columnWidthMode: ColumnWidthMode.auto,
+          columnWidthMode: ColumnWidthMode.auto,
           rowHeight: 50,
           columns: <GridColumn>[
             GridColumn(
@@ -59,6 +59,21 @@ class _PricesDataTableState extends State<PricesDataTable> {
               ),
             ),
             GridColumn(
+              allowSorting: true,
+              columnName: 'sector',
+              width: double.nan,
+              label: Container(
+                alignment: Alignment.centerLeft,
+                child: const Text(
+                  'Sector',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+            GridColumn(
               columnName: 'opening_price',
               label: const Center(
                 child: Text(
@@ -71,16 +86,17 @@ class _PricesDataTableState extends State<PricesDataTable> {
               ),
             ),
             GridColumn(
-                columnName: 'closing_price',
-                label: const Center(
-                  child: Text(
-                    'Close',
-                    style: TextStyle(
-                      color: Colors.blueGrey,
-                      fontWeight: FontWeight.w700,
-                    ),
+              columnName: 'close',
+              label: const Center(
+                child: Text(
+                  'Close',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.w700,
                   ),
-                )),
+                ),
+              ),
+            ),
             GridColumn(
               columnName: 'percentage_change',
               label: const Center(
@@ -98,6 +114,54 @@ class _PricesDataTableState extends State<PricesDataTable> {
               label: const Center(
                 child: Text(
                   'Volume',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+            GridColumn(
+              columnName: 'value',
+              label: const Center(
+                child: Text(
+                  'Value',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+            GridColumn(
+              columnName: 'bal_sheet',
+              label: const Center(
+                child: Text(
+                  'Bal. Sheet',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+            GridColumn(
+              columnName: 'mkt_cap',
+              label: const Center(
+                child: Text(
+                  'Mkt. Cap.',
+                  style: TextStyle(
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ),
+            GridColumn(
+              columnName: 'weight',
+              label: const Center(
+                child: Text(
+                  'Weight',
                   style: TextStyle(
                     color: Colors.blueGrey,
                     fontWeight: FontWeight.w700,

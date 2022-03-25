@@ -46,6 +46,7 @@ dependencies:
   intl: ^0.17.0
   syncfusion_flutter_datagrid_export: ^19.4.56-beta
   webview_flutter: ^3.0.1
+  http: ^0.13.4
 
 
 dev_dependencies:

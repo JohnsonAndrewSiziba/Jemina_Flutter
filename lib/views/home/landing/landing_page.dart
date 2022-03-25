@@ -8,17 +8,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../data/constants/theme_colors.dart';
 import '../../../widgets/go_to_profile.dart';
 
-class TradingPage extends StatefulWidget {
+class LandingPage extends StatefulWidget {
   VoidCallback onOpenMenu;
   double state;
-  TradingPage({Key? key, required this.onOpenMenu, required this.state})
+  LandingPage({Key? key, required this.onOpenMenu, required this.state})
       : super(key: key);
 
   @override
-  State<TradingPage> createState() => _TradingPageState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
-class _TradingPageState extends State<TradingPage> {
+class _LandingPageState extends State<LandingPage> {
   double value = 0;
 
   @override
@@ -43,7 +43,7 @@ class _TradingPageState extends State<TradingPage> {
         },
         icon: SvgPicture.asset("assets/icons/menu.svg"),
       ),
-      title: Text("Trading"),
+      title: Text("Jemina Capital"),
       actions: [
         GotoProfile(),
       ],
