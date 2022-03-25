@@ -90,3 +90,8 @@ class SharedPreferenceManager {
     return prefs.getBool('shownWelcomeSlides');
   }
 }
+
+
+/// REFERENCES
+/// https://docs.flutter.dev/cookbook/persistence/key-value
+/// https://flutterbyexample.com/lesson/singletons
