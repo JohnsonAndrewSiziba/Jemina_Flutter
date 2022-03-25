@@ -89,6 +89,4 @@ class SharedPreferenceManager {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool('shownWelcomeSlides');
   }
-
-
 }

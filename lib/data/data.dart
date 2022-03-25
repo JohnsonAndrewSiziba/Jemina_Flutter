@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+/// this is a temp file
+/// todo: delete it
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 
