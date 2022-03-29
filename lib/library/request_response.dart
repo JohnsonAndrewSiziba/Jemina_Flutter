@@ -1,6 +1,17 @@
+import 'dart:convert';
+
 class RequestResponse{
-  final bool success;
-  final String message;
-  
-  RequestResponse(this.success, this.message);
+  final String body;
+
+  RequestResponse(this.body);
+
+  Map<String, dynamic> getJsonBody(){
+    return jsonDecode(body);
+  }
+
+  String getError(){
+    var errors = getJsonBody()['errors'];
+    var theJson = jsonDecode(errors);
+    return theJson.keys.toList()[0];
+  }
 }

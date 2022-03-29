@@ -67,6 +67,7 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   child: TextField(
+                    autocorrect: false,
                     textCapitalization: TextCapitalization.words,
                     controller: nameController,
                     decoration: InputDecoration(
@@ -107,6 +108,8 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   child: TextField(
+                    autocorrect: false,
+                    keyboardType: TextInputType.emailAddress,
                     controller: emailController,
                     obscureText: false,
                     decoration: InputDecoration(
@@ -147,6 +150,7 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   child: TextField(
+                    autocorrect: false,
                     controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
@@ -171,14 +175,39 @@ class _RegisterState extends State<Register> {
                   children: [
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           // print("Email: " + );
                             AuthController authController = AuthController();
-                            RequestResponse requestResponse = authController.register(
+                            RequestResponse requestResponse = await authController.register(
                               name: nameController.text,
                               email: emailController.text,
                               password: passwordController.text,
                             );
+
+                            var jsonBody = requestResponse.getJsonBody();
+
+
+
+                            if(jsonBody['success'] == false){
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: Text('Authentication Error', style: Theme.of(context).textTheme.headline4?.copyWith(
+                                    color: techBlue,
+                                    fontWeight: FontWeight.w600,
+                                  ),),
+                                  content: Text(requestResponse.getError()),
+
+                                    actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context, 'OK'),
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+
                         },
                         child: Container(
                           padding: EdgeInsets.all(13.0),
