@@ -3,6 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 
+import '../../controllers/auth/auth_controller.dart';
+import '../../data/shared_preference/shared_preference_manager.dart';
+import '../../library/request_response.dart';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -11,6 +15,12 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  SharedPreferenceManager prefsManager =  SharedPreferenceManager();
+
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -60,6 +70,10 @@ class _LoginState extends State<Login> {
                   ],
                 ),
                 child: TextField(
+                  autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
+                  controller: emailController,
+                  obscureText: false,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "Email Address",
@@ -99,6 +113,8 @@ class _LoginState extends State<Login> {
                 ),
                 child: TextField(
                   obscureText: true,
+                  autocorrect: false,
+                  controller: passwordController,
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "********",
@@ -120,29 +136,93 @@ class _LoginState extends State<Login> {
               Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(13.0),
-                      child: Center(
-                        child: Text(
-                          "Log In",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.0,
+                    child: GestureDetector(
+                      onTap: () async {
+                        if (loading == true) {
+                          return;
+                        }
+                        setState(() {
+                          loading = true;
+                        });
+                        // print("Email: " + );
+                        AuthController authController = AuthController();
+                        RequestResponse requestResponse =
+                        await authController.login(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+
+                        setState(() {
+                          loading = false;
+                        });
+
+                        var jsonBody = requestResponse.getJsonBody();
+
+                        String message;
+
+                        if(jsonBody['message'] == 'failed validation'){
+                          message = jsonBody['errors']
+                          [jsonBody['errors'].keys.toList()[0]][0]
+                              .toString();
+                        }
+                        else {
+                          message = jsonBody['message'];
+                        }
+
+                        if (jsonBody['success'] == false) {
+                          showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: Text(
+                                'Authentication Error',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline4
+                                    ?.copyWith(
+                                  color: techBlue,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              content: Text(message),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'OK'),
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else {
+                          var token = jsonBody['token'];
+                          prefsManager.setAccessToken(token);
+                          Navigator.pushNamed(context, '/home');
+                        }
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(13.0),
+                        child: Center(
+                          child: Text(
+                            "Log In",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.0,
+                            ),
                           ),
                         ),
-                      ),
-                      decoration: BoxDecoration(
-                        // color: Color(0XFF2596be),
-                        color: techBlue,
-                        borderRadius: BorderRadius.circular(100.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: techBlue,
-                            offset: Offset(6, 2),
-                            blurRadius: 1.0,
-                            spreadRadius: 2.0,
-                          ),
-                        ],
+                        decoration: BoxDecoration(
+                          // color: Color(0XFF2596be),
+                          color: techBlue,
+                          borderRadius: BorderRadius.circular(100.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: techBlue,
+                              offset: Offset(6, 2),
+                              blurRadius: 1.0,
+                              spreadRadius: 2.0,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

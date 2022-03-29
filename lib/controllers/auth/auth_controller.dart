@@ -18,4 +18,16 @@ class AuthController extends Controller{
 
     return response;
   }
+
+  Future<RequestResponse> login({required String email, required String password}) {
+    Map<String, dynamic> body = {
+      'email': email,
+      'password': password,
+      'device': "Mobile",
+    };
+    Future<RequestResponse> response =  makePostRequest(url: Routes.loginRoute, body: body);
+
+    return response;
+  }
+
 }
