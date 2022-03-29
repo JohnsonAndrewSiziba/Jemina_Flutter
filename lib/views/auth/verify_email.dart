@@ -11,6 +11,13 @@ class VerifyEmail extends StatefulWidget {
 }
 
 class _VerifyEmailState extends State<VerifyEmail> {
+  TextEditingController digit1Controller = TextEditingController();
+  TextEditingController digit2Controller = TextEditingController();
+  TextEditingController digit3Controller = TextEditingController();
+  TextEditingController digit4Controller = TextEditingController();
+
+  var loading;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,10 +90,10 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          _textFieldOTP(first: true, last: false),
-                          _textFieldOTP(first: false, last: false),
-                          _textFieldOTP(first: false, last: false),
-                          _textFieldOTP(first: false, last: true),
+                          _textFieldOTP(first: true, last: false, controller: digit1Controller),
+                          _textFieldOTP(first: false, last: false, controller: digit2Controller),
+                          _textFieldOTP(first: false, last: false, controller: digit3Controller),
+                          _textFieldOTP(first: false, last: true, controller: digit4Controller),
                         ],
                       ),
                       SizedBox(
@@ -96,7 +103,19 @@ class _VerifyEmailState extends State<VerifyEmail> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/home');
+                            if (loading == true) {
+                              return;
+                            }
+                            setState(() {
+                              loading = true;
+                            });
+                            
+                            // Navigator.pushNamed(context, '/home');
+                            String emailVerificationCode = digit1Controller.text
+                                + digit2Controller.text
+                                + digit3Controller.text
+                                + digit4Controller.text;
+                            
                           },
                           style: ButtonStyle(
                             foregroundColor:
@@ -158,13 +177,14 @@ class _VerifyEmailState extends State<VerifyEmail> {
     );
   }
 
-  Widget _textFieldOTP({required bool first, last}) {
+  Widget _textFieldOTP({required bool first, last, required TextEditingController controller}) {
     return Container(
       height: 85,
       width: 42.0,
       child: AspectRatio(
         aspectRatio: 1.0,
         child: TextField(
+          controller: controller,
           autofocus: true,
           onChanged: (value) {
             if (value.length == 1 && last == false) {
