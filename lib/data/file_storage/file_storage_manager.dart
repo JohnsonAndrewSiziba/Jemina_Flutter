@@ -55,8 +55,8 @@ class FileStorageManager {
     return file.writeAsString('$counter');
   }
 
-
 }
 
 ///REFERENCES
 ///https://docs.flutter.dev/cookbook/persistence/reading-writing-files
+///https://stackoverflow.com/questions/41369633/how-to-save-to-local-storage-using-flutter

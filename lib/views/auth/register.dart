@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/controllers/auth/auth_controller.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/library/request_response.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -11,6 +13,9 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -62,6 +67,8 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   child: TextField(
+                    textCapitalization: TextCapitalization.words,
+                    controller: nameController,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Full Name",
@@ -100,7 +107,8 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   child: TextField(
-                    obscureText: true,
+                    controller: emailController,
+                    obscureText: false,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Email Address",
@@ -139,6 +147,7 @@ class _RegisterState extends State<Register> {
                     ],
                   ),
                   child: TextField(
+                    controller: passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -163,7 +172,13 @@ class _RegisterState extends State<Register> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/verify-email');
+                          // print("Email: " + );
+                            AuthController authController = AuthController();
+                            RequestResponse requestResponse = authController.register(
+                              name: nameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
                         },
                         child: Container(
                           padding: EdgeInsets.all(13.0),

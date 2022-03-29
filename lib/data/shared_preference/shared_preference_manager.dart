@@ -10,6 +10,7 @@ class SharedPreferenceManager {
     return _instance;
   }
 
+
   // This named constructor is the "real" constructor
   // It'll be called exactly once, by the static property assignment above
   // it's also private, so it can only be called in this class
@@ -95,3 +96,4 @@ class SharedPreferenceManager {
 /// REFERENCES
 /// https://docs.flutter.dev/cookbook/persistence/key-value
 /// https://flutterbyexample.com/lesson/singletons
+/// https://stackoverflow.com/questions/41369633/how-to-save-to-local-storage-using-flutter

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
-import 'package:jemina_capital/data/data.dart';
 import 'package:jemina_capital/views/home/stats/components/prices_datagrid_source.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
