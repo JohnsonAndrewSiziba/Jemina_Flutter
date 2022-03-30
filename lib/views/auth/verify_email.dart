@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 
+import '../../controllers/auth/auth_controller.dart';
+import '../../library/request_response.dart';
+
 class VerifyEmail extends StatefulWidget {
   const VerifyEmail({Key? key}) : super(key: key);
 
@@ -16,7 +19,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
   TextEditingController digit3Controller = TextEditingController();
   TextEditingController digit4Controller = TextEditingController();
 
-  var loading;
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +105,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (loading == true) {
                               return;
                             }
@@ -115,7 +118,61 @@ class _VerifyEmailState extends State<VerifyEmail> {
                                 + digit2Controller.text
                                 + digit3Controller.text
                                 + digit4Controller.text;
-                            
+
+                            AuthController authController = AuthController();
+
+                            RequestResponse requestResponse =
+                                await authController.verifyEmail(
+                                    verificationCode: emailVerificationCode
+                            );
+
+                            setState(() {
+                              loading = false;
+                            });
+
+                            var jsonBody = requestResponse.getJsonBody();
+
+                            String message;
+
+                            if(jsonBody['message'] == 'failed validation'){
+                              message = jsonBody['errors']
+                              [jsonBody['errors'].keys.toList()[0]][0]
+                                  .toString();
+                            }
+                            else {
+                              message = jsonBody['message'];
+                            }
+
+
+                            if (jsonBody['success'] == false) {
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: Text(
+                                    'Verification Failed',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4
+                                        ?.copyWith(
+                                      color: techBlue,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  content: Text(message),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(context, 'OK'),
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            } else {
+                              var token = jsonBody['token'];
+                              Navigator.pushNamed(context, '/home');
+                            }
+
                           },
                           style: ButtonStyle(
                             foregroundColor:
@@ -132,10 +189,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                           ),
                           child: Padding(
                             padding: EdgeInsets.all(14.0),
-                            child: Text(
-                              'Verify',
-                              style: TextStyle(fontSize: 16),
-                            ),
+                            child: buttonContent(),
                           ),
                         ),
                       ),
@@ -173,6 +227,25 @@ class _VerifyEmailState extends State<VerifyEmail> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget buttonContent() {
+    if (loading) {
+      return Container(
+        height: 20.0,
+        width: 20.0,
+        child: CircularProgressIndicator(
+          color: complement,
+        ),
+      );
+    }
+    return Text(
+      "Verify",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 16.0,
       ),
     );
   }

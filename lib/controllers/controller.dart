@@ -1,3 +1,5 @@
+import 'package:jemina_capital/data/shared_preference/shared_preference_manager.dart';
+
 import '../data/constants/api_routes.dart';
 // import 'package:http/http.dart' as http;
 
@@ -11,18 +13,15 @@ import '../library/request_response.dart';
 
 class Controller{
 
-  final token = 'WIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ikpv';
-
-  var headers;
-
-  Controller(){
-    headers = {
+  Future<Map<String, String>> getHeaders() async {
+    SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager();
+    var token = await sharedPreferenceManager.getAccessToken();
+    var headers = {
       "content-type": 'application/json',
       "authorization": 'Bearer $token',
     };
+    return headers;
   }
-
-
 
 
   void postRequest(){
@@ -43,7 +42,7 @@ class Controller{
 
 
   Future<RequestResponse> makeGetRequest({required Uri url}) async {
-    Response response = await get(url, headers: headers);
+    Response response = await get(url, headers: await getHeaders());
     print('Status code: ${response.statusCode}');
     print('Headers: ${response.headers}');
     print('Body: ${response.body}');
@@ -57,7 +56,7 @@ class Controller{
 
     final response = await post(
         url,
-        headers: headers,
+        headers: await getHeaders(),
         body: jsonBody,
         encoding: encoding
     );

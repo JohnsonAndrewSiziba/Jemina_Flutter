@@ -26,6 +26,15 @@ class AuthController extends Controller{
       'device': "Mobile",
     };
     Future<RequestResponse> response =  makePostRequest(url: Routes.loginRoute, body: body);
+    return response;
+  }
+
+  Future<RequestResponse> verifyEmail({required String verificationCode}) {
+    Map<String, dynamic> body = {
+      'verification_code': verificationCode,
+    };
+
+    Future<RequestResponse> response =  makePostRequest(url: Routes.confirmEmailRoute, body: body);
 
     return response;
   }

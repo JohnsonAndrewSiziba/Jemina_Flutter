@@ -6,7 +6,7 @@ class Routes{
   static Uri loginRoute =  Uri.parse("$apiHome/mobile/login");
   static Uri logoutRoute = Uri.parse("$apiHome/mobile/logout");
   static Uri registerRoute = Uri.parse("$apiHome/mobile/register");
-  static Uri confirmEmailRoute = Uri.parse("$apiHome/mobile/confirm-email");
+  static Uri confirmEmailRoute = Uri.parse("$apiHome/mobile/a/confirm-email");
   static Uri sendEmailNotificationRoute = Uri.parse("$apiHome/mobile/send-email-confirmation");
 
 
