@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/models/report.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/components/body.dart';
 
 import '../../../../../widgets/notification_icon.dart';
 
 class ViewReport extends StatefulWidget {
-  ViewReport({Key? key}) : super(key: key);
+  Report report;
+  ViewReport({Key? key, required this.report}) : super(key: key);
 
   @override
   State<ViewReport> createState() => _ViewReportState();
@@ -20,7 +22,7 @@ class _ViewReportState extends State<ViewReport> {
       backgroundColor: Colors.white,
       body: SafeArea(
         top: false,
-        child: Body(),
+        child: Body(report: widget.report),
       ),
     );
   }

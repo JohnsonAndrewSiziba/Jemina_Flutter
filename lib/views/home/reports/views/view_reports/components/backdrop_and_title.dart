@@ -1,12 +1,16 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/data/constants/api_routes.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/models/report.dart';
 
 class BackdropAndTitle extends StatelessWidget {
-  const BackdropAndTitle({
+  Report report;
+  BackdropAndTitle({
     Key? key,
     required this.size,
+    required this.report,
   }) : super(key: key);
 
   final Size size;
@@ -19,13 +23,15 @@ class BackdropAndTitle extends StatelessWidget {
         children: [
           Container(
             height: size.height * 0.4 - 50.0,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(50.0),
               ),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage("assets/images/report_image.jpeg"),
+                image: NetworkImage(
+                  Routes.serverHome + report.reportImagePath,
+                ),
               ),
             ),
           ),
@@ -52,9 +58,16 @@ class BackdropAndTitle extends StatelessWidget {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
+                    padding: const EdgeInsets.only(
+                      top: 20.0,
+                      bottom: 10.0,
+                      left: 10.0,
+                      right: 10.0,
+                    ),
                     child: Text(
-                      "Daily Trading Update",
+                      report.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.headline6?.copyWith(
                             fontWeight: FontWeight.w700,
                             color: techBlue,
@@ -65,7 +78,7 @@ class BackdropAndTitle extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           Icon(
                             Icons.calendar_month,
                             color: Colors.blueGrey,
@@ -73,7 +86,7 @@ class BackdropAndTitle extends StatelessWidget {
                           ),
                           SizedBox(width: 5.0),
                           Text(
-                            "Tue 22 Jan 2022",
+                            report.toDate ?? "",
                             style: TextStyle(
                               color: Colors.blueGrey,
                             ),
@@ -83,13 +96,13 @@ class BackdropAndTitle extends StatelessWidget {
                       Row(
                         children: const [
                           Icon(
-                            Icons.comment_outlined,
+                            Icons.reply_outlined,
                             color: Colors.blueGrey,
                             size: 15.0,
                           ),
                           SizedBox(width: 5.0),
                           Text(
-                            "22",
+                            "0",
                             style: TextStyle(
                               color: Colors.blueGrey,
                             ),

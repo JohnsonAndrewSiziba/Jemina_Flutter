@@ -2,10 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/models/report.dart';
 
 class ReportTitle extends StatelessWidget {
-  const ReportTitle({
+  Report report;
+  ReportTitle({
     Key? key,
+    required this.report,
   }) : super(key: key);
 
   @override
@@ -19,15 +22,16 @@ class ReportTitle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Report Title",
+                  report.title,
+                  textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 SizedBox(height: kDefaultPadding / 2),
-                Row(
-                  children: [
-                    Text("Buttons"),
-                  ],
-                ),
+                // Row(
+                //   children: [
+                //     Text("Buttons"),
+                //   ],
+                // ),
               ],
             ),
           ),

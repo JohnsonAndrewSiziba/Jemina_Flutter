@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/models/report.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/components/backdrop_and_title.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/components/report_title.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 
 class Body extends StatefulWidget {
-  Body({Key? key}) : super(key: key);
+  Report report;
+  Body({Key? key, required this.report}) : super(key: key);
 
   @override
   State<Body> createState() => _BodyState();
@@ -20,19 +22,19 @@ class _BodyState extends State<Body> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        BackdropAndTitle(size: size),
+        BackdropAndTitle(report: widget.report, size: size),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                ReportTitle(),
+                ReportTitle(report: widget.report),
                 Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: kDefaultPadding / 2,
                     horizontal: kDefaultPadding,
                   ),
                   child: Text(
-                    "Section title",
+                    widget.report.section1Title ?? "",
                     style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
@@ -40,7 +42,28 @@ class _BodyState extends State<Body> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                   child: HtmlWidget(
-                    "<p>The [overflow] property's behavior is affected by the [softWrap] argument. If the [softWrap] is true or null, the glyph causing overflow, and those that follow, will not be rendered. Otherwise, it will be shown with the given overflow option.</p>",
+                    widget.report.section1 ?? "",
+                    textStyle: TextStyle(
+                      color: Colors.blueGrey,
+                      fontSize: 15.0,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: kDefaultPadding / 2,
+                    horizontal: kDefaultPadding,
+                  ),
+                  child: Text(
+                    widget.report.section2Title ?? "",
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  child: HtmlWidget(
+                    widget.report.section2 ?? "",
                     textStyle: TextStyle(
                       color: Colors.blueGrey,
                       fontSize: 15.0,
