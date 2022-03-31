@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/models/report.dart';
+import 'dart:io';
+import 'package:dio/dio.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ReportTitle extends StatelessWidget {
   Report report;
@@ -41,7 +44,7 @@ class ReportTitle extends StatelessWidget {
             child: TextButton(
               onPressed: () {},
               child: Icon(
-                Icons.download,
+                Icons.picture_as_pdf_rounded,
                 size: 28,
                 color: techBlue,
               ),
