@@ -203,13 +203,7 @@ class _LoginState extends State<Login> {
                       child: Container(
                         padding: EdgeInsets.all(13.0),
                         child: Center(
-                          child: Text(
-                            "Log In",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.0,
-                            ),
-                          ),
+                          child: buttonContent(),
                         ),
                         decoration: BoxDecoration(
                           // color: Color(0XFF2596be),
@@ -254,6 +248,25 @@ class _LoginState extends State<Login> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget buttonContent() {
+    if (loading) {
+      return Container(
+        height: 20.0,
+        width: 20.0,
+        child: CircularProgressIndicator(
+          color: complement,
+        ),
+      );
+    }
+    return Text(
+      "Register",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 16.0,
       ),
     );
   }

@@ -6,7 +6,6 @@ import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/shared_preference/shared_preference_manager.dart';
 import 'package:jemina_capital/library/request_response.dart';
 
-
 // var accessToken = await prefsManager.getAccessToken();
 // if( accessToken != null){
 // print("Tokensssss: " + accessToken);
@@ -23,13 +22,11 @@ class _RegisterState extends State<Register> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  SharedPreferenceManager prefsManager =  SharedPreferenceManager();
-
+  SharedPreferenceManager prefsManager = SharedPreferenceManager();
 
   bool loading = false;
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: lightBackground,
@@ -188,7 +185,6 @@ class _RegisterState extends State<Register> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () async {
-
                           if (loading == true) {
                             return;
                           }
@@ -212,12 +208,11 @@ class _RegisterState extends State<Register> {
 
                           String message;
 
-                          if(jsonBody['message'] == 'failed validation'){
+                          if (jsonBody['message'] == 'failed validation') {
                             message = jsonBody['errors']
-                            [jsonBody['errors'].keys.toList()[0]][0]
+                                    [jsonBody['errors'].keys.toList()[0]][0]
                                 .toString();
-                          }
-                          else {
+                          } else {
                             message = jsonBody['message'];
                           }
 

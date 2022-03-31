@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jemina_capital/controllers/reports/reports_controller.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/library/request_response.dart';
+import 'package:jemina_capital/models/report.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/view_report.dart';
 
 import '../../../widgets/go_to_profile.dart';
@@ -19,6 +22,27 @@ class ReportsPage extends StatefulWidget {
 }
 
 class _ReportsPageState extends State<ReportsPage> {
+  late RequestResponse requestResponse;
+  List<Report> newsList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getAllReports();
+  }
+
+  void getAllReports() async {
+    ReportsController reportsController = ReportsController();
+    requestResponse = await reportsController.getAllReports();
+    var jsonBody = requestResponse.getJsonBody();
+
+    var jsonReportsList = jsonBody['reports'];
+
+    setState(() {
+      newsList = Report.jsonDecode(jsonReportsList);
+    });
+  }
+
   List<String> categories = [
     "Daily Updates",
     "Weekly Updates",
@@ -73,66 +97,6 @@ class _ReportsPageState extends State<ReportsPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Column(
                     children: [
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
-                      ReportCard(
-                        text:
-                            "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",
-                        image: "assets/images/finance_app.png",
-                        title: "The report title",
-                      ),
                       ReportCard(
                         text:
                             "Lalala aaa lalala lalala lala lalaaaaaaaa lalalalala lalalalala lala lalalalalalala lalaaaaaaa.",

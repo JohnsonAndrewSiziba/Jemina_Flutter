@@ -4,7 +4,7 @@ import 'package:jemina_capital/library/request_response.dart';
 
 class ReportsController extends Controller {
   // get all reports from server
-  Future<RequestResponse> getNews() {
+  Future<RequestResponse> getAllReports() {
     Future<RequestResponse> response =
         makeGetRequest(url: Routes.getAllReportsRoute);
     return response;
