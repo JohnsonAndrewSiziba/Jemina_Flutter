@@ -5,10 +5,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/models/news.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class NewsBody extends StatefulWidget {
-  const NewsBody({Key? key}) : super(key: key);
+  News article;
+  NewsBody({Key? key, required this.article}) : super(key: key);
 
   @override
   State<NewsBody> createState() => _NewsBodyState();
@@ -31,8 +33,7 @@ class _NewsBodyState extends State<NewsBody> {
   @override
   Widget build(BuildContext context) {
     return WebView(
-      initialUrl:
-          'https://www.newsday.co.zw/2021/12/harare-resists-govt-takeover-of-health-dept/',
+      initialUrl: widget.article.url,
       javascriptMode: JavascriptMode.unrestricted,
       onWebViewCreated: (WebViewController webViewController) {
         _controller.complete(webViewController);

@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jemina_capital/controllers/news/news_controller.dart';
+import 'package:jemina_capital/models/news.dart';
 import 'package:jemina_capital/views/home/news/components/news_page_body.dart';
 
 import '../../../data/constants/theme_colors.dart';
+import '../../../library/request_response.dart';
 import '../../../widgets/go_to_profile.dart';
 import '../../../widgets/header_with_search_bar.dart';
 
@@ -19,6 +22,27 @@ class NewsPage extends StatefulWidget {
 }
 
 class _NewsPageState extends State<NewsPage> {
+  late RequestResponse requestResponse;
+  List<News> newsList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getNews();
+  }
+
+  void getNews() async {
+    NewsController newsController = NewsController();
+    requestResponse = await newsController.getNews();
+    var jsonBody = requestResponse.getJsonBody();
+
+    var jsonNewsList = jsonBody['news'];
+
+    setState(() {
+      newsList = News.jsonDecode(jsonNewsList);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,7 +53,7 @@ class _NewsPageState extends State<NewsPage> {
         child: Column(
           children: [
             HeaderWithSearchBar(placeholder: "Search news...", size: size),
-            NewsPageBody(),
+            NewsPageBody(newsList: newsList),
           ],
         ),
       ),

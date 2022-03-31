@@ -17,7 +17,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  SharedPreferenceManager prefsManager =  SharedPreferenceManager();
+  SharedPreferenceManager prefsManager = SharedPreferenceManager();
 
   bool loading = false;
 
@@ -34,6 +34,9 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: size.height / 8),
+              SizedBox(
+                height: 55.0,
+              ),
               Text("Welcome"),
               Text(
                 "Sign In",
@@ -147,7 +150,7 @@ class _LoginState extends State<Login> {
                         // print("Email: " + );
                         AuthController authController = AuthController();
                         RequestResponse requestResponse =
-                        await authController.login(
+                            await authController.login(
                           email: emailController.text,
                           password: passwordController.text,
                         );
@@ -160,12 +163,11 @@ class _LoginState extends State<Login> {
 
                         String message;
 
-                        if(jsonBody['message'] == 'failed validation'){
+                        if (jsonBody['message'] == 'failed validation') {
                           message = jsonBody['errors']
-                          [jsonBody['errors'].keys.toList()[0]][0]
+                                  [jsonBody['errors'].keys.toList()[0]][0]
                               .toString();
-                        }
-                        else {
+                        } else {
                           message = jsonBody['message'];
                         }
 
@@ -179,15 +181,14 @@ class _LoginState extends State<Login> {
                                     .textTheme
                                     .headline4
                                     ?.copyWith(
-                                  color: techBlue,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                                      color: techBlue,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                               ),
                               content: Text(message),
                               actions: <Widget>[
                                 TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(context, 'OK'),
+                                  onPressed: () => Navigator.pop(context, 'OK'),
                                   child: const Text('OK'),
                                 ),
                               ],

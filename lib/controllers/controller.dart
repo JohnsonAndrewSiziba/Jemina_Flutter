@@ -9,10 +9,7 @@ import 'dart:io';
 
 import '../library/request_response.dart';
 
-
-
-class Controller{
-
+class Controller {
   Future<Map<String, String>> getHeaders() async {
     SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager();
     var token = await sharedPreferenceManager.getAccessToken();
@@ -23,46 +20,33 @@ class Controller{
     return headers;
   }
 
+  void postRequest() {}
 
-  void postRequest(){
+  void getRequest() {}
 
-  }
+  void guestPostRequest() {}
 
-  void getRequest(){
-
-  }
-
-  void guestPostRequest(){
-
-  }
-
-  void guestGetRequest(){
-
-  }
-
+  void guestGetRequest() {}
 
   Future<RequestResponse> makeGetRequest({required Uri url}) async {
     Response response = await get(url, headers: await getHeaders());
-    print('Status code: ${response.statusCode}');
-    print('Headers: ${response.headers}');
-    print('Body: ${response.body}');
+    // print('Status code: ${response.statusCode}');
+    // print('Headers: ${response.headers}');
+    // print('Body: ${response.body}');
 
     return RequestResponse(response.body);
   }
 
-  Future<RequestResponse> makePostRequest({required Uri url, required Map<String, dynamic> body}) async {
+  Future<RequestResponse> makePostRequest(
+      {required Uri url, required Map<String, dynamic> body}) async {
     String jsonBody = json.encode(body);
     final encoding = Encoding.getByName('utf-8');
 
-    final response = await post(
-        url,
-        headers: await getHeaders(),
-        body: jsonBody,
-        encoding: encoding
-    );
+    final response = await post(url,
+        headers: await getHeaders(), body: jsonBody, encoding: encoding);
 
-    print('Status code: ${response.statusCode}');
-    print('Body: ${response.body}');
+    // print('Status code: ${response.statusCode}');
+    // print('Body: ${response.body}');
     return RequestResponse(response.body);
   }
 

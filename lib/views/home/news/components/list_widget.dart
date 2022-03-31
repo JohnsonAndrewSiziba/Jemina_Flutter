@@ -2,10 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/models/news.dart';
 import 'package:jemina_capital/views/home/news/components/news_item.dart';
 // 1,
 
-Widget listWidget(NewsItem item) {
+Widget listWidget(News item) {
   return Padding(
     padding: const EdgeInsets.symmetric(
         vertical: 2.0, horizontal: kDefaultPadding - 13.0),
@@ -22,7 +23,7 @@ Widget listWidget(NewsItem item) {
               height: 80.0,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(item.imgUrl),
+                  image: NetworkImage(item.imagePath),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(8.0),
@@ -39,7 +40,7 @@ Widget listWidget(NewsItem item) {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      item.newsTitle,
+                      item.title,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 16.0,
@@ -59,7 +60,7 @@ Widget listWidget(NewsItem item) {
                       ),
                       SizedBox(width: 5.0),
                       Text(
-                        item.author,
+                        item.publication,
                         style: TextStyle(
                           fontSize: 12.0,
                         ),
@@ -71,7 +72,7 @@ Widget listWidget(NewsItem item) {
                       ),
                       SizedBox(width: 5.0),
                       Text(
-                        item.date,
+                        item.date.toString(),
                         style: TextStyle(
                           fontSize: 12.0,
                         ),

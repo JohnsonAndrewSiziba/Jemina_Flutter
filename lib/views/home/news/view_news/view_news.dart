@@ -2,17 +2,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/models/news.dart';
 import 'package:jemina_capital/views/home/news/view_news/components/news_body.dart';
 import 'package:jemina_capital/widgets/notification_icon.dart';
 
 class ViewNews extends StatelessWidget {
-  const ViewNews({Key? key}) : super(key: key);
+  News article;
+  ViewNews({Key? key, required this.article}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: NewsBody(),
+      body: NewsBody(article: article),
     );
   }
 
@@ -20,7 +22,7 @@ class ViewNews extends StatelessWidget {
     return AppBar(
       elevation: 0,
       backgroundColor: techBlue,
-      title: Text("The Title"),
+      title: Text(article.title),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
