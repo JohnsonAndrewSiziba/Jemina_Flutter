@@ -1,6 +1,7 @@
 class Routes {
   // API HOME
-  static const String apiHome = "http://127.0.0.1:8000/api";
+  // static const String apiHome = "http://127.0.0.1:8000/api";
+  static const String apiHome = "https://jemina.capital/api";
 
   // AUTH ROUTES
   static Uri loginRoute = Uri.parse("$apiHome/mobile/login");
@@ -15,4 +16,7 @@ class Routes {
 
   //NEWS ROUTES
   static Uri getNewsRoute = Uri.parse("$apiHome/mobile/v/news");
+
+  //REPORTS ROUTES
+  static Uri getAllReportsRoute = Uri.parse("$apiHome/mobile/v/reports");
 }
