@@ -22,4 +22,9 @@ class Routes {
 
   //REPORTS ROUTES
   static Uri getAllReportsRoute = Uri.parse("$apiHome/mobile/v/reports");
+
+  //COUNTERS ROUTES
+  static Uri getZSECountersRoute = Uri.parse("$apiHome/mobile/v/zse-counters");
+
+
 }

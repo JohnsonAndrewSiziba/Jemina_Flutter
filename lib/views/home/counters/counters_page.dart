@@ -1,11 +1,16 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, unused_element, sized_box_for_whitespace, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/controllers/counters/counters_controller.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:jemina_capital/data/constants/values.dart';
+import 'package:jemina_capital/models/company.dart';
 import 'package:jemina_capital/views/home/counters/views/view_counter/view_counter.dart';
 import 'package:jemina_capital/widgets/go_to_profile.dart';
 
+import '../../../data/constants/api_routes.dart';
+import '../../../library/request_response.dart';
 import '../../../widgets/header_with_search_bar.dart';
 
 class CountersPage extends StatefulWidget {
@@ -27,6 +32,28 @@ class _CountersPageState extends State<CountersPage> {
   ];
 
   int selectedIndex = 0;
+
+  late RequestResponse requestResponse;
+  List<Company> companiesList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getCompanies();
+  }
+
+  void getCompanies() async {
+    CountersController countersController = CountersController();
+    requestResponse = await countersController.getZSECounters();
+    var jsonBody = requestResponse.getJsonBody();
+
+    var jsonCompaniesList = jsonBody['companies'];
+
+    setState(() {
+      companiesList = Company.jsonDecode(jsonCompaniesList);
+      print("The Counters: " + companiesList.toString());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,95 +83,14 @@ class _CountersPageState extends State<CountersPage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: kDefaultPadding - 10.0),
-                child: Container(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                        company(
-                          context: context,
-                          iconUrl:
-                              'https://jemina.capital/storage/company_logos/company-logo1642429440.png',
-                          myCrypto: 'First Mutual',
-                          myBalance: '\$ 5.441',
-                          myProfit: '\$19.153',
-                          precent: 4.32,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                child: ListView.builder(
+                    itemCount: companiesList.length,
+                    itemBuilder: (context, index) {
+                      return company(
+                        context: context,
+                        company: companiesList[index],
+                      );
+                    }),
               ),
             ),
           ],
@@ -168,7 +114,7 @@ class _CountersPageState extends State<CountersPage> {
         padding: EdgeInsets.all(15),
         margin: EdgeInsets.only(bottom: 12.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(defaultBorderRadius),
           color: Colors.white,
         ),
         height: 85,
@@ -302,12 +248,9 @@ class _CountersPageState extends State<CountersPage> {
 }
 
 Widget company(
-    {required String iconUrl,
-    required String myCrypto,
-    required String myBalance,
-    required String myProfit,
-    required double precent,
-    required BuildContext context}) {
+    {
+
+    required BuildContext context, required Company company}) {
   return GestureDetector(
     onTap: () {
       Navigator.push(
@@ -324,7 +267,7 @@ Widget company(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.network(
-              '$iconUrl',
+              Routes.serverHome + (company.logoPath ?? ""),
               width: 50,
             ),
             SizedBox(
@@ -335,12 +278,19 @@ Widget company(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    '$myCrypto',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+
+                  RichText(
+                    text: TextSpan(
+                      text: company.name ?? "",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      children: const <TextSpan>[
+                        TextSpan(text: 'SYMB.ZW'),
+                      ],
+                    ),
                   ),
+
                   Text(
-                    '$myProfit',
+                    '00',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black45,
@@ -354,14 +304,15 @@ Widget company(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  '$myBalance',
+                  '01',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 Text(
-                  precent >= 0 ? '+ $precent %' : '$precent %',
+                  // precent >= 0 ? '+ $precent %' : '$precent %',
+                  '02',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: precent >= 0 ? Colors.green : Colors.pink,
+                    // color: precent >= 0 ? Colors.green : Colors.pink,
                   ),
                 ),
               ],
@@ -381,8 +332,11 @@ Widget card(
     width: width,
     padding: EdgeInsets.all(padding),
     decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(15))),
+      color: Colors.white,
+      borderRadius: BorderRadius.all(
+        Radius.circular(defaultBorderRadius),
+      ),
+    ),
     child: child,
   );
 }

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jemina_capital/controllers/reports/reports_controller.dart';
 import 'package:jemina_capital/data/constants/api_routes.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/data/constants/values.dart';
 import 'package:jemina_capital/library/request_response.dart';
 import 'package:jemina_capital/models/report.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/view_report.dart';
@@ -64,8 +65,8 @@ class _ReportsPageState extends State<ReportsPage> {
             decoration: BoxDecoration(
               color: techBlue,
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(11.0),
-                bottomRight: Radius.circular(11.0),
+                bottomLeft: Radius.circular(defaultBorderRadius),
+                bottomRight: Radius.circular(defaultBorderRadius),
               ),
               boxShadow: [
                 BoxShadow(
@@ -197,7 +198,7 @@ class ReportCard extends StatelessWidget {
                 height: 136,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
+                  borderRadius: BorderRadius.circular(defaultBorderRadius),
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(

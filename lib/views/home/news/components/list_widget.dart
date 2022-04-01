@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/data/constants/values.dart';
 import 'package:jemina_capital/models/news.dart';
 import 'package:jemina_capital/views/home/news/components/news_item.dart';
 // 1,
@@ -26,7 +27,7 @@ Widget listWidget(News item) {
                   image: NetworkImage(item.imagePath),
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.circular(8.0),
+                borderRadius: BorderRadius.circular(defaultBorderRadius),
               ),
             ),
             SizedBox(
