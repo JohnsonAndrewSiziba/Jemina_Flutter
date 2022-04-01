@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, unused_element, sized_box_for_whitespace, must_be_immutable
-
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/controllers/counters/counters_controller.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
@@ -99,99 +98,6 @@ class _CountersPageState extends State<CountersPage> {
     );
   }
 
-  GestureDetector buildCategoryCard(
-      IconData icon, String title, int amount, int percentage) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ViewCounter(),
-          ),
-        );
-      },
-      child: Container(
-        padding: EdgeInsets.all(15),
-        margin: EdgeInsets.only(bottom: 12.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(defaultBorderRadius),
-          color: Colors.white,
-        ),
-        height: 85,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      icon,
-                      color: grayBackground,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "\$$amount",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "($percentage shares)",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey),
-                    )
-                  ],
-                )
-              ],
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Stack(
-              children: [
-                Container(
-                  height: 5,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(2),
-                    // color: Colors.grey.shade300,
-                  ),
-                ),
-                Container(
-                  height: 5,
-                  width: 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(2),
-                    // color: Color(0XFF00B686),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget buildCategory(int index) {
     return GestureDetector(
       onTap: () {
@@ -278,50 +184,123 @@ Widget company(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        company.name ?? "",
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
 
-                  RichText(
-                    text: TextSpan(
-                      text: company.name ?? "",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                      children: const <TextSpan>[
-                        TextSpan(text: 'SYMB.ZW'),
-                      ],
-                    ),
+                      Text(
+                        '( ${company.symbol?.toUpperCase() ?? ""} )',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 10.0, color: Colors.blueGrey,),
+                      ),
+
+                    ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            company.sector ?? "",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black45,
+                            ),
+                          ),
+                          Text(
+                            ",",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black45,
+                            ),
+                          ),
+                          SizedBox(width: 3.0),
+                          Text(
+                            company.listing ?? "",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black45,
+                            ),
+                          ),
+                        ],
+                      ),
 
-                  Text(
-                    '00',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black45,
-                    ),
+                      Text(
+                        company.percentageChange >= 0 ? '+ ${company.percentageChange} %' : '${company.percentageChange} %',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 12.0,
+                          color: getColor(company.percentageChange,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 3.0),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                          (company.marketCap! + " (M)"),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.blueGrey,
+                            fontSize: 15.0,
+                        ),
+                      ),
+                      // SizedBox(width: 10.0),
+                      Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                              company.price ?? "",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 13.0,
+                                color: Colors.blueGrey,
+                            ),
+                          ),
+                          SizedBox(width: 3.0),
+                          Text(
+                            "ZWL",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 10.0,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  '01',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                Text(
-                  // precent >= 0 ? '+ $precent %' : '$precent %',
-                  '02',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    // color: precent >= 0 ? Colors.green : Colors.pink,
-                  ),
-                ),
-              ],
-            ),
+
           ],
         ),
       ),
     ),
   );
+}
+
+getColor(value) {
+  if (value < 0){
+    return Colors.red;
+  }
+  else if (value > 0) {
+    return Colors.green;
+  }
+
+  else {
+    return Colors.blueGrey;
+  }
 }
 
 Widget card(

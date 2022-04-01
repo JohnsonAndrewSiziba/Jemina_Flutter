@@ -11,6 +11,10 @@ class Company {
   final String? logoPath;
   final String? companySummary;
   final String? listing;
+  final String? sector;
+  final String? price;
+  final num percentageChange;
+  final String? marketCap;
 
   Company(
     this.id,
@@ -25,6 +29,10 @@ class Company {
     this.logoPath,
     this.companySummary,
     this.listing,
+    this.sector,
+    this.price,
+    this.percentageChange,
+    this.marketCap,
   );
 
   static List<Company> jsonDecode(List<dynamic> jsonList) {
@@ -44,5 +52,9 @@ class Company {
     json["logo_path"],
     json["company_summary"],
     json["listing"],
+    json["sector"],
+    json["price"].toString(),
+    json["percentage_change"],
+    json["market_cap"].toString(),
   );
 }
