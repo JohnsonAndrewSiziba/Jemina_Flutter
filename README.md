@@ -10,8 +10,10 @@
 * Contact Us // shows contact details
 
 
-#ref
+# ref
 * Curved navigation: https://www.youtube.com/watch?v=TX2x41h47fE
 * Graph QL: https://www.altexsoft.com/blog/engineering/graphql-core-features-architecture-pros-and-cons/
 
 
+# API documentation
+# IP Address issue
