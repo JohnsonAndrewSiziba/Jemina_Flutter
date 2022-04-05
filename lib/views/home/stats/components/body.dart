@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
-import 'package:jemina_capital/views/home/stats/components/prices_data_table.dart';
+import 'package:jemina_capital/views/home/stats/components/stats_main_body.dart';
 
 class StatsBody extends StatefulWidget {
   StatsBody({Key? key}) : super(key: key);
@@ -21,6 +21,7 @@ class _StatsBodyState extends State<StatsBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           decoration: BoxDecoration(
@@ -50,7 +51,14 @@ class _StatsBodyState extends State<StatsBody> {
             ),
           ),
         ),
-        MainBody(),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: MainBody(),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -86,16 +94,5 @@ class _StatsBodyState extends State<StatsBody> {
         ),
       ),
     );
-  }
-}
-
-class MainBody extends StatelessWidget {
-  const MainBody({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return PricesDataTable();
   }
 }

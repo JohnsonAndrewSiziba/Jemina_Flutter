@@ -26,7 +26,10 @@ class NewsPageBody extends StatelessWidget {
               );
             },
             // child: listWidget(newsTiles[index]),
-            child: listWidget(newsList[index]),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: newsListWidget(news: newsList[index], context: context),
+            ),
           );
         },
       ),

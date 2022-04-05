@@ -24,6 +24,10 @@ class CountersPage extends StatefulWidget {
 }
 
 class _CountersPageState extends State<CountersPage> {
+
+  @override
+  bool get wantKeepAlive => true;
+
   List<String> categories = [
     "ZSE Equity Counters",
     "VFEX Equity Counters",
@@ -50,7 +54,7 @@ class _CountersPageState extends State<CountersPage> {
 
     setState(() {
       companiesList = Company.jsonDecode(jsonCompaniesList);
-      print("The Counters: " + companiesList.toString());
+      // print("The Counters: " + companiesList.toString());
     });
   }
 
@@ -80,6 +84,7 @@ class _CountersPageState extends State<CountersPage> {
             ),
             Expanded(
               child: Padding(
+
                 padding: const EdgeInsets.symmetric(
                     horizontal: kDefaultPadding - 10.0),
                 child: ListView.builder(
@@ -153,10 +158,7 @@ class _CountersPageState extends State<CountersPage> {
   }
 }
 
-Widget company(
-    {
-
-    required BuildContext context, required Company company}) {
+Widget company({required BuildContext context, required Company company}) {
   return GestureDetector(
     onTap: () {
       Navigator.push(
@@ -189,7 +191,7 @@ Widget company(
                     children: [
                       Text(
                         company.name ?? "",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0,),
                       ),
 
                       Text(
@@ -197,7 +199,6 @@ Widget company(
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontWeight: FontWeight.w600, fontSize: 10.0, color: Colors.blueGrey,),
                       ),
-
                     ],
                   ),
                   Row(

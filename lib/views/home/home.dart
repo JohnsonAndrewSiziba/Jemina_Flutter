@@ -91,7 +91,7 @@ class _HomeState extends State<Home> {
                     color: grayBackground,
                     buttonBackgroundColor: scaffoldBackgroundColor,
                     items: navBarItems,
-                    height: 45.0,
+                    height: 55.0,
                     animationDuration: Duration(milliseconds: 80),
                     animationCurve: Curves.easeInOut,
                     index: index,
@@ -99,16 +99,26 @@ class _HomeState extends State<Home> {
                     backgroundColor: techBlue,
                   ),
                 ),
-                // body: screens[index],
-                body: Container(
-                  child: [
+                body: IndexedStack(
+                  children: <Widget>[
                     StatsPage(onOpenMenu: toggleMenu, state: value),
                     ReportsPage(onOpenMenu: toggleMenu, state: value),
                     LandingPage(onOpenMenu: toggleMenu, state: value),
                     CountersPage(onOpenMenu: toggleMenu, state: value),
                     NewsPage(onOpenMenu: toggleMenu, state: value),
-                  ][index],
+                  ],
+                  index: index,
                 ),
+                // body: screens[index],
+                // body: Container(
+                //   child: [
+                //     StatsPage(onOpenMenu: toggleMenu, state: value),
+                //     ReportsPage(onOpenMenu: toggleMenu, state: value),
+                //     LandingPage(onOpenMenu: toggleMenu, state: value),
+                //     CountersPage(onOpenMenu: toggleMenu, state: value),
+                //     NewsPage(onOpenMenu: toggleMenu, state: value),
+                //   ][index],
+                // ),
               ),
             ),
           ),

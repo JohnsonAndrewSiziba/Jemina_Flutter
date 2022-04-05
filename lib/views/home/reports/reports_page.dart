@@ -10,6 +10,7 @@ import 'package:jemina_capital/library/request_response.dart';
 import 'package:jemina_capital/models/report.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/view_report.dart';
 
+import '../../../widgets/card.dart';
 import '../../../widgets/go_to_profile.dart';
 
 class ReportsPage extends StatefulWidget {
@@ -57,7 +58,7 @@ class _ReportsPageState extends State<ReportsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      // backgroundColor: techBlue,
+      backgroundColor: scaffoldBackgroundColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -92,20 +93,13 @@ class _ReportsPageState extends State<ReportsPage> {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
               ),
               child: ListView.builder(
                   itemCount: reportsList.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: ReportCard(report: reportsList[index]),
-                      // child: ReportCard(
-                      //   text: reportsList[index].extract ?? "",
-                      //   image: Routes.serverHome +
-                      //       reportsList[index].reportImagePath, //
-                      //   title: reportsList[index].title,
-                      // ),
+                      child: reportListWidget(context: context, report: reportsList[index]),
                     );
                   }),
             ),
@@ -169,204 +163,69 @@ class _ReportsPageState extends State<ReportsPage> {
   }
 }
 
-class ReportCard extends StatelessWidget {
-  final Report report;
-  const ReportCard({
-    Key? key,
-    required this.report,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 0.0),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ViewReport(report: report),
-            ),
-          );
-        },
-        child: SizedBox(
-          height: 146,
-          child: Stack(
-            alignment: Alignment.centerLeft,
-            children: <Widget>[
-              Container(
-                height: 136,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(defaultBorderRadius),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      offset: Offset(0, 8),
-                      blurRadius: 24,
-                      color: grayBackground,
-                    ),
-                  ],
+Widget reportListWidget({required BuildContext context, required Report report}) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ViewReport(report: report),
+        ),
+      );
+    },
+    child: Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.network(
+                  Routes.serverHome + report.reportImagePath,
+                  width: 70,
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-                child: Card(
-                  elevation: 2.0,
-                  child: Image.network(
-                    Routes.serverHome + report.reportImagePath,
-                    fit: BoxFit.fill,
-                    height: 80.0,
-                    width: 120.0,
-                  ),
+                SizedBox(
+                  width: 20,
                 ),
-              ),
-              Positioned(
-                top: 116,
-                left: 6,
-                child: Container(
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.calendar_month_outlined,
-                        color: techBlue,
-                        size: 18.0,
-                      ),
-                      SizedBox(width: 10.0),
-                      Text(
-                        report.toDate ?? "",
-                        style: TextStyle(
-                          color: techBlue,
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(width: 15.0),
-                      Icon(
-                        Icons.reply_outlined,
-                        color: techBlue,
-                        size: 20.0,
-                      ),
-                      SizedBox(width: 5.0),
-                      Text(
-                        "3",
-                        style: TextStyle(
-                          color: techBlue,
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      SizedBox(width: 25.0),
-                      Icon(
-                        Icons.history_edu_outlined,
-                        color: techBlue,
-                        size: 20.0,
-                      ),
-                      SizedBox(width: 5.0),
-                      Text(
-                        report.reportType ?? "",
-                        style: TextStyle(
-                          color: techBlue,
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 130,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  height: 136,
-                  width: MediaQuery.of(context).size.width - 170,
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
                       Text(
-                        report.title,
+                    report.title,
                         overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0,),
+                      ),
+                      Text(
+                        report.extract ?? "",
+                        // overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                         style: TextStyle(
-                          fontSize: 16.0,
                           color: Colors.blueGrey,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          report.extract ?? "",
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                      ),
-                      // Container(
-                      //   child: Row(
-                      //     children: [
-                      //       Icon(
-                      //         Icons.calendar_month_outlined,
-                      //         color: techBlue,
-                      //         size: 20.0,
-                      //       ),
-                      //       SizedBox(width: 10.0),
-                      //       Text(
-                      //         "22 Feb 2022",
-                      //         style: TextStyle(
-                      //           fontSize: 12.0,
-                      //         ),
-                      //       ),
-                      //       SizedBox(width: 15.0),
-                      //       Icon(
-                      //         Icons.reply_outlined,
-                      //         color: techBlue,
-                      //         size: 20.0,
-                      //       ),
-                      //       SizedBox(width: 5.0),
-                      //       Text(
-                      //         "3",
-                      //         style: TextStyle(
-                      //           fontSize: 12.0,
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // SizedBox(height: 5.0),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 2.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              // Text(
-                              //   "Daily Trading Update",
-                              //   style: TextStyle(
-                              //     color: techBlue,
-                              //     fontSize: 12.0,
-                              //     fontWeight: FontWeight.w400,
-                              //   ),
-                              // ),
-                              // SizedBox(width: 20.0),
-                              SvgPicture.asset("assets/icons/forward.svg")
-                            ],
-                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Text("Date: " + report.toDate.toString(), style: TextStyle(fontSize: 12.0, color: Colors.grey),),
+                Spacer(),
+                Text(report.reportType ?? "", style: TextStyle(fontSize: 12.0, color: Colors.grey),),
+              ],
+            ),
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
 }

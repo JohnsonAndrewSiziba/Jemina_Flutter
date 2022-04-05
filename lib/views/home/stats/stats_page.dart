@@ -31,12 +31,6 @@ class _StatsPageState extends State<StatsPage> {
     );
   }
 
-  /// Main Body
-
-  /// Report Cell
-
-  /// Report Inner Cell
-
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: techBlue,
