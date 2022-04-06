@@ -52,6 +52,7 @@ dependencies:
   device_info_plus: ^3.2.2
   shrink_sidemenu: ^2.0.0+2-null-safety
   dio: ^4.0.6
+  bottom_nav_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
