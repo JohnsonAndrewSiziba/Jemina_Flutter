@@ -20,12 +20,11 @@ class TopMarquee extends StatelessWidget {
         child: TickerText(
           // controller: tickerTextController, // this is optional
             scrollDirection: Axis.horizontal,
-            speed: 20,
+            speed: 40,
             startPauseDuration: const Duration(milliseconds: 500),
             endPauseDuration: const Duration(seconds: 2),
             child: Row(
               children: const [
-                MarqueeItem(),
                 MarqueeItem(),
                 MarqueeItem(),
                 MarqueeItem(),

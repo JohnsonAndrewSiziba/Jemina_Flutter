@@ -60,7 +60,7 @@ class _AccountPageState extends State<AccountPage> {
                               ],
                               border: Border.all(
                                 width: 1.5,
-                                color: Colors.white,
+                                color: Colors.blueGrey,
                               ),
                               borderRadius: BorderRadius.circular(40.0),
                             ),

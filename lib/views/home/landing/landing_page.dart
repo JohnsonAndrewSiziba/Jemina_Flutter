@@ -31,6 +31,7 @@ class _LandingPageState extends State<LandingPage> {
       appBar: buildAppBar(context),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TopMarquee(),
             Text("Hello, World"),

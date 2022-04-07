@@ -24,7 +24,7 @@ class NotificationsIcon extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 boxShadow: customShadow,
-                color: complement,
+                color: Colors.blueGrey,
                 shape: BoxShape.circle,
               ),
             ),
@@ -42,7 +42,7 @@ class NotificationsIcon extends StatelessWidget {
           Center(
             child: Icon(
               Icons.notifications,
-              color: techBlue,
+              color: darkGreyBlue,
             ),
           ),
         ],

@@ -8,10 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/views/contact/contact.dart';
+import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/counters/counters_page.dart';
 import 'package:jemina_capital/views/home/landing/landing_page.dart';
 import 'package:jemina_capital/views/home/news/news_page.dart';
 import 'package:jemina_capital/views/home/reports/reports_page.dart';
+import 'package:jemina_capital/views/home/settings/settings_page.dart';
 import 'package:jemina_capital/views/home/stats/stats_page.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
@@ -142,10 +144,21 @@ class _HomeState extends State<Home> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  radius: 25.0,
-                  backgroundImage: NetworkImage(
-                    "https://images.pexels.com/photos/2167673/pexels-photo-2167673.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+                GestureDetector(
+                  onTap: () {
+                    toggleMenu();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AccountPage(),
+                      ),
+                    );
+                  },
+                  child: CircleAvatar(
+                    radius: 25.0,
+                    backgroundImage: NetworkImage(
+                      "https://images.pexels.com/photos/2167673/pexels-photo-2167673.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+                    ),
                   ),
                 ),
                 SizedBox(height: 16.0),
@@ -158,14 +171,25 @@ class _HomeState extends State<Home> {
             ),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              toggleMenu();
+              setState(() {
+                index = 2;
+              });
+            },
             leading: Icon(Icons.home, size: 20.0, color: darkGreyBlue),
             title: Text("Home", style: TextStyle(color: darkGreyBlue),),
             textColor: darkGreyBlue,
             dense: true,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              toggleMenu();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AccountPage()),
+              );
+            },
             leading: Icon(
               Icons.person,
               size: 20.0,
@@ -201,6 +225,7 @@ class _HomeState extends State<Home> {
           ),
           ListTile(
             onTap: () {
+              toggleMenu();
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Contact()),
@@ -214,7 +239,13 @@ class _HomeState extends State<Home> {
             // padding: EdgeInsets.zero,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              toggleMenu();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+            },
             leading:
                  Icon(Icons.settings, size: 20.0, color: darkGreyBlue,),
             title: const Text("Settings"),
