@@ -44,21 +44,23 @@ class _NewsBodyState extends State<NewsBody> {
               child: Text(
                 'Loading...',
                 style: TextStyle(
-                  color: techBlue,
+                  color: darkGreyBlue,
                 ),
               ),
             ),
             content: Container(
               height: 100.0,
               child: Center(
-                child: new CircularProgressIndicator(),
+                child: new CircularProgressIndicator(
+                  color: Colors.blueGrey,
+                ),
               ),
             ),
           ),
         );
       },
       onProgress: (int myProgress) {
-        print('WebView is loading (progress : $progress%)');
+        // print('WebView is loading (progress : $progress%)');
         setState(() {
           progress = myProgress;
         });
@@ -68,17 +70,17 @@ class _NewsBodyState extends State<NewsBody> {
       },
       navigationDelegate: (NavigationRequest request) {
         if (request.url.startsWith('https://www.youtube.com/')) {
-          print('blocking navigation to $request}');
+          // print('blocking navigation to $request}');
           return NavigationDecision.prevent;
         }
-        print('allowing navigation to $request');
+        // print('allowing navigation to $request');
         return NavigationDecision.navigate;
       },
       onPageStarted: (String url) {
-        print('Page started loading: $url');
+        // print('Page started loading: $url');
       },
       onPageFinished: (String url) {
-        print('Page finished loading: $url');
+        // print('Page finished loading: $url');
         Navigator.pop(context, 'OK');
       },
       gestureNavigationEnabled: true,

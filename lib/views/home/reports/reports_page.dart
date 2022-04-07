@@ -68,7 +68,8 @@ class _ReportsPageState extends State<ReportsPage> {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: brightGrey,
+              // color: brightGrey,
+              color: darkGreyBlue,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(defaultBorderRadius),
                 bottomRight: Radius.circular(defaultBorderRadius),
@@ -134,8 +135,8 @@ class _ReportsPageState extends State<ReportsPage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: selectedIndex == index
-                    ? darkGreyBlue
-                    : darkGreyBlue.withOpacity(0.7),
+                    ? lightSteel
+                    : lightSteel.withOpacity(0.7),
               ),
             ),
             Container(
@@ -143,7 +144,7 @@ class _ReportsPageState extends State<ReportsPage> {
               height: 2,
               width: 30,
               color: selectedIndex == index ? complement : Colors.transparent,
-            )
+            ),
           ],
         ),
       ),
@@ -153,7 +154,8 @@ class _ReportsPageState extends State<ReportsPage> {
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      backgroundColor: brightGrey,
+      // backgroundColor: brightGrey,
+      backgroundColor: darkGreyBlue,
       elevation: 0,
       leading: IconButton(
         onPressed: () {
@@ -162,9 +164,11 @@ class _ReportsPageState extends State<ReportsPage> {
             widget.state == 0 ? widget.state = 1 : widget.state = 0;
           });
         },
-        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
+        icon: SvgPicture.asset("assets/icons/menu.svg", color: lightSteel,),
+        // icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
       ),
-      title: Text("Reports", style: TextStyle(color: darkGreyBlue),),
+      title: Text("Reports", style: TextStyle(color: lightSteel),),
+      // title: Text("Reports", style: TextStyle(color: darkGreyBlue),),
       actions: [
         GotoProfile(),
       ],

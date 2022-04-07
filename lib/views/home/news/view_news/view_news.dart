@@ -21,8 +21,9 @@ class ViewNews extends StatelessWidget {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
-      backgroundColor: techBlue,
-      title: Text(article.title),
+      backgroundColor: brightGrey,
+      title: Text(article.title, style: TextStyle(color: darkGreyBlue),),
+      iconTheme: IconThemeData(color: darkGreyBlue),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 8.0),

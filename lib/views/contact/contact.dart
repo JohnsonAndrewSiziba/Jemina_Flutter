@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/data.dart';
 
+import '../../widgets/notification_icon.dart';
+
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
 
@@ -27,6 +29,12 @@ class _ContactState extends State<Contact> {
           "Contact Us",
           style: TextStyle(color: darkGreyBlue),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: NotificationsIcon(),
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(

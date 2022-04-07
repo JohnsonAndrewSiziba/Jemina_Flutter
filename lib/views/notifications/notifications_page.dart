@@ -23,12 +23,6 @@ class _NotificationsPageState extends State<NotificationsPage> {
         backgroundColor: brightGrey,
         title: Text('Notifications', style: TextStyle(color: darkGreyBlue),),
         iconTheme: IconThemeData(color: darkGreyBlue),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: NotificationsIcon(),
-          ),
-        ],
       ),
       body: Center(
         child: Text('Notifications Page'),
