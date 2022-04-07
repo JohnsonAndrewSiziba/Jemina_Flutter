@@ -7,10 +7,10 @@ import 'package:jemina_capital/data/constants/values.dart';
 import 'package:jemina_capital/models/company.dart';
 import 'package:jemina_capital/views/home/counters/views/view_counter/view_counter.dart';
 import 'package:jemina_capital/widgets/go_to_profile.dart';
+import 'package:skeletons/skeletons.dart';
 
 import '../../../data/constants/api_routes.dart';
 import '../../../library/request_response.dart';
-import '../../../widgets/header_with_search_bar.dart';
 
 class CountersPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -35,7 +35,7 @@ class _CountersPageState extends State<CountersPage> {
   ];
 
   int selectedIndex = 0;
-  bool isLoading = false;
+  bool isLoading = true;
 
   late RequestResponse requestResponse;
   List<Company> companiesList = [];
@@ -56,7 +56,7 @@ class _CountersPageState extends State<CountersPage> {
     setState(() {
       companiesList = Company.jsonDecode(jsonCompaniesList);
       // print("The Counters: " + companiesList.toString());
-      isLoading = true;
+      isLoading = false;
     });
   }
 
@@ -87,20 +87,24 @@ class _CountersPageState extends State<CountersPage> {
             ),
           ),
           Expanded(
-            child: Container(
-              color: lightSteel,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: kDefaultPadding - 10.0, vertical: 10.0,
+            child: Skeleton(
+              isLoading: isLoading,
+              skeleton: SkeletonListView(),
+              child: Container(
+                color: lightSteel,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: kDefaultPadding - 10.0, vertical: 10.0,
+                  ),
+                  child: ListView.builder(
+                      itemCount: companiesList.length,
+                      itemBuilder: (context, index) {
+                        return company(
+                          context: context,
+                          company: companiesList[index],
+                        );
+                      }),
                 ),
-                child: ListView.builder(
-                    itemCount: companiesList.length,
-                    itemBuilder: (context, index) {
-                      return company(
-                        context: context,
-                        company: companiesList[index],
-                      );
-                    }),
               ),
             ),
           ),

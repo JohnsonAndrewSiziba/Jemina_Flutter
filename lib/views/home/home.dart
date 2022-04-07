@@ -32,7 +32,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int index = 3;
+  int index = 2;
   double value = 0;
 
   int _currentIndex = 0;

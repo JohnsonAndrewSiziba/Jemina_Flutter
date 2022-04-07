@@ -5,11 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jemina_capital/controllers/news/news_controller.dart';
 import 'package:jemina_capital/models/news.dart';
 import 'package:jemina_capital/views/home/news/components/news_page_body.dart';
+import 'package:skeletons/skeletons.dart';
 
 import '../../../data/constants/theme_colors.dart';
 import '../../../library/request_response.dart';
 import '../../../widgets/go_to_profile.dart';
-import '../../../widgets/header_with_search_bar.dart';
 
 class NewsPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -24,6 +24,8 @@ class NewsPage extends StatefulWidget {
 class _NewsPageState extends State<NewsPage> {
   late RequestResponse requestResponse;
   List<News> newsList = [];
+
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -40,6 +42,7 @@ class _NewsPageState extends State<NewsPage> {
 
     setState(() {
       newsList = News.jsonDecode(jsonNewsList);
+      isLoading = false;
     });
   }
 
@@ -49,13 +52,17 @@ class _NewsPageState extends State<NewsPage> {
     return Scaffold(
       backgroundColor: scaffoldBackgroundColor,
       appBar: buildAppBar(context),
-      body: Container(
-        color: lightSteel,
-        child: Column(
-          children: [
-            // HeaderWithSearchBar(placeholder: "Search news...", size: size),
-            NewsPageBody(newsList: newsList),
-          ],
+      body: Skeleton(
+        skeleton: SkeletonListView(),
+        isLoading: isLoading,
+        child: Container(
+          color: lightSteel,
+          child: Column(
+            children: [
+              // HeaderWithSearchBar(placeholder: "Search news...", size: size),
+              NewsPageBody(newsList: newsList),
+            ],
+          ),
         ),
       ),
     );

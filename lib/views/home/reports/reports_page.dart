@@ -9,6 +9,7 @@ import 'package:jemina_capital/data/constants/values.dart';
 import 'package:jemina_capital/library/request_response.dart';
 import 'package:jemina_capital/models/report.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/view_report.dart';
+import 'package:skeletons/skeletons.dart';
 
 import '../../../widgets/card.dart';
 import '../../../widgets/go_to_profile.dart';
@@ -28,6 +29,8 @@ class _ReportsPageState extends State<ReportsPage> {
   late RequestResponse requestResponse;
   List<Report> reportsList = [];
 
+  bool isLoading = true;
+
   @override
   void initState() {
     super.initState();
@@ -43,6 +46,7 @@ class _ReportsPageState extends State<ReportsPage> {
 
     setState(() {
       reportsList = Report.jsonDecode(jsonReportsList);
+      isLoading = false;
     });
   }
 
@@ -91,17 +95,21 @@ class _ReportsPageState extends State<ReportsPage> {
             ),
           ),
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
+            child: Skeleton(
+              isLoading: isLoading,
+              skeleton: SkeletonListView(),
+              child: Container(
+                decoration: BoxDecoration(
+                ),
+                child: ListView.builder(
+                    itemCount: reportsList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: reportListWidget(context: context, report: reportsList[index]),
+                      );
+                    }),
               ),
-              child: ListView.builder(
-                  itemCount: reportsList.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: reportListWidget(context: context, report: reportsList[index]),
-                    );
-                  }),
             ),
           ),
         ],
