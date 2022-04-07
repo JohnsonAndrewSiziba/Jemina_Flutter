@@ -45,6 +45,7 @@ class _LandingPageState extends State<LandingPage> {
     return AppBar(
       backgroundColor: brightGrey,
       elevation: 0,
+      centerTitle: true,
       leading: IconButton(
         onPressed: () {
           widget.onOpenMenu();

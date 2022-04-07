@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 
-import '../../../widgets/notification_icon.dart';
+import '../../widgets/notification_icon.dart';
 
 
 class SettingsPage extends StatefulWidget {

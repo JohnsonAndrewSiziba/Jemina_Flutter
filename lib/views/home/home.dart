@@ -8,16 +8,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/views/contact/contact.dart';
+import 'package:jemina_capital/views/help/help_page.dart';
 import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/counters/counters_page.dart';
 import 'package:jemina_capital/views/home/landing/landing_page.dart';
 import 'package:jemina_capital/views/home/news/news_page.dart';
 import 'package:jemina_capital/views/home/reports/reports_page.dart';
-import 'package:jemina_capital/views/home/settings/settings_page.dart';
+import 'package:jemina_capital/views/notifications/notifications_page.dart';
+import 'package:jemina_capital/views/settings/settings_page.dart';
 import 'package:jemina_capital/views/home/stats/stats_page.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
+
+import '../about/about_page.dart';
 
 
 class Home extends StatefulWidget {
@@ -28,7 +32,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int index = 2;
+  int index = 3;
   double value = 0;
 
   int _currentIndex = 0;
@@ -201,20 +205,32 @@ class _HomeState extends State<Home> {
             // padding: EdgeInsets.zero,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              toggleMenu();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HelpPage()),
+              );
+            },
             leading: Icon(
-              Icons.favorite,
+              Icons.help,
               size: 20.0,
               color: darkGreyBlue,
             ),
-            title: const Text("Favorites"),
+            title: const Text("Help"),
             textColor: darkGreyBlue,
             dense: true,
 
             // padding: EdgeInsets.zero,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              toggleMenu();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NotificationsPage()),
+              );
+            },
             leading: Icon(Icons.notifications,
                 size: 20.0, color: darkGreyBlue,),
             title: Text("Notifications"),
@@ -255,7 +271,13 @@ class _HomeState extends State<Home> {
             // padding: EdgeInsets.zero,
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              toggleMenu();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AboutPage()),
+              );
+            },
             leading: Icon(Icons.info, size: 20.0, color: darkGreyBlue,),
             title: const Text("About"),
             textColor: darkGreyBlue,

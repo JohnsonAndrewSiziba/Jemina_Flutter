@@ -35,6 +35,7 @@ class _CountersPageState extends State<CountersPage> {
   ];
 
   int selectedIndex = 0;
+  bool isLoading = false;
 
   late RequestResponse requestResponse;
   List<Company> companiesList = [];
@@ -55,6 +56,7 @@ class _CountersPageState extends State<CountersPage> {
     setState(() {
       companiesList = Company.jsonDecode(jsonCompaniesList);
       // print("The Counters: " + companiesList.toString());
+      isLoading = true;
     });
   }
 
