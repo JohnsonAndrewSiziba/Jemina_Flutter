@@ -62,14 +62,15 @@ class _CountersPageState extends State<CountersPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: brightGrey,
       appBar: buildAppBar(context),
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            HeaderWithSearchBar(placeholder: "Search counter...", size: size),
-            Padding(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // HeaderWithSearchBar(placeholder: "Search counter...", size: size),
+          Container(
+            color: brightGrey,
+            child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: kDefaultPadding - 10.0,
               ),
@@ -82,11 +83,14 @@ class _CountersPageState extends State<CountersPage> {
                 ),
               ),
             ),
-            Expanded(
+          ),
+          Expanded(
+            child: Container(
+              color: lightSteel,
               child: Padding(
-
                 padding: const EdgeInsets.symmetric(
-                    horizontal: kDefaultPadding - 10.0),
+                    horizontal: kDefaultPadding - 10.0, vertical: 10.0,
+                ),
                 child: ListView.builder(
                     itemCount: companiesList.length,
                     itemBuilder: (context, index) {
@@ -97,8 +101,8 @@ class _CountersPageState extends State<CountersPage> {
                     }),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -120,8 +124,8 @@ class _CountersPageState extends State<CountersPage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: selectedIndex == index
-                    ? Colors.black.withOpacity(0.8)
-                    : Colors.blueGrey,
+                    ? darkGreyBlue
+                    : darkGreyBlue.withOpacity(0.8),
               ),
             ),
             Container(
@@ -139,7 +143,8 @@ class _CountersPageState extends State<CountersPage> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: techBlue,
+      backgroundColor: brightGrey,
+      centerTitle: true,
       elevation: 0,
       leading: IconButton(
         onPressed: () {
@@ -148,9 +153,9 @@ class _CountersPageState extends State<CountersPage> {
             widget.state == 0 ? widget.state = 1 : widget.state = 0;
           });
         },
-        icon: SvgPicture.asset("assets/icons/menu.svg"),
+        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
       ),
-      title: Text("Listed Securities"),
+      title: Text("Listed Securities", style: TextStyle(color: darkGreyBlue,),),
       actions: [
         GotoProfile(),
       ],
@@ -191,7 +196,7 @@ Widget company({required BuildContext context, required Company company}) {
                     children: [
                       Text(
                         company.name ?? "",
-                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0,),
+                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: darkGreyBlue),
                       ),
 
                       Text(

@@ -40,9 +40,9 @@ Widget pricesListWidget({required BuildContext context}) {
                   const SizedBox(
                     width: 15.0,
                   ),
-                  const Text(
+                  Text(
                     "ZYMB.ZW",
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),
+                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: darkGreyBlue, fontFamily: "Roboto",),
                   ),
                   const Spacer(),
                   const Icon(Icons.arrow_upward, color: Colors.green, size: 16.0,),

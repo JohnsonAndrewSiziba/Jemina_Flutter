@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/views/home/stats/components/stats_main_body.dart';
 
+import '../../../../data/constants/theme_colors.dart';
+
 class StatsBody extends StatefulWidget {
   StatsBody({Key? key}) : super(key: key);
 
@@ -25,16 +27,16 @@ class _StatsBodyState extends State<StatsBody> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: techBlue,
+            color: brightGrey,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(11.0),
               bottomRight: Radius.circular(11.0),
             ),
             boxShadow: [
               BoxShadow(
-                offset: Offset(0, 8),
-                blurRadius: 24,
-                color: Colors.white,
+                offset: Offset(0, 4),
+                blurRadius: 12,
+                color: scaffoldBackgroundColor,
               ),
             ],
           ),
@@ -54,7 +56,7 @@ class _StatsBodyState extends State<StatsBody> {
         Expanded(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
               child: MainBody(),
             ),
           ),
@@ -80,8 +82,8 @@ class _StatsBodyState extends State<StatsBody> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: selectedIndex == index
-                    ? Colors.white
-                    : Colors.white.withOpacity(0.7),
+                    ? darkGreyBlue
+                    : darkGreyBlue.withOpacity(0.7),
               ),
             ),
             Container(

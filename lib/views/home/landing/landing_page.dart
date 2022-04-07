@@ -4,9 +4,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jemina_capital/views/home/landing/components/top_marquee.dart';
+import 'package:ticker_text/ticker_text.dart';
 
 import '../../../data/constants/theme_colors.dart';
 import '../../../widgets/go_to_profile.dart';
+
 
 class LandingPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -24,15 +27,22 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: lightSteel,
       appBar: buildAppBar(context),
-      body: Text("Hello"),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            TopMarquee(),
+            Text("Hello, World"),
+          ],
+        ),
+      ),
     );
   }
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: techBlue,
+      backgroundColor: brightGrey,
       elevation: 0,
       leading: IconButton(
         onPressed: () {
@@ -41,9 +51,9 @@ class _LandingPageState extends State<LandingPage> {
             widget.state == 0 ? widget.state = 1 : widget.state = 0;
           });
         },
-        icon: SvgPicture.asset("assets/icons/menu.svg"),
+        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
       ),
-      title: Text("Jemina Capital"),
+      title: Text("Jemina Capital", style: TextStyle(color: darkGreyBlue),),
       actions: [
         GotoProfile(),
       ],

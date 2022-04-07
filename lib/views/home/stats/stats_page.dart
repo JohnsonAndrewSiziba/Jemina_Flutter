@@ -25,7 +25,7 @@ class _StatsPageState extends State<StatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: lightSteel,
       appBar: buildAppBar(context),
       body: StatsBody(),
     );
@@ -33,7 +33,8 @@ class _StatsPageState extends State<StatsPage> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: techBlue,
+      centerTitle: true,
+      backgroundColor: brightGrey,
       elevation: 0,
       leading: IconButton(
         onPressed: () {
@@ -42,9 +43,9 @@ class _StatsPageState extends State<StatsPage> {
             widget.state == 0 ? widget.state = 1 : widget.state = 0;
           });
         },
-        icon: SvgPicture.asset("assets/icons/menu.svg"),
+        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
       ),
-      title: Text("Market Statistics"),
+      title: Text("Market Statistics", style: TextStyle(color: darkGreyBlue),),
       actions: [
         GotoProfile(),
       ],

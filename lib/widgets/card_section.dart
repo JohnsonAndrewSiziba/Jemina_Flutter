@@ -25,7 +25,7 @@ class CardSection extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .headline2
-                  ?.copyWith(color: techBlue, fontWeight: FontWeight.bold),
+                  ?.copyWith(color: darkGreyBlue, fontWeight: FontWeight.bold),
             ),
           ),
         ),

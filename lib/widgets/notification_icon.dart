@@ -15,7 +15,7 @@ class NotificationsIcon extends StatelessWidget {
       width: 35,
       decoration: BoxDecoration(
         boxShadow: customShadow,
-        color: primaryColor,
+        color: lightSteel,
         shape: BoxShape.circle,
       ),
       child: Stack(

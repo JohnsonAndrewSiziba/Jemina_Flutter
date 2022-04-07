@@ -30,7 +30,7 @@ class HeaderWithSearchBar extends StatelessWidget {
             ),
             height: size.height * 0.2 - 124.0,
             decoration: BoxDecoration(
-              color: techBlue,
+              color: brightGrey,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(11.0),
                 bottomRight: Radius.circular(11.0),
@@ -51,9 +51,9 @@ class HeaderWithSearchBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.0),
                 boxShadow: [
                   BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50.0,
-                    color: kPrimaryColor.withOpacity(0.23),
+                    offset: Offset(0, 2),
+                    blurRadius: 10.0,
+                    color: brightGrey,
                   ),
                 ],
               ),
@@ -61,8 +61,9 @@ class HeaderWithSearchBar extends StatelessWidget {
                 onChanged: (value) {},
                 decoration: InputDecoration(
                   hintText: placeholder,
+                  focusColor: darkGreyBlue,
                   hintStyle: TextStyle(
-                    color: kPrimaryColor.withOpacity(0.5),
+                    color: darkGreyBlue.withOpacity(0.5),
                   ),
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,

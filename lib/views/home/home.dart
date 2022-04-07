@@ -7,12 +7,16 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/views/contact/contact.dart';
 import 'package:jemina_capital/views/home/counters/counters_page.dart';
 import 'package:jemina_capital/views/home/landing/landing_page.dart';
 import 'package:jemina_capital/views/home/news/news_page.dart';
 import 'package:jemina_capital/views/home/reports/reports_page.dart';
 import 'package:jemina_capital/views/home/stats/stats_page.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -24,6 +28,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int index = 2;
   double value = 0;
+
+  int _currentIndex = 0;
 
   final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
   final GlobalKey<SideMenuState> _endSideMenuKey = GlobalKey<SideMenuState>();
@@ -67,60 +73,57 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SideMenu(
       key: _sideMenuKey,
+      closeIcon: Icon(Icons.close, color: darkGreyBlue,),
+      background: lightGrey,
       menu: buildMenu(),
       type: SideMenuType.slideNRotate,
       onChange: (_isOpened) {
         setState(() => isOpened = _isOpened);
       },
-      child: IgnorePointer(
-        ignoring: isOpened,
-        child: Container(
-          color: grayBackground,
-          child: SafeArea(
-            top: false,
-            child: ClipRect(
-              child: Scaffold(
-                bottomNavigationBar: Theme(
-                  data: Theme.of(context).copyWith(
-                    iconTheme: IconThemeData(
-                      // color: Colors.black.withOpacity(.5),
-                      color: techBlue,
-                    ),
-                  ),
-                  child: CurvedNavigationBar(
-                    color: grayBackground,
-                    buttonBackgroundColor: scaffoldBackgroundColor,
-                    items: navBarItems,
-                    height: 55.0,
-                    animationDuration: Duration(milliseconds: 80),
-                    animationCurve: Curves.easeInOut,
-                    index: index,
-                    onTap: (index) => setState(() => this.index = index),
-                    backgroundColor: techBlue,
-                  ),
-                ),
-                body: IndexedStack(
-                  children: <Widget>[
-                    StatsPage(onOpenMenu: toggleMenu, state: value),
-                    ReportsPage(onOpenMenu: toggleMenu, state: value),
-                    LandingPage(onOpenMenu: toggleMenu, state: value),
-                    CountersPage(onOpenMenu: toggleMenu, state: value),
-                    NewsPage(onOpenMenu: toggleMenu, state: value),
-                  ],
-                  index: index,
-                ),
-                // body: screens[index],
-                // body: Container(
-                //   child: [
-                //     StatsPage(onOpenMenu: toggleMenu, state: value),
-                //     ReportsPage(onOpenMenu: toggleMenu, state: value),
-                //     LandingPage(onOpenMenu: toggleMenu, state: value),
-                //     CountersPage(onOpenMenu: toggleMenu, state: value),
-                //     NewsPage(onOpenMenu: toggleMenu, state: value),
-                //   ][index],
-                // ),
-              ),
+      child: Container(
+        color: brightGrey,
+        child: SafeArea(
+          top: false,
+          child: Scaffold(
+            extendBody: true,
+            bottomNavigationBar: FloatingNavbar(
+
+              onTap: (int val) => setState(() => index = val),
+              currentIndex: index,
+              selectedItemColor: Colors.white,
+              selectedBackgroundColor: darkGreyBlue,
+              backgroundColor: brightGrey,
+              unselectedItemColor: Colors.blueGrey,
+              iconSize: 20.0,
+              items: [
+                FloatingNavbarItem(icon: Icons.pie_chart, title: 'Stats.'),
+                FloatingNavbarItem(icon: Icons.history_edu, title: 'Reports'),
+                FloatingNavbarItem(icon: Icons.home, title: 'Home'),
+                FloatingNavbarItem(icon: Icons.business_center, title: 'Counters'),
+                FloatingNavbarItem(icon: Icons.chrome_reader_mode, title: 'News'),
+              ],
             ),
+
+            body: IndexedStack(
+              children: <Widget>[
+                StatsPage(onOpenMenu: toggleMenu, state: value),
+                ReportsPage(onOpenMenu: toggleMenu, state: value),
+                LandingPage(onOpenMenu: toggleMenu, state: value),
+                CountersPage(onOpenMenu: toggleMenu, state: value),
+                NewsPage(onOpenMenu: toggleMenu, state: value),
+              ],
+              index: index,
+            ),
+            // body: screens[index],
+            // body: Container(
+            //   child: [
+            //     StatsPage(onOpenMenu: toggleMenu, state: value),
+            //     ReportsPage(onOpenMenu: toggleMenu, state: value),
+            //     LandingPage(onOpenMenu: toggleMenu, state: value),
+            //     CountersPage(onOpenMenu: toggleMenu, state: value),
+            //     NewsPage(onOpenMenu: toggleMenu, state: value),
+            //   ][index],
+            // ),
           ),
         ),
       ),
@@ -138,7 +141,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.only(left: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 CircleAvatar(
                   radius: 25.0,
                   backgroundImage: NetworkImage(
@@ -148,7 +151,7 @@ class _HomeState extends State<Home> {
                 SizedBox(height: 16.0),
                 Text(
                   "Hello, Johnson",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: darkGreyBlue),
                 ),
                 SizedBox(height: 20.0),
               ],
@@ -156,51 +159,56 @@ class _HomeState extends State<Home> {
           ),
           ListTile(
             onTap: () {},
-            leading: const Icon(Icons.home, size: 20.0, color: Colors.white),
-            title: const Text("Home"),
-            textColor: Colors.white,
+            leading: Icon(Icons.home, size: 20.0, color: darkGreyBlue),
+            title: Text("Home", style: TextStyle(color: darkGreyBlue),),
+            textColor: darkGreyBlue,
             dense: true,
           ),
           ListTile(
             onTap: () {},
-            leading: const Icon(
+            leading: Icon(
               Icons.person,
               size: 20.0,
-              color: Colors.white,
+              color: darkGreyBlue,
             ),
-            title: const Text("My Account"),
-            textColor: Colors.white,
+            title: Text("My Account", style: TextStyle(color: darkGreyBlue),),
+            textColor: darkGreyBlue,
             dense: true,
             // padding: EdgeInsets.zero,
           ),
           ListTile(
             onTap: () {},
-            leading: const Icon(
+            leading: Icon(
               Icons.favorite,
               size: 20.0,
-              color: Colors.white,
+              color: darkGreyBlue,
             ),
             title: const Text("Favorites"),
-            textColor: Colors.white,
+            textColor: darkGreyBlue,
             dense: true,
 
             // padding: EdgeInsets.zero,
           ),
           ListTile(
             onTap: () {},
-            leading: const Icon(Icons.notifications,
-                size: 20.0, color: Colors.white),
-            title: const Text("Notifications"),
-            textColor: Colors.white,
+            leading: Icon(Icons.notifications,
+                size: 20.0, color: darkGreyBlue,),
+            title: Text("Notifications"),
+            textColor: darkGreyBlue,
             dense: true,
 
             // padding: EdgeInsets.zero,
           ),
           ListTile(
-            onTap: () {},
-            leading: const Icon(Icons.call, size: 20.0, color: Colors.white),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Contact()),
+              );
+            },
+            leading: Icon(Icons.call, size: 20.0, color: darkGreyBlue,),
             title: const Text("Contact"),
-            textColor: Colors.white,
+            textColor: darkGreyBlue,
             dense: true,
 
             // padding: EdgeInsets.zero,
@@ -208,18 +216,18 @@ class _HomeState extends State<Home> {
           ListTile(
             onTap: () {},
             leading:
-                const Icon(Icons.settings, size: 20.0, color: Colors.white),
+                 Icon(Icons.settings, size: 20.0, color: darkGreyBlue,),
             title: const Text("Settings"),
-            textColor: Colors.white,
+            textColor: darkGreyBlue,
             dense: true,
 
             // padding: EdgeInsets.zero,
           ),
           ListTile(
             onTap: () {},
-            leading: const Icon(Icons.info, size: 20.0, color: Colors.white),
+            leading: Icon(Icons.info, size: 20.0, color: darkGreyBlue,),
             title: const Text("About"),
-            textColor: Colors.white,
+            textColor: darkGreyBlue,
             dense: true,
 
             // padding: EdgeInsets.zero,
@@ -233,9 +241,9 @@ class _HomeState extends State<Home> {
               }
             },
             leading:
-                const Icon(Icons.exit_to_app, size: 20.0, color: Colors.white),
+            Icon(Icons.exit_to_app, size: 20.0, color: darkGreyBlue,),
             title: const Text("Exit"),
-            textColor: Colors.white,
+            textColor: darkGreyBlue,
             dense: true,
 
             // padding: EdgeInsets.zero,

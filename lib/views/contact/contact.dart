@@ -15,13 +15,17 @@ class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: lightSteel,
       appBar: AppBar(
-        backgroundColor: techBlue,
+        backgroundColor: brightGrey,
+        centerTitle: true,
         elevation: 0.0,
+        iconTheme: IconThemeData(
+          color: darkGreyBlue,
+        ),
         title: Text(
           "Contact Us",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: darkGreyBlue),
         ),
       ),
       body: SafeArea(

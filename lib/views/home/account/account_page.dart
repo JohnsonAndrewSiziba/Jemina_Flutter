@@ -31,8 +31,8 @@ class _AccountPageState extends State<AccountPage> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      techBlue,
-                      techBlue.withOpacity(0.7),
+                      brightGrey,
+                      brightGrey.withOpacity(0.7),
                     ],
                   ),
                 ),
@@ -82,7 +82,7 @@ class _AccountPageState extends State<AccountPage> {
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.white,
+                                  color: darkGreyBlue,
                                 ),
                               ),
                               SizedBox(
@@ -92,7 +92,7 @@ class _AccountPageState extends State<AccountPage> {
                                 children: [
                                   Icon(
                                     Icons.monetization_on,
-                                    color: Colors.white,
+                                    color: complement,
                                   ),
                                   SizedBox(
                                     width: 5.0,
@@ -103,13 +103,13 @@ class _AccountPageState extends State<AccountPage> {
                                       style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
-                                        color: complement,
+                                        color: techBlue,
                                       ),
                                       children: [
                                         TextSpan(
                                           text: "10 000.00",
                                           style: TextStyle(
-                                            color: Colors.white,
+                                            color: darkGreyBlue,
                                           ),
                                         ),
                                       ],
@@ -128,7 +128,7 @@ class _AccountPageState extends State<AccountPage> {
               Expanded(
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
-                  color: Colors.grey.shade100,
+                  color: lightSteel,
                   child: ListView(
                     controller: ScrollController(),
                     padding: EdgeInsets.only(top: 75),
@@ -138,7 +138,8 @@ class _AccountPageState extends State<AccountPage> {
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey),
+                            color: darkGreyBlue,
+                        ),
                       ),
                       SizedBox(
                         height: 5,
@@ -365,8 +366,12 @@ class _AccountPageState extends State<AccountPage> {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
-      backgroundColor: techBlue,
-      title: Text("My Account"),
+      backgroundColor: brightGrey,
+      centerTitle: true,
+      iconTheme: IconThemeData(
+        color: darkGreyBlue,
+      ),
+      title: Text("My Account", style: TextStyle(color: darkGreyBlue),),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
@@ -503,7 +508,7 @@ class _AccountPageState extends State<AccountPage> {
         height: 90,
         width: 90,
         decoration: BoxDecoration(
-          color: grayBackground,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Column(
@@ -511,7 +516,7 @@ class _AccountPageState extends State<AccountPage> {
           children: [
             Icon(
               icon,
-              color: complement,
+              color: iconColor,
             ),
             SizedBox(
               height: 5,

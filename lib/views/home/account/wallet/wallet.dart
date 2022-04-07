@@ -107,7 +107,7 @@ class _WalletState extends State<Wallet> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      backgroundColor: Colors.white,
+      backgroundColor: lightSteel,
       body: Column(
         children: [
           Expanded(
@@ -133,8 +133,12 @@ class _WalletState extends State<Wallet> {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
-      backgroundColor: techBlue,
-      title: Text("My Wallet"),
+      backgroundColor: brightGrey,
+      centerTitle: true,
+      iconTheme: IconThemeData(
+        color: darkGreyBlue,
+      ),
+      title: Text("My Wallet", style: TextStyle(color: darkGreyBlue),),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 8.0),

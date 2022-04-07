@@ -8,6 +8,11 @@ Color complement = Color(0xFFEA9B27);
 Color palatinanteBlue = Color(0xFF3A27EA);
 Color flourescentBlue = Color(0xFF27D8EA);
 
+Color metalicGreyTint = Color(0xFFF4F4F4);
+Color lightSteel = Color(0xFFF7F7F8);
+Color darkGreyBlue = Color(0xFF424952);
+Color brightGrey = Color(0xFFEBECF0);
+
 Color success = Color(0XFF00B686);
 
 Color grayBackground = Color(0xFFCADCED);

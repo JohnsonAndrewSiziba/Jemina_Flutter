@@ -25,7 +25,7 @@ class WalletContent extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
-              color: techBlue,
+              color: darkGreyBlue,
             ),
           ),
         ),
@@ -48,7 +48,7 @@ class WalletContent extends StatelessWidget {
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: primaryColor.withOpacity(0.1)),
+                  border: Border.all(color: techBlue,),
                 ),
                 child: Image.asset(
                   transactions[index].logo,

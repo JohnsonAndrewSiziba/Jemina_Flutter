@@ -58,13 +58,13 @@ class _ReportsPageState extends State<ReportsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: lightSteel,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: BoxDecoration(
-              color: techBlue,
+              color: brightGrey,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(defaultBorderRadius),
                 bottomRight: Radius.circular(defaultBorderRadius),
@@ -126,8 +126,8 @@ class _ReportsPageState extends State<ReportsPage> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: selectedIndex == index
-                    ? Colors.white
-                    : Colors.white.withOpacity(0.7),
+                    ? darkGreyBlue
+                    : darkGreyBlue.withOpacity(0.7),
               ),
             ),
             Container(
@@ -144,7 +144,8 @@ class _ReportsPageState extends State<ReportsPage> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: techBlue,
+      centerTitle: true,
+      backgroundColor: brightGrey,
       elevation: 0,
       leading: IconButton(
         onPressed: () {
@@ -153,9 +154,9 @@ class _ReportsPageState extends State<ReportsPage> {
             widget.state == 0 ? widget.state = 1 : widget.state = 0;
           });
         },
-        icon: SvgPicture.asset("assets/icons/menu.svg"),
+        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
       ),
-      title: Text("Reports"),
+      title: Text("Reports", style: TextStyle(color: darkGreyBlue),),
       actions: [
         GotoProfile(),
       ],
@@ -198,7 +199,7 @@ Widget reportListWidget({required BuildContext context, required Report report})
                       Text(
                     report.title,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0,),
+                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: darkGreyBlue,),
                       ),
                       Text(
                         report.extract ?? "",

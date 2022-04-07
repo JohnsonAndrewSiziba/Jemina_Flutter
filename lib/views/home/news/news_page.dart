@@ -49,10 +49,11 @@ class _NewsPageState extends State<NewsPage> {
     return Scaffold(
       backgroundColor: scaffoldBackgroundColor,
       appBar: buildAppBar(context),
-      body: SafeArea(
+      body: Container(
+        color: lightSteel,
         child: Column(
           children: [
-            HeaderWithSearchBar(placeholder: "Search news...", size: size),
+            // HeaderWithSearchBar(placeholder: "Search news...", size: size),
             NewsPageBody(newsList: newsList),
           ],
         ),
@@ -62,7 +63,8 @@ class _NewsPageState extends State<NewsPage> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: techBlue,
+      centerTitle: true,
+      backgroundColor: brightGrey,
       elevation: 0,
       leading: IconButton(
         onPressed: () {
@@ -71,9 +73,9 @@ class _NewsPageState extends State<NewsPage> {
             widget.state == 0 ? widget.state = 1 : widget.state = 0;
           });
         },
-        icon: SvgPicture.asset("assets/icons/menu.svg"),
+        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue),
       ),
-      title: Text("News"),
+      title: Text("News", style: TextStyle(color: darkGreyBlue),),
       actions: [
         GotoProfile(),
       ],

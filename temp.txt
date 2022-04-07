@@ -1,0 +1,20 @@
+ // bottomNavigationBar: Theme(
+            //   data: Theme.of(context).copyWith(
+            //     iconTheme: IconThemeData(
+            //       // color: Colors.black.withOpacity(.5),
+            //       color: techBlue,
+            //     ),
+            //   ),
+            //   child: CurvedNavigationBar(
+            //     color: grayBackground,
+            //     buttonBackgroundColor: scaffoldBackgroundColor,
+            //     items: navBarItems,
+            //     height: 55.0,
+            //     animationDuration: Duration(milliseconds: 80),
+            //     animationCurve: Curves.easeInOut,
+            //     index: index,
+            //     onTap: (index) => setState(() => this.index = index),
+            //     backgroundColor: techBlue,
+            //   ),
+            // ),
+

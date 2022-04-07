@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
-import 'package:jemina_capital/data/constants/values.dart';
 import 'package:jemina_capital/models/news.dart';
-import 'package:jemina_capital/views/home/news/components/news_item.dart';
 
 import '../../../../widgets/card.dart';
 import '../view_news/view_news.dart';
@@ -44,7 +42,7 @@ Widget newsListWidget({required BuildContext context, required News news}) {
                       Text(
                         news.title,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0,),
+                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: darkGreyBlue),
                       ),
                       SizedBox(
                         height: 10,

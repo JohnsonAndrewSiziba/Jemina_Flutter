@@ -12,26 +12,29 @@ class NewsPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: ListView.builder(
-        itemCount: newsList.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            splashColor: techBlue,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ViewNews(article: newsList[index]),
-                ),
-              );
-            },
-            // child: listWidget(newsTiles[index]),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: newsListWidget(news: newsList[index], context: context),
-            ),
-          );
-        },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10.0),
+        child: ListView.builder(
+          itemCount: newsList.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+              splashColor: techBlue,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ViewNews(article: newsList[index]),
+                  ),
+                );
+              },
+              // child: listWidget(newsTiles[index]),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: newsListWidget(news: newsList[index], context: context),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
