@@ -15,3 +15,13 @@
 * Graph QL: https://www.altexsoft.com/blog/engineering/graphql-core-features-architecture-pros-and-cons/
 
 # memotariro@gmail.com
+
+
+# IT Team
+Tinashe
+Access
+
+Domain transfer: 43.98
+Email Hosting: 264.44
+Total: 308.42
+32.00
