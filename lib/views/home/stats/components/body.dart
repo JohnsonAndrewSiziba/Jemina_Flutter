@@ -5,6 +5,7 @@ import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/views/home/stats/components/stats_main_body.dart';
 
 import '../../../../data/constants/theme_colors.dart';
+import '../../shared/category_menu.dart';
 
 class StatsBody extends StatefulWidget {
   StatsBody({Key? key}) : super(key: key);
@@ -16,8 +17,20 @@ class StatsBody extends StatefulWidget {
 class _StatsBodyState extends State<StatsBody> {
   List<String> categories = [
     "Price Sheets",
-    "Market Stats.",
+    "Market Statistics",
   ];
+
+  List<IconData> icons = [
+    Icons.candlestick_chart,
+    Icons.insert_chart,
+  ];
+
+  void categortMenuTap(int index){
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   int selectedIndex = 0;
 
   @override
@@ -27,7 +40,7 @@ class _StatsBodyState extends State<StatsBody> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: brightGrey,
+            color: jeminaGrey,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(11.0),
               bottomRight: Radius.circular(11.0),
@@ -42,13 +55,13 @@ class _StatsBodyState extends State<StatsBody> {
           ),
           child: Padding(
             padding:
-                const EdgeInsets.symmetric(vertical: kDefaultPadding - 10.0),
+                const EdgeInsets.symmetric(vertical: kDefaultPadding - 10.0, horizontal: 10.0),
             child: SizedBox(
-              height: 25,
+              height: 34.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
-                itemBuilder: (context, index) => buildCategory(index),
+                itemBuilder: (context, index) => buildCategoryItem(index, categortMenuTap, selectedIndex, icons, categories),
               ),
             ),
           ),
@@ -65,36 +78,36 @@ class _StatsBodyState extends State<StatsBody> {
     );
   }
 
-  Widget buildCategory(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              categories[index],
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: selectedIndex == index
-                    ? darkGreyBlue
-                    : darkGreyBlue.withOpacity(0.7),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: kDefaultPadding / 4), //top padding 5
-              height: 2,
-              width: 30,
-              color: selectedIndex == index ? complement : Colors.transparent,
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget buildCategory(int index) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       setState(() {
+  //         selectedIndex = index;
+  //       });
+  //     },
+  //     child: Padding(
+  //       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: <Widget>[
+  //           Text(
+  //             categories[index],
+  //             style: TextStyle(
+  //               fontWeight: FontWeight.bold,
+  //               color: selectedIndex == index
+  //                   ? darkGreyBlue
+  //                   : darkGreyBlue.withOpacity(0.7),
+  //             ),
+  //           ),
+  //           Container(
+  //             margin: EdgeInsets.only(top: kDefaultPadding / 4), //top padding 5
+  //             height: 2,
+  //             width: 30,
+  //             color: selectedIndex == index ? complement : Colors.transparent,
+  //           )
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }

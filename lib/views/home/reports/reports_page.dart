@@ -13,6 +13,7 @@ import 'package:skeletons/skeletons.dart';
 
 import '../../../widgets/card.dart';
 import '../../../widgets/go_to_profile.dart';
+import '../shared/category_menu.dart';
 
 class ReportsPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -50,26 +51,39 @@ class _ReportsPageState extends State<ReportsPage> {
     });
   }
 
+  void categortMenuTap(int index){
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   List<String> categories = [
     "Daily Updates",
     "Weekly Updates",
     "Monthly Updates",
     "Economic Reviews"
   ];
+
+  List<IconData> icons = [
+    Icons.calendar_today,
+    Icons.calendar_view_week,
+    Icons.calendar_month_outlined,
+    Icons.trending_up,
+  ];
+
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      backgroundColor: lightSteel,
+      backgroundColor: brightGrey,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: BoxDecoration(
-              // color: brightGrey,
-              color: darkGreyBlue,
+              color: jeminaGrey,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(defaultBorderRadius),
                 bottomRight: Radius.circular(defaultBorderRadius),
@@ -84,13 +98,13 @@ class _ReportsPageState extends State<ReportsPage> {
             ),
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: kDefaultPadding - 10.0),
+                  const EdgeInsets.symmetric(vertical: kDefaultPadding - 10.0, horizontal: 10.0),
               child: SizedBox(
-                height: 25,
+                height: 34.0,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: categories.length,
-                  itemBuilder: (context, index) => buildCategory(index),
+                  itemBuilder: (context, index) => buildCategoryItem(index, categortMenuTap, selectedIndex, icons, categories),
                 ),
               ),
             ),
@@ -118,44 +132,10 @@ class _ReportsPageState extends State<ReportsPage> {
     );
   }
 
-  Widget buildCategory(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              categories[index],
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: selectedIndex == index
-                    ? lightSteel
-                    : lightSteel.withOpacity(0.7),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: kDefaultPadding / 4), //top padding 5
-              height: 2,
-              width: 30,
-              color: selectedIndex == index ? complement : Colors.transparent,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      // backgroundColor: brightGrey,
-      backgroundColor: darkGreyBlue,
+      backgroundColor: jeminaGrey,
       elevation: 0,
       leading: IconButton(
         onPressed: () {
@@ -164,11 +144,9 @@ class _ReportsPageState extends State<ReportsPage> {
             widget.state == 0 ? widget.state = 1 : widget.state = 0;
           });
         },
-        icon: SvgPicture.asset("assets/icons/menu.svg", color: lightSteel,),
-        // icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
+        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
       ),
-      title: Text("Reports", style: TextStyle(color: lightSteel),),
-      // title: Text("Reports", style: TextStyle(color: darkGreyBlue),),
+      title: Text("Reports", style: TextStyle(color: darkGreyBlue),),
       actions: [
         GotoProfile(),
       ],

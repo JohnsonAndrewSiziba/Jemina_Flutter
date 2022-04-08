@@ -25,7 +25,7 @@ class _StatsPageState extends State<StatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: brightGrey,
       appBar: buildAppBar(context),
       body: StatsBody(),
     );
@@ -34,7 +34,7 @@ class _StatsPageState extends State<StatsPage> {
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      backgroundColor: brightGrey,
+      backgroundColor: jeminaGrey,
       elevation: 0,
       leading: IconButton(
         onPressed: () {

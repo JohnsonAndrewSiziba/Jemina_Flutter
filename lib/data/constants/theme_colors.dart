@@ -12,6 +12,8 @@ Color metalicGreyTint = Color(0xFFF4F4F4);
 Color lightSteel = Color(0xFFF7F7F8);
 Color darkGreyBlue = Color(0xFF424952);
 Color brightGrey = Color(0xFFEBECF0);
+Color lightBlueGrey = Color(0xFFADBFBF);
+Color jeminaGrey = Color(0xFFC4D4DC);
 
 Color success = Color(0XFF00B686);
 
@@ -42,6 +44,16 @@ const kDefaultShadow = BoxShadow(
   blurRadius: 27,
   color: Colors.black12, // Black color with 12% opacity
 );
+
+
+
+BoxShadow kBoxShadow = BoxShadow(
+  color: Colors.grey.withOpacity(0.2),
+  spreadRadius: 2,
+  blurRadius: 8,
+  offset: Offset(0, 0),
+);
+
 
 
 // TEMPORARY

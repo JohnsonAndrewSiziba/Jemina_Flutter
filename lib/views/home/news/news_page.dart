@@ -50,7 +50,7 @@ class _NewsPageState extends State<NewsPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: brightGrey,
       appBar: buildAppBar(context),
       body: Skeleton(
         skeleton: SkeletonListView(),
@@ -71,7 +71,7 @@ class _NewsPageState extends State<NewsPage> {
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      backgroundColor: brightGrey,
+      backgroundColor: jeminaGrey,
       elevation: 0,
       leading: IconButton(
         onPressed: () {

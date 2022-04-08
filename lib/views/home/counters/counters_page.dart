@@ -11,6 +11,7 @@ import 'package:skeletons/skeletons.dart';
 
 import '../../../data/constants/api_routes.dart';
 import '../../../library/request_response.dart';
+import '../shared/category_menu.dart';
 
 class CountersPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -33,6 +34,18 @@ class _CountersPageState extends State<CountersPage> {
     "VFEX Equity Counters",
     "ZSE ETF Counters",
   ];
+
+  List<IconData> icons = [
+    Icons.business_sharp,
+    Icons.business_sharp,
+    Icons.business_sharp,
+  ];
+
+  void categortMenuTap(int index){
+    setState(() {
+      selectedIndex = index;
+    });
+  }
 
   int selectedIndex = 0;
   bool isLoading = true;
@@ -71,17 +84,18 @@ class _CountersPageState extends State<CountersPage> {
         children: [
           // HeaderWithSearchBar(placeholder: "Search counter...", size: size),
           Container(
-            color: brightGrey,
+            color: jeminaGrey,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: kDefaultPadding - 10.0,
+                horizontal: 10.0,
               ),
               child: SizedBox(
-                height: 25,
+                height: 34,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: categories.length,
-                  itemBuilder: (context, index) => buildCategory(index),
+                  itemBuilder: (context, index) => buildCategoryItem(index, categortMenuTap, selectedIndex, icons, categories),
                 ),
               ),
             ),
@@ -113,43 +127,9 @@ class _CountersPageState extends State<CountersPage> {
     );
   }
 
-  Widget buildCategory(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedIndex = index;
-        });
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              categories[index],
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: selectedIndex == index
-                    ? darkGreyBlue
-                    : darkGreyBlue.withOpacity(0.8),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                  top: kDefaultPadding / 4 - 5.0), //top padding 5
-              height: 2,
-              width: 30,
-              color: selectedIndex == index ? complement : Colors.transparent,
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: brightGrey,
+      backgroundColor: jeminaGrey,
       centerTitle: true,
       elevation: 0,
       leading: IconButton(

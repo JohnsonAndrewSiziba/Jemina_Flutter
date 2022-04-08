@@ -27,7 +27,7 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: brightGrey,
       appBar: buildAppBar(context),
       body: SingleChildScrollView(
         child: Column(
@@ -43,7 +43,7 @@ class _LandingPageState extends State<LandingPage> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: brightGrey,
+      backgroundColor: jeminaGrey,
       elevation: 0,
       centerTitle: true,
       leading: IconButton(
