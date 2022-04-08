@@ -6,6 +6,7 @@ import 'package:jemina_capital/views/home/stats/components/body.dart';
 
 import '../../../data/constants/theme_colors.dart';
 import '../../../widgets/go_to_profile.dart';
+import '../shared/build_main_page_app_bar.dart';
 
 class StatsPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -22,33 +23,17 @@ class _StatsPageState extends State<StatsPage> {
   static Color secondaryColor = complement;
   bool _isIncome = false;
 
+  void onOpenMenu() {
+    widget.onOpenMenu();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: brightGrey,
-      appBar: buildAppBar(context),
+      appBar: buildMainPageAppBar(context, onOpenMenu, "Market Statistics"),
       body: StatsBody(),
     );
   }
 
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      centerTitle: true,
-      backgroundColor: jeminaGrey,
-      elevation: 0,
-      leading: IconButton(
-        onPressed: () {
-          widget.onOpenMenu();
-          setState(() {
-            widget.state == 0 ? widget.state = 1 : widget.state = 0;
-          });
-        },
-        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
-      ),
-      title: Text("Market Statistics", style: TextStyle(color: darkGreyBlue),),
-      actions: [
-        GotoProfile(),
-      ],
-    );
-  }
 }

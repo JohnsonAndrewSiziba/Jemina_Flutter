@@ -9,6 +9,7 @@ import 'package:ticker_text/ticker_text.dart';
 
 import '../../../data/constants/theme_colors.dart';
 import '../../../widgets/go_to_profile.dart';
+import '../shared/build_main_page_app_bar.dart';
 
 
 class LandingPage extends StatefulWidget {
@@ -24,11 +25,15 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   double value = 0;
 
+  void onOpenMenu() {
+    widget.onOpenMenu();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: brightGrey,
-      appBar: buildAppBar(context),
+      appBar: buildMainPageAppBar(context, onOpenMenu, "Jemina Capital"),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,27 +43,6 @@ class _LandingPageState extends State<LandingPage> {
           ],
         ),
       ),
-    );
-  }
-
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: jeminaGrey,
-      elevation: 0,
-      centerTitle: true,
-      leading: IconButton(
-        onPressed: () {
-          widget.onOpenMenu();
-          setState(() {
-            widget.state == 0 ? widget.state = 1 : widget.state = 0;
-          });
-        },
-        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
-      ),
-      title: Text("Jemina Capital", style: TextStyle(color: darkGreyBlue),),
-      actions: [
-        GotoProfile(),
-      ],
     );
   }
 }

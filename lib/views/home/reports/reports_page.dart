@@ -13,6 +13,7 @@ import 'package:skeletons/skeletons.dart';
 
 import '../../../widgets/card.dart';
 import '../../../widgets/go_to_profile.dart';
+import '../shared/build_main_page_app_bar.dart';
 import '../shared/category_menu.dart';
 
 class ReportsPage extends StatefulWidget {
@@ -57,6 +58,10 @@ class _ReportsPageState extends State<ReportsPage> {
     });
   }
 
+  void onOpenMenu() {
+    widget.onOpenMenu();
+  }
+
   List<String> categories = [
     "Daily Updates",
     "Weekly Updates",
@@ -76,7 +81,7 @@ class _ReportsPageState extends State<ReportsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: buildMainPageAppBar(context, onOpenMenu, "Reports"),
       backgroundColor: brightGrey,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,6 +119,7 @@ class _ReportsPageState extends State<ReportsPage> {
               isLoading: isLoading,
               skeleton: SkeletonListView(),
               child: Container(
+                margin: EdgeInsets.only(top: 10.0),
                 decoration: BoxDecoration(
                 ),
                 child: ListView.builder(
@@ -129,27 +135,6 @@ class _ReportsPageState extends State<ReportsPage> {
           ),
         ],
       ),
-    );
-  }
-
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      centerTitle: true,
-      backgroundColor: jeminaGrey,
-      elevation: 0,
-      leading: IconButton(
-        onPressed: () {
-          widget.onOpenMenu();
-          setState(() {
-            widget.state == 0 ? widget.state = 1 : widget.state = 0;
-          });
-        },
-        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
-      ),
-      title: Text("Reports", style: TextStyle(color: darkGreyBlue),),
-      actions: [
-        GotoProfile(),
-      ],
     );
   }
 }

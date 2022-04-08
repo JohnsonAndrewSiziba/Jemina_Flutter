@@ -11,6 +11,7 @@ import 'package:skeletons/skeletons.dart';
 
 import '../../../data/constants/api_routes.dart';
 import '../../../library/request_response.dart';
+import '../shared/build_main_page_app_bar.dart';
 import '../shared/category_menu.dart';
 
 class CountersPage extends StatefulWidget {
@@ -47,6 +48,10 @@ class _CountersPageState extends State<CountersPage> {
     });
   }
 
+  void onOpenMenu() {
+    widget.onOpenMenu();
+  }
+
   int selectedIndex = 0;
   bool isLoading = true;
 
@@ -78,7 +83,7 @@ class _CountersPageState extends State<CountersPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: brightGrey,
-      appBar: buildAppBar(context),
+      appBar: buildMainPageAppBar(context, onOpenMenu, "Listed Securities"),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -124,27 +129,6 @@ class _CountersPageState extends State<CountersPage> {
           ),
         ],
       ),
-    );
-  }
-
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      backgroundColor: jeminaGrey,
-      centerTitle: true,
-      elevation: 0,
-      leading: IconButton(
-        onPressed: () {
-          widget.onOpenMenu();
-          setState(() {
-            widget.state == 0 ? widget.state = 1 : widget.state = 0;
-          });
-        },
-        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue,),
-      ),
-      title: Text("Listed Securities", style: TextStyle(color: darkGreyBlue,),),
-      actions: [
-        GotoProfile(),
-      ],
     );
   }
 }

@@ -10,6 +10,7 @@ import 'package:skeletons/skeletons.dart';
 import '../../../data/constants/theme_colors.dart';
 import '../../../library/request_response.dart';
 import '../../../widgets/go_to_profile.dart';
+import '../shared/build_main_page_app_bar.dart';
 
 class NewsPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -33,6 +34,10 @@ class _NewsPageState extends State<NewsPage> {
     getNews();
   }
 
+  void onOpenMenu() {
+    widget.onOpenMenu();
+  }
+
   void getNews() async {
     NewsController newsController = NewsController();
     requestResponse = await newsController.getNews();
@@ -51,7 +56,7 @@ class _NewsPageState extends State<NewsPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: brightGrey,
-      appBar: buildAppBar(context),
+      appBar: buildMainPageAppBar(context, onOpenMenu, "Business News"),
       body: Skeleton(
         skeleton: SkeletonListView(),
         isLoading: isLoading,
@@ -65,27 +70,6 @@ class _NewsPageState extends State<NewsPage> {
           ),
         ),
       ),
-    );
-  }
-
-  AppBar buildAppBar(BuildContext context) {
-    return AppBar(
-      centerTitle: true,
-      backgroundColor: jeminaGrey,
-      elevation: 0,
-      leading: IconButton(
-        onPressed: () {
-          widget.onOpenMenu();
-          setState(() {
-            widget.state == 0 ? widget.state = 1 : widget.state = 0;
-          });
-        },
-        icon: SvgPicture.asset("assets/icons/menu.svg", color: darkGreyBlue),
-      ),
-      title: Text("News", style: TextStyle(color: darkGreyBlue),),
-      actions: [
-        GotoProfile(),
-      ],
     );
   }
 }
