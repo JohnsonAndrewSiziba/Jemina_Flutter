@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
     return SideMenu(
       key: _sideMenuKey,
       closeIcon: Icon(Icons.close, color: darkGreyBlue,),
-      background: lightGrey,
+      background: brightGrey,
       menu: buildMenu(),
       type: SideMenuType.slideNRotate,
       onChange: (_isOpened) {
@@ -93,7 +93,6 @@ class _HomeState extends State<Home> {
           child: Scaffold(
             extendBody: true,
             bottomNavigationBar: FloatingNavbar(
-
               onTap: (int val) => setState(() => index = val),
               currentIndex: index,
               selectedItemColor: Colors.white,
@@ -120,16 +119,6 @@ class _HomeState extends State<Home> {
               ],
               index: index,
             ),
-            // body: screens[index],
-            // body: Container(
-            //   child: [
-            //     StatsPage(onOpenMenu: toggleMenu, state: value),
-            //     ReportsPage(onOpenMenu: toggleMenu, state: value),
-            //     LandingPage(onOpenMenu: toggleMenu, state: value),
-            //     CountersPage(onOpenMenu: toggleMenu, state: value),
-            //     NewsPage(onOpenMenu: toggleMenu, state: value),
-            //   ][index],
-            // ),
           ),
         ),
       ),

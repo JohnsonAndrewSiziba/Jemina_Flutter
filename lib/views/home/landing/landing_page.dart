@@ -8,6 +8,8 @@ import 'package:jemina_capital/views/home/landing/components/top_marquee.dart';
 import 'package:ticker_text/ticker_text.dart';
 
 import '../../../data/constants/theme_colors.dart';
+import '../../../library/request_response.dart';
+import '../../../models/top_marquee_price.dart';
 import '../../../widgets/go_to_profile.dart';
 import '../shared/build_main_page_app_bar.dart';
 

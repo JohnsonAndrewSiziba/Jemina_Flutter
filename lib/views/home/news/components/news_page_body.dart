@@ -14,26 +14,33 @@ class NewsPageBody extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.only(top: 10.0),
-        child: ListView.builder(
-          itemCount: newsList.length,
-          itemBuilder: (context, index) {
-            return InkWell(
-              splashColor: techBlue,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ViewNews(article: newsList[index]),
-                  ),
-                );
-              },
-              // child: listWidget(newsTiles[index]),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: newsListWidget(news: newsList[index], context: context),
-              ),
-            );
+        child: RefreshIndicator(
+          color: darkGreyBlue,
+          backgroundColor: brightGrey,
+          onRefresh: () {
+            return Future.delayed(Duration(seconds: 1));
           },
+          child: ListView.builder(
+            itemCount: newsList.length,
+            itemBuilder: (context, index) {
+              return InkWell(
+                splashColor: techBlue,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ViewNews(article: newsList[index]),
+                    ),
+                  );
+                },
+                // child: listWidget(newsTiles[index]),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: newsListWidget(news: newsList[index], context: context),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

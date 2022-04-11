@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:jemina_capital/views/home/stats/components/body.dart';
+import 'package:skeletons/skeletons.dart';
 
 import '../../../data/constants/theme_colors.dart';
 import '../../../widgets/go_to_profile.dart';
 import '../shared/build_main_page_app_bar.dart';
+import '../shared/category_menu.dart';
+import 'components/prices_list_widget.dart';
 
 class StatsPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -21,18 +23,92 @@ class StatsPage extends StatefulWidget {
 class _StatsPageState extends State<StatsPage> {
   static Color primaryColor = techBlue;
   static Color secondaryColor = complement;
-  bool _isIncome = false;
+
+  bool isLoading = true;
 
   void onOpenMenu() {
     widget.onOpenMenu();
   }
+
+  List<String> categories = [
+    "Price Sheets",
+    "Market Statistics",
+  ];
+
+  List<IconData> icons = [
+    Icons.candlestick_chart,
+    Icons.insert_chart,
+  ];
+
+  void categortMenuTap(int index){
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: brightGrey,
       appBar: buildMainPageAppBar(context, onOpenMenu, "Market Statistics"),
-      body: StatsBody(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: jeminaGrey,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(11.0),
+                bottomRight: Radius.circular(11.0),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 4),
+                  blurRadius: 12,
+                  color: scaffoldBackgroundColor,
+                ),
+              ],
+            ),
+            child: Padding(
+              padding:
+              const EdgeInsets.symmetric(vertical: kDefaultPadding - 10.0, horizontal: 10.0),
+              child: SizedBox(
+                height: 34.0,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) => buildCategoryItem(index, categortMenuTap, selectedIndex, icons, categories),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: Skeleton(
+                isLoading: isLoading,
+                skeleton: SkeletonListView(),
+                child: RefreshIndicator(
+                  color: darkGreyBlue,
+                  backgroundColor: brightGrey,
+                  onRefresh: () {
+                    return Future.delayed(Duration(seconds: 1));
+                  },
+                  child: ListView.builder(
+                    // physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 30,
+                      itemBuilder: (context, index) {
+                        return pricesListWidget(context: context);
+                      }),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

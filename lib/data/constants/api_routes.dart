@@ -26,5 +26,8 @@ class Routes {
   //COUNTERS ROUTES
   static Uri getZSECountersRoute = Uri.parse("$apiHome/mobile/v/zse-counters");
 
+  //MARKET STATISTICS ROUTES
+  static Uri getTopMarqueePrices = Uri.parse("$apiHome/mobile/v/marquee-prices");
+
 
 }

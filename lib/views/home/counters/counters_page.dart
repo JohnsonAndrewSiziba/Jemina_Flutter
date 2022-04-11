@@ -115,14 +115,21 @@ class _CountersPageState extends State<CountersPage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: kDefaultPadding - 10.0, vertical: 10.0,
                   ),
-                  child: ListView.builder(
-                      itemCount: companiesList.length,
-                      itemBuilder: (context, index) {
-                        return company(
-                          context: context,
-                          company: companiesList[index],
-                        );
-                      }),
+                  child: RefreshIndicator(
+                    color: darkGreyBlue,
+                    backgroundColor: brightGrey,
+                    onRefresh: () {
+                      return Future.delayed(Duration(seconds: 1));
+                    },
+                    child: ListView.builder(
+                        itemCount: companiesList.length,
+                        itemBuilder: (context, index) {
+                          return company(
+                            context: context,
+                            company: companiesList[index],
+                          );
+                        }),
+                  ),
                 ),
               ),
             ),

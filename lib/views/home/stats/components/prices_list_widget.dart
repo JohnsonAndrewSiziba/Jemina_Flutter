@@ -1,24 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jemina_capital/data/constants/theme_colors.dart';
+
+import '../../../../data/constants/theme_colors.dart';
 import '../../../../widgets/card.dart';
-
-class MainBody extends StatelessWidget {
-  const MainBody({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 30,
-        itemBuilder: (context, index) {
-      return pricesListWidget(context: context);
-    });
-  }
-}
-
 
 Widget pricesListWidget({required BuildContext context}) {
   return Padding(
@@ -60,7 +43,7 @@ Widget pricesListWidget({required BuildContext context}) {
                   Spacer(),
                 ],
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: kDefaultPadding + 75.0),
                 child: Divider(
                   color: Colors.blueGrey,
