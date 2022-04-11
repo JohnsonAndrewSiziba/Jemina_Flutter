@@ -75,6 +75,14 @@ class _HomeState extends State<Home> {
     });
   }
 
+  void toggleTab(theIndex) {
+    setState(() {
+      index = theIndex;
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return SideMenu(
@@ -113,7 +121,7 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 StatsPage(onOpenMenu: toggleMenu, state: value),
                 ReportsPage(onOpenMenu: toggleMenu, state: value),
-                LandingPage(onOpenMenu: toggleMenu, state: value),
+                LandingPage(onOpenMenu: toggleMenu, state: value, toggleTab: toggleTab),
                 CountersPage(onOpenMenu: toggleMenu, state: value),
                 NewsPage(onOpenMenu: toggleMenu, state: value),
               ],

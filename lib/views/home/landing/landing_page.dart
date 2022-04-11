@@ -5,7 +5,9 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/landing/components/top_marquee.dart';
+import 'package:jemina_capital/views/trading/trading_home.dart';
 import 'package:ticker_text/ticker_text.dart';
 
 import '../../../data/constants/theme_colors.dart';
@@ -18,8 +20,9 @@ import 'components/quote.dart';
 
 class LandingPage extends StatefulWidget {
   VoidCallback onOpenMenu;
+  Function toggleTab;
   double state;
-  LandingPage({Key? key, required this.onOpenMenu, required this.state})
+  LandingPage({Key? key, required this.onOpenMenu, required this.state, required this.toggleTab})
       : super(key: key);
 
   @override
@@ -85,32 +88,50 @@ class _LandingPageState extends State<LandingPage> {
                         MenuCard(
                           title: "Trading",
                           image: "assets/images/finance_app_one.png",
-                          press: () {},
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => TradingHome()),
+                            );
+                          },
                         ),
                         MenuCard(
                           title: "Account",
                           image: "assets/images/profile.png",
-                          press: () {},
+                          press: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => AccountPage()),
+                            );
+                          },
                         ),
                         MenuCard(
                           title: "Market Data",
                           image: "assets/images/data.png",
-                          press: () {},
+                          press: () {
+                            widget.toggleTab(0);
+                          },
                         ),
                         MenuCard(
                           title: "Reports",
                           image: "assets/images/report.png",
-                          press: () {},
+                          press: () {
+                            widget.toggleTab(1);
+                          },
                         ),
                         MenuCard(
                           title: "Counters",
                           image: "assets/images/startup.png",
-                          press: () {},
+                          press: () {
+                            widget.toggleTab(3);
+                          },
                         ),
                         MenuCard(
                           title: "News",
                           image: "assets/images/news.png",
-                          press: () {},
+                          press: () {
+                            widget.toggleTab(4);
+                          },
                         ),
                       ],
                     ),
@@ -128,7 +149,7 @@ class _LandingPageState extends State<LandingPage> {
 class MenuCard extends StatelessWidget {
   final String image;
   final String title;
-  final Function press;
+  final VoidCallback press;
   const MenuCard({
     Key? key,
     required this.image,
@@ -144,7 +165,7 @@ class MenuCard extends StatelessWidget {
         // padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(13),
+          borderRadius: BorderRadius.circular(8.0),
           boxShadow: [
             BoxShadow(
               offset: Offset(0, 17),
@@ -155,9 +176,10 @@ class MenuCard extends StatelessWidget {
           ],
         ),
         child: Material(
-          color: Colors.transparent,
+          elevation: 1.0,
+          color: Colors.white,
           child: InkWell(
-            onTap: press(),
+            onTap: press,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
