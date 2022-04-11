@@ -30,4 +30,7 @@ class Routes {
   static Uri getTopMarqueePrices = Uri.parse("$apiHome/mobile/v/marquee-prices");
 
 
+  //MISC ROUTES
+  static Uri getQuote = Uri.parse("$apiHome/quote");
+
 }
