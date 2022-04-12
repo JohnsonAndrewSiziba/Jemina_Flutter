@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Price {
   Price(
     this.id,
@@ -18,7 +20,7 @@ class Price {
     this.listedOn,
   );
 
-  final int id;
+  final num id;
 
   final String name;
 
@@ -49,4 +51,33 @@ class Price {
   final String logo;
 
   final String listedOn;
+
+  static List<Price> jsonDecode(List<dynamic> jsonList) {
+    return (jsonList as List).map((i) => Price.fromJson(i)).toList();
+  }
+
+  factory Price.fromJson(Map<String, dynamic> json) => Price(
+    json["id"],
+    json["name"],
+    json["symbol"],
+    DateFormat('yyyy-MM-dd').format(DateTime.parse(json["date"])),
+    json["sector"],
+    json["open"],
+    json["close"],
+    json["percentage_change"],
+    json["change"],
+    json["volume"],
+    json["value"],
+    json["balance_sheet"],
+    json["market_cap"],
+    json["weight"],
+    json["logo_path"],
+    json["listed_on"],
+  );
+
+  @override
+  String toString(){
+    return "$name: $date - $close";
+  }
+
 }
