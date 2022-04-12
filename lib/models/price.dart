@@ -3,16 +3,19 @@ class Price {
     this.id,
     this.name,
     this.symbol,
+    this.date,
     this.sector,
     this.open,
     this.close,
     this.percentageChange,
+    this.change,
     this.volume,
     this.value,
     this.balanceSheet,
     this.marketCap,
     this.weight,
     this.logo,
+    this.listedOn,
   );
 
   final int id;
@@ -21,23 +24,29 @@ class Price {
 
   final String symbol;
 
+  final String date;
+
   final String sector;
 
-  final double open;
+  final String open;
 
-  final double close;
+  final String close;
 
-  final double percentageChange;
+  final String percentageChange;
 
-  final double volume;
+  final String change;
 
-  final double value;
+  final String volume;
 
-  final double balanceSheet;
+  final String value;
 
-  final double marketCap;
+  final String balanceSheet;
 
-  final double weight;
+  final String marketCap;
+
+  final String weight;
 
   final String logo;
+
+  final String listedOn;
 }

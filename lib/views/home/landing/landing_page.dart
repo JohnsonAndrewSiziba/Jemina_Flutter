@@ -10,6 +10,8 @@ import 'package:jemina_capital/views/home/landing/components/top_marquee.dart';
 import 'package:jemina_capital/views/trading/trading_home.dart';
 import 'package:ticker_text/ticker_text.dart';
 
+import '../../../controllers/misc_controller/MiscController.dart';
+import '../../../controllers/statistics/price_sheets_controller.dart';
 import '../../../data/constants/theme_colors.dart';
 import '../../../library/request_response.dart';
 import '../../../models/quote.dart';
@@ -32,6 +34,44 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   double value = 0;
 
+  Quote quote = Quote(text: "", author: "");
+  bool quoteIsLoading = true;
+
+  late RequestResponse requestResponse;
+  List<TopMarqueePrice> pricesList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getQuote();
+  }
+
+  void getQuote() async {
+    MiscellaneousController miscellaneousController = MiscellaneousController();
+    requestResponse = await miscellaneousController.getQuote();
+    var jsonBody = requestResponse.getJsonBody();
+
+    setState(() {
+      quote = Quote(text: jsonBody['text'], author: jsonBody['author']);
+      quoteIsLoading = false;
+    });
+  }
+
+  void getMarqueeValues() async {
+    PriceSheetsController priceSheetsController = PriceSheetsController();
+    requestResponse = await priceSheetsController.getTopMarqueePrices();
+    var jsonBody = requestResponse.getJsonBody();
+
+    var jsonNewsList = jsonBody['prices'];
+
+    setState(() {
+      pricesList = TopMarqueePrice.jsonDecode(jsonNewsList);
+      quoteIsLoading = false;
+      // print(jsonBody.toString());
+    });
+  }
+
+
   void onOpenMenu() {
     widget.onOpenMenu();
   }
@@ -46,97 +86,108 @@ class _LandingPageState extends State<LandingPage> {
         children: [
           TopMarquee(),
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Stack(
-                    children: [
-                      Container(
-                        height: size.height * .15,
-                        decoration: BoxDecoration(
-                          color: brightGrey,
-                          image: DecorationImage(
-                            image:
-                                AssetImage("assets/images/forex-trading.png"),
-                            fit: BoxFit.fitWidth,
+            child: RefreshIndicator(
+              color: darkGreyBlue,
+              backgroundColor: brightGrey,
+              onRefresh: () {
+                setState(() {
+                  quoteIsLoading = true;
+                });
+                getQuote();
+                return Future.delayed(Duration(seconds: 0));
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Stack(
+                      children: [
+                        Container(
+                          height: size.height * .15,
+                          decoration: BoxDecoration(
+                            color: brightGrey,
+                            image: DecorationImage(
+                              image:
+                                  AssetImage("assets/images/forex-trading.png"),
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        height: size.height * .15,
-                        decoration: BoxDecoration(
-                          color: lightSteel.withOpacity(0.93),
+                        Container(
+                          height: size.height * .15,
+                          decoration: BoxDecoration(
+                            color: lightSteel.withOpacity(0.89),
+                          ),
                         ),
-                      ),
-                      QuoteComponent(size: size),
-                    ],
-                  ),
-                  Container(
-                    width: size.width,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-                    color: lightSteel,
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      shrinkWrap: true,
-                      childAspectRatio: .85,
-                      crossAxisSpacing: 20,
-                      physics: NeverScrollableScrollPhysics(),
-                      mainAxisSpacing: 20,
-                      children: <Widget>[
-                        MenuCard(
-                          title: "Trading",
-                          image: "assets/images/finance_app_one.png",
-                          press: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => TradingHome()),
-                            );
-                          },
-                        ),
-                        MenuCard(
-                          title: "Account",
-                          image: "assets/images/profile.png",
-                          press: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => AccountPage()),
-                            );
-                          },
-                        ),
-                        MenuCard(
-                          title: "Market Data",
-                          image: "assets/images/data.png",
-                          press: () {
-                            widget.toggleTab(0);
-                          },
-                        ),
-                        MenuCard(
-                          title: "Reports",
-                          image: "assets/images/report.png",
-                          press: () {
-                            widget.toggleTab(1);
-                          },
-                        ),
-                        MenuCard(
-                          title: "Counters",
-                          image: "assets/images/startup.png",
-                          press: () {
-                            widget.toggleTab(3);
-                          },
-                        ),
-                        MenuCard(
-                          title: "News",
-                          image: "assets/images/news.png",
-                          press: () {
-                            widget.toggleTab(4);
-                          },
-                        ),
+                        QuoteComponent(size: size, quote: quote, isLoading: quoteIsLoading),
                       ],
                     ),
-                  ),
-                ],
+                    Container(
+                      width: size.width,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                      color: lightSteel,
+                      child: GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        childAspectRatio: .85,
+                        crossAxisSpacing: 20,
+                        physics: NeverScrollableScrollPhysics(),
+                        mainAxisSpacing: 20,
+                        children: <Widget>[
+                          MenuCard(
+                            title: "Trading",
+                            image: "assets/images/finance_app_one.png",
+                            press: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => TradingHome()),
+                              );
+                            },
+                          ),
+                          MenuCard(
+                            title: "Account",
+                            image: "assets/images/profile.png",
+                            press: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => AccountPage()),
+                              );
+                            },
+                          ),
+                          MenuCard(
+                            title: "Market Data",
+                            image: "assets/images/data.png",
+                            press: () {
+                              widget.toggleTab(0);
+                            },
+                          ),
+                          MenuCard(
+                            title: "Reports",
+                            image: "assets/images/report.png",
+                            press: () {
+                              widget.toggleTab(1);
+                            },
+                          ),
+                          MenuCard(
+                            title: "Counters",
+                            image: "assets/images/startup.png",
+                            press: () {
+                              widget.toggleTab(3);
+                            },
+                          ),
+                          MenuCard(
+                            title: "News",
+                            image: "assets/images/news.png",
+                            press: () {
+                              widget.toggleTab(4);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

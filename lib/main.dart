@@ -67,8 +67,6 @@ class MyApp extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-
-        // end theme data
         // scaffoldBackgroundColor: primaryColor,
       ),
       // home: const MyHomePage(title: 'Jemina Capital'),
@@ -99,7 +97,6 @@ class MyApp extends StatelessWidget {
         '/sidenav-design': (context) => const SidenavDesign(),
         '/account': (context) => AccountPage(),
         '/wallet': (context) => Wallet(),
-
         //mockups
       },
     );

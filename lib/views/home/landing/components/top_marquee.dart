@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/controllers/statistics/price_sheets_controller.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:jemina_capital/models/quote.dart';
 import 'package:jemina_capital/views/home/landing/components/marquee_item.dart';
 import 'package:skeletons/skeletons.dart';
 import 'package:ticker_text/ticker_text.dart';
