@@ -28,6 +28,7 @@ class Routes {
 
   //MARKET STATISTICS ROUTES
   static Uri getTopMarqueePrices = Uri.parse("$apiHome/mobile/v/marquee-prices");
+  static Uri getPriceSheet = Uri.parse("$apiHome/mobile/v/price_sheet");
 
 
   //MISC ROUTES

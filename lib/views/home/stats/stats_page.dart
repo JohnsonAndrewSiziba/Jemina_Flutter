@@ -2,9 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jemina_capital/controllers/statistics/price_sheets_controller.dart';
 import 'package:skeletons/skeletons.dart';
 
 import '../../../data/constants/theme_colors.dart';
+import '../../../library/request_response.dart';
+import '../../../models/price.dart';
 import '../../../widgets/go_to_profile.dart';
 import '../shared/build_main_page_app_bar.dart';
 import '../shared/category_menu.dart';
@@ -24,7 +27,29 @@ class _StatsPageState extends State<StatsPage> {
   static Color primaryColor = techBlue;
   static Color secondaryColor = complement;
 
+  late RequestResponse requestResponse;
+  List<Price> pricesList = [];
+
   bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getPriceSheet();
+  }
+
+  void getPriceSheet() async {
+    PriceSheetsController priceSheetsController = PriceSheetsController();
+    requestResponse = await priceSheetsController.getPriceSheet();
+    var jsonBody = requestResponse.getJsonBody();
+
+    var jsonPricesList = jsonBody['prices'];
+
+    setState(() {
+      pricesList = Price.jsonDecode(jsonPricesList);
+      isLoading = false;
+    });
+  }
 
   void onOpenMenu() {
     widget.onOpenMenu();
@@ -99,9 +124,9 @@ class _StatsPageState extends State<StatsPage> {
                   child: ListView.builder(
                     // physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: 30,
+                      itemCount: pricesList.length,
                       itemBuilder: (context, index) {
-                        return pricesListWidget(context: context);
+                        return pricesListWidget(context: context, price: pricesList[index]);
                       }),
                 ),
               ),

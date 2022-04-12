@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/models/price.dart';
 
+import '../../../../data/constants/api_routes.dart';
 import '../../../../data/constants/theme_colors.dart';
 import '../../../../widgets/card.dart';
 
-Widget pricesListWidget({required BuildContext context}) {
+Widget pricesListWidget({required BuildContext context, required Price price}) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 10.0),
     child: card(
@@ -17,33 +19,33 @@ Widget pricesListWidget({required BuildContext context}) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.network(
-                    "https://jemina.capital/storage/company_logos/company-logo1642428309.png",
-                    width: 35.0,
+                    Routes.serverHome + (price.logo ?? ""),
+                    width: 40.0,
                   ),
                   const SizedBox(
                     width: 15.0,
                   ),
                   Text(
-                    "ZYMB.ZW",
+                    price.symbol,
                     style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: darkGreyBlue, fontFamily: "Roboto",),
                   ),
                   const Spacer(),
-                  const Icon(Icons.arrow_upward, color: Colors.green, size: 16.0,),
-                  const Text(
-                    "120.00",
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: Colors.green, fontFamily: "Roboto",),
+                  getIcon(price.direction),
+                  Text(
+                    price.close,
+                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: getPriceColor(price.direction), fontFamily: "Roboto",),
                   ),
                   const SizedBox(
                     width: 15.0,
                   ),
-                  const Text(
-                    "(0.00%)",
-                    style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.green, fontFamily: "Roboto",),
+                  Text(
+                    "(${price.percentageChange}%)",
+                    style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: getPriceColor(price.direction), fontFamily: "Roboto",),
                   ),
-                  Spacer(),
+                  // Spacer(),
                 ],
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: kDefaultPadding + 75.0),
                 child: Divider(
                   color: Colors.blueGrey,
@@ -57,45 +59,45 @@ Widget pricesListWidget({required BuildContext context}) {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text("Open:", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
-                      SizedBox(
+                      const SizedBox(
                         height: 5.0,
                       ),
-                      Text("200", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text(price.open, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text("Close", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
                       SizedBox(
                         height: 5.0,
                       ),
-                      Text("200", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text(price.close, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text("Volume", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
                       SizedBox(
                         height: 5.0,
                       ),
-                      Text("200", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text(price.volume, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text("M. Cap.", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                    children: [
+                      Text("M. Cap. (M)", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
                       SizedBox(
                         height: 5.0,
                       ),
-                      Text("200", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text(price.marketCap, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
                     ],
                   ),
 
@@ -107,4 +109,29 @@ Widget pricesListWidget({required BuildContext context}) {
       ),
     ),
   );
+}
+
+getPriceColor(String direction) {
+  if (direction == "up") {
+    return Colors.green;
+  } else if(direction == "down") {
+    return Colors.red;
+  }
+  else {
+    return Colors.blueGrey;
+  }
+}
+
+Widget getIcon(String direction){
+  if(direction == "up") {
+    return const Icon(Icons.arrow_upward, color: Colors.green, size: 14.0,);
+  }
+  else if(direction == "down") {
+    return const Icon(Icons.arrow_downward, color: Colors.red, size: 14.0,);
+  }
+  else {
+    return const SizedBox(
+      width: 0.0,
+    );
+  }
 }

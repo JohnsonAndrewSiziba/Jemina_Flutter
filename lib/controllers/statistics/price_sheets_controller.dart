@@ -9,4 +9,11 @@ class PriceSheetsController extends Controller {
     makeGetRequest(url: Routes.getTopMarqueePrices);
     return response;
   }
+
+  Future<RequestResponse> getPriceSheet() {
+    Future<RequestResponse> response =
+    makeGetRequest(url: Routes.getPriceSheet);
+    return response;
+  }
+
 }

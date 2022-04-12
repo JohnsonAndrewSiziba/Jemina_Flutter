@@ -1,6 +1,6 @@
 class Quote {
-  final String text;
-  final String author;
+  final String? text;
+  final String? author;
 
   Quote({
     required this.text,

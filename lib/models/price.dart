@@ -18,6 +18,7 @@ class Price {
     this.weight,
     this.logo,
     this.listedOn,
+    this.direction,
   );
 
   final num id;
@@ -28,7 +29,7 @@ class Price {
 
   final String date;
 
-  final String sector;
+  final String? sector;
 
   final String open;
 
@@ -48,9 +49,11 @@ class Price {
 
   final String weight;
 
-  final String logo;
+  final String? logo;
 
   final String listedOn;
+
+  final String direction;
 
   static List<Price> jsonDecode(List<dynamic> jsonList) {
     return (jsonList as List).map((i) => Price.fromJson(i)).toList();
@@ -73,6 +76,7 @@ class Price {
     json["weight"],
     json["logo_path"],
     json["listed_on"],
+    json["direction"],
   );
 
   @override
