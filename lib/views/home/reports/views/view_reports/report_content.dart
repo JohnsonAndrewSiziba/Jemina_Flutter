@@ -103,7 +103,7 @@ class _ReportContentState extends State<ReportContent> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 30.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Align(
                     child: Container(
@@ -119,6 +119,7 @@ class _ReportContentState extends State<ReportContent> {
                   ),
                   Text(
                     widget.report.title,
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20, height: 1.5,
                     fontFamily: 'Times New Roman',
                     fontWeight: FontWeight.bold,

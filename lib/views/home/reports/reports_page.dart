@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:jemina_capital/controllers/reports/reports_controller.dart';
 import 'package:jemina_capital/data/constants/api_routes.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
@@ -195,9 +196,9 @@ Widget reportListWidget({required BuildContext context, required Report report})
             ),
             Row(
               children: [
-                Text("Date: " + report.toDate.toString(), style: TextStyle(fontSize: 12.0, color: Colors.grey),),
+                Text("Date: " + DateFormat('EEE dd MMM yyyy').format(DateTime.parse(report.toDate!)), style: TextStyle(fontSize: 12.0, color: Colors.blueGrey),),
                 Spacer(),
-                Text(report.reportType ?? "", style: TextStyle(fontSize: 12.0, color: Colors.grey),),
+                Text(report.reportType ?? "", style: TextStyle(fontSize: 12.0, color: Colors.blueGrey),),
               ],
             ),
           ],
