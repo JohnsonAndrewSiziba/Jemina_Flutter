@@ -62,7 +62,7 @@ class _ViewCounterState extends State<ViewCounter> {
                                     ),
                                     SizedBox(width: 10),
                                     Text(
-                                      "(${widget.company.symbol?.toUpperCase()})" ?? "",
+                                      "(${widget.company.symbol?.toUpperCase()})",
                                       style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold,

@@ -125,7 +125,7 @@ class _LandingPageState extends State<LandingPage> {
                     Container(
                       width: size.width,
                       padding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
                       color: lightSteel,
                       child: GridView.count(
                         crossAxisCount: 2,

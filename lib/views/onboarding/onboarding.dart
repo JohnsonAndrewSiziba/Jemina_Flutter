@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../data/shared_preference/shared_preference_manager.dart';
+
 final kTitleStyle = TextStyle(
   fontSize: 24.0,
   color: techBlue,
@@ -131,8 +133,10 @@ class _OnboardingState extends State<Onboarding> {
                         children: [
                           Expanded(
                             child: GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/login');
+                              onTap: () async {
+                                SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager();
+                                await sharedPreferenceManager.setShownWelcomeSlides(true);
+                                Navigator.pushReplacementNamed(context, '/initialize');
                               },
                               child: Container(
                                 padding: EdgeInsets.all(13.0),

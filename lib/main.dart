@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/initialize.dart';
 import 'package:jemina_capital/mockups/sidenav_design.dart';
 import 'package:jemina_capital/views/auth/login.dart';
 import 'package:jemina_capital/views/auth/register.dart';
@@ -12,6 +13,7 @@ import 'package:jemina_capital/views/home/home.dart';
 import 'package:jemina_capital/views/onboarding/onboarding.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:jemina_capital/widgets/sidenav.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(const MyApp());
@@ -80,13 +82,14 @@ class MyApp extends StatelessWidget {
           'assets/images/logo-no-bg.png',
         ),
         splashTransition: SplashTransition.fadeTransition,
-        // pageTransitionType: PageTransitionType.scale,
-        nextScreen: Login(),
+        pageTransitionType: PageTransitionType.fade,
+        nextScreen: Initialize(),
       ),
 
       //routes
       initialRoute: '/',
       routes: {
+        '/initialize': (context) => const Initialize(),
         '/home': (context) => const Home(),
         '/login': (context) => const Login(),
         '/register': (context) => const Register(),
