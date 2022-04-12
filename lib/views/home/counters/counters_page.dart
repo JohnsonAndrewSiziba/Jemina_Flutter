@@ -146,7 +146,7 @@ Widget company({required BuildContext context, required Company company}) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ViewCounter(),
+          builder: (context) => ViewCounter(company: company),
         ),
       );
     },

@@ -8,6 +8,7 @@ import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/constants/values.dart';
 import 'package:jemina_capital/library/request_response.dart';
 import 'package:jemina_capital/models/report.dart';
+import 'package:jemina_capital/views/home/reports/views/view_reports/report_content.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/view_report.dart';
 import 'package:skeletons/skeletons.dart';
 
@@ -145,7 +146,7 @@ Widget reportListWidget({required BuildContext context, required Report report})
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ViewReport(report: report),
+          builder: (context) => ReportContent(report: report),
         ),
       );
     },
