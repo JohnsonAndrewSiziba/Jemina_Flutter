@@ -5,6 +5,7 @@ import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart
 import 'package:intl/intl.dart';
 import 'package:jemina_capital/models/report.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../data/constants/api_routes.dart';
 
@@ -26,6 +27,10 @@ class _ReportContentState extends State<ReportContent> {
         child: getBody(),
       ),
     );
+  }
+
+  void _launchURL() async {
+    if (!await launch(Routes.serverHome + widget.report.path)) throw 'Could not launch ${Routes.serverHome + widget.report.reportImagePath}';
   }
 
   Widget getBody() {
@@ -131,17 +136,22 @@ class _ReportContentState extends State<ReportContent> {
                   ),
                   Row(
                     children: <Widget>[
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          color: lightSteel,
+                      GestureDetector(
+                        onTap: () {
+                          _launchURL();
+                        },
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            color: lightSteel,
+                          ),
+                           child: Icon(
+                              Icons.download,
+                              color: Colors.blueGrey,
+                            )
                         ),
-                         child: Icon(
-                            Icons.download,
-                            color: Colors.blueGrey,
-                          )
                       ),
                       SizedBox(
                         width: 20,

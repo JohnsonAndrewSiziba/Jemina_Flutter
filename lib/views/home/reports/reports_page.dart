@@ -48,6 +48,8 @@ class _ReportsPageState extends State<ReportsPage> {
 
     var jsonReportsList = jsonBody['reports'];
 
+
+
     setState(() {
       reportsList = Report.jsonDecode(jsonReportsList);
       isLoading = false;
@@ -148,6 +150,7 @@ Widget reportListWidget({required BuildContext context, required Report report})
         context,
         MaterialPageRoute(
           builder: (context) => ReportContent(report: report),
+          // builder: (context) => ViewReport(report: report),
         ),
       );
     },
