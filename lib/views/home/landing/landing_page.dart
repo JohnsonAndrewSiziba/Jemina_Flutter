@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/landing/components/top_marquee.dart';
 import 'package:jemina_capital/views/trading/trading_home.dart';
@@ -24,7 +25,11 @@ class LandingPage extends StatefulWidget {
   VoidCallback onOpenMenu;
   Function toggleTab;
   double state;
-  LandingPage({Key? key, required this.onOpenMenu, required this.state, required this.toggleTab})
+  LandingPage(
+      {Key? key,
+      required this.onOpenMenu,
+      required this.state,
+      required this.toggleTab})
       : super(key: key);
 
   @override
@@ -71,7 +76,6 @@ class _LandingPageState extends State<LandingPage> {
     });
   }
 
-
   void onOpenMenu() {
     widget.onOpenMenu();
   }
@@ -99,86 +103,69 @@ class _LandingPageState extends State<LandingPage> {
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Stack(
-                      children: [
-                        Container(
-                          height: size.height * .15,
-                          decoration: BoxDecoration(
-                            color: brightGrey,
-                            image: DecorationImage(
-                              image:
-                                  AssetImage("assets/images/forex-trading.png"),
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: size.height * .15,
-                          decoration: BoxDecoration(
-                            color: lightSteel.withOpacity(0.89),
-                          ),
-                        ),
-                        QuoteComponent(size: size, quote: quote, isLoading: quoteIsLoading),
-                      ],
-                    ),
+                    Balances(),
                     Container(
                       width: size.width,
                       padding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 0.0),
+                          EdgeInsets.symmetric(horizontal: 20.0),
                       color: lightSteel,
                       child: GridView.count(
+                        padding: EdgeInsets.zero,
                         crossAxisCount: 2,
                         shrinkWrap: true,
-                        childAspectRatio: .85,
-                        crossAxisSpacing: 20,
+                        childAspectRatio: .95,
+                        crossAxisSpacing: 10,
                         physics: NeverScrollableScrollPhysics(),
-                        mainAxisSpacing: 20,
+                        mainAxisSpacing: 10,
                         children: <Widget>[
                           MenuCard(
-                            title: "Trading",
-                            image: "assets/images/finance_app_one.png",
+                            title: "Board",
+                            image: "assets/svg/finance_app.svg",
                             press: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => TradingHome()),
+                                MaterialPageRoute(
+                                    builder: (context) => TradingHome()),
                               );
                             },
                           ),
                           MenuCard(
-                            title: "Account",
-                            image: "assets/images/profile.png",
+                            title: "Orders",
+                            image: "assets/svg/orders.svg",
                             press: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => AccountPage()),
+                                MaterialPageRoute(
+                                    builder: (context) => AccountPage()),
                               );
                             },
                           ),
                           MenuCard(
-                            title: "Market Data",
-                            image: "assets/images/data.png",
+                            title: "Wallet",
+                            image: "assets/svg/wallet.svg",
                             press: () {
                               widget.toggleTab(0);
                             },
                           ),
                           MenuCard(
-                            title: "Reports",
-                            image: "assets/images/report.png",
+                            title: "Portfolio",
+                            image: "assets/svg/report_analysis.svg",
                             press: () {
                               widget.toggleTab(1);
                             },
                           ),
                           MenuCard(
-                            title: "Counters",
-                            image: "assets/images/startup.png",
+                            title: "Profile",
+                            image: "assets/svg/personal_data.svg",
                             press: () {
                               widget.toggleTab(3);
                             },
                           ),
                           MenuCard(
-                            title: "News",
-                            image: "assets/images/news.png",
+                            title: "Settings",
+                            image: "assets/svg/settings.svg",
                             press: () {
                               widget.toggleTab(4);
                             },
@@ -186,6 +173,61 @@ class _LandingPageState extends State<LandingPage> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      color: lightSteel,
+                      width: size.width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 20.0,),
+                          Center(
+                            child: Text(
+                              "TOOLS",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'avenir',
+                                color: darkGreyBlue,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 5.0,),
+                          GridView.count(
+                            crossAxisCount: 4,
+                            childAspectRatio: 0.7,
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            padding: EdgeInsets.zero,
+                            children: [
+                              serviceWidget("assets/images/calculator.png", "Investment\nCalculator"),
+                              serviceWidget("assets/images/calendar.png", "Investor\nDiary"),
+                              serviceWidget("assets/images/book.png", "Investment\nHandbook"),
+                              serviceWidget("assets/images/question.png", "FAQ\nCenter"),
+                              // serviceWidget("assets/images/calculator.png", "Cashback\nOffer"),
+                              // serviceWidget("assets/images/calculator.png", "Movie\nTicket"),
+                              // serviceWidget("more", "More\n"),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10.0,),
+
+                    QuotesContainer(
+                      size: size,
+                      quote: quote,
+                      quoteIsLoading: quoteIsLoading,
+                    ),
+
+                    SizedBox(height: 100.0),
+
+                    // TOOLS
                   ],
                 ),
               ),
@@ -193,6 +235,196 @@ class _LandingPageState extends State<LandingPage> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget serviceWidget(String img, String name) {
+    return Column(
+      children: [
+        Expanded(
+          child: InkWell(
+            onTap: () {
+              print("$img");
+            },
+            child: Container(
+              margin: EdgeInsets.all(4.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20.0),
+                ),
+                // color: Color(0xfff1f3f6),
+                color: Colors.white,
+              ),
+              child: Center(
+                child: Container(
+                  margin: EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(img),
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          name,
+          style: TextStyle(
+            fontFamily: 'avenir',
+            fontSize: 14.0,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+}
+
+class Balances extends StatelessWidget {
+  const Balances({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          color: Colors.white,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.trending_up, color: Colors.blueGrey, size: 20.0),
+                    SizedBox(width: 5.0),
+                    Text(
+                      "Portfolio Value",
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.blueGrey,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+                  Text(
+                    "100 200,600.00",
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.notoSansIndicSiyaqNumbers(
+                      textStyle: TextStyle(
+                        fontSize: 18.0,
+                        color: darkGreyBlue,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ]),
+                SizedBox(width: 5.0),
+                Row(
+                  children: [
+                    Icon(Icons.arrow_upward, color: Colors.green, size: 15.0),
+                    SizedBox(width: 5.0),
+                    Text(
+                      "(6.20%)",
+                      style: GoogleFonts.notoSansIndicSiyaqNumbers(
+                        textStyle: TextStyle(
+                          fontSize: 12.0,
+                          color: Colors.green,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.credit_card, color: Colors.blueGrey, size: 20.0),
+                    SizedBox(width: 5.0),
+                    Text(
+                      "Wallet Balance",
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.blueGrey,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  "200 020 600.00",
+                  style: GoogleFonts.notoSansIndicSiyaqNumbers(
+                    textStyle: TextStyle(
+                      fontSize: 18.0,
+                      color: darkGreyBlue,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class QuotesContainer extends StatelessWidget {
+  const QuotesContainer({
+    Key? key,
+    required this.size,
+    required this.quote,
+    required this.quoteIsLoading,
+  }) : super(key: key);
+
+  final Size size;
+  final Quote quote;
+  final bool quoteIsLoading;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Container(
+          height: size.height * .15,
+          decoration: BoxDecoration(
+            color: brightGrey,
+            image: DecorationImage(
+              image: AssetImage("assets/images/forex-trading.png"),
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+        ),
+        Container(
+          height: size.height * .15,
+          decoration: BoxDecoration(
+            color: lightSteel.withOpacity(0.89),
+          ),
+        ),
+        QuoteComponent(size: size, quote: quote, isLoading: quoteIsLoading),
+      ],
     );
   }
 }
@@ -236,10 +468,11 @@ class MenuCard extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Spacer(),
-                  Image.asset(image),
+                  // Image.asset(image),
+                  SvgPicture.asset(image, height: 100),
                   Spacer(),
                   Text(
-                    title,
+                    title.toUpperCase(),
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headline5?.copyWith(
                           fontSize: 14,

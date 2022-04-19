@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 Color techBlue = Color(0xFF2776EA);
 Color complement = Color(0xFFEA9B27);
 
+Color skypeBlue = Color(0xFF00aff0);
+
 Color palatinanteBlue = Color(0xFF3A27EA);
 Color flourescentBlue = Color(0xFF27D8EA);
 
 Color metalicGreyTint = Color(0xFFF4F4F4);
 Color lightSteel = Color(0xFFF7F7F8);
-Color darkGreyBlue = Color(0xFF424952);
+Color darkGreyBlue = Color(0xFF424952); //6d747e
 Color brightGrey = Color(0xFFEBECF0);
 Color lightBlueGrey = Color(0xFFADBFBF);
 Color jeminaGrey = Color(0xFFC4D4DC);
@@ -26,7 +28,7 @@ Color lightGrey = Color(0xfff5f6f8);
 // Color scaffoldBackgroundColor = const Color(0XFFEFF3F6);
 Color scaffoldBackgroundColor = Color.fromARGB(255, 242, 244, 245);
 
-Color jeminaBlue = Color(0XFF2596be);
+Color jeminaBlue = Color(0xFF2596be);
 
 // list of colors that we use in our app
 const kBackgroundColor = Color(0xFFF1EFF1);
