@@ -21,7 +21,7 @@ class _ReportContentState extends State<ReportContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: kPrimaryColorLight,
       body: SafeArea(
         top: false,
         child: getBody(),
@@ -65,7 +65,7 @@ class _ReportContentState extends State<ReportContent> {
                         width: 40.0,
                         padding: const EdgeInsets.all(5.0),
                         decoration: BoxDecoration(
-                          color: jeminaGrey.withOpacity(0.8),
+                          color: kPrimaryColorLight2,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Padding(
@@ -116,7 +116,7 @@ class _ReportContentState extends State<ReportContent> {
                       height: 7,
                       decoration: BoxDecoration(
                           color: jeminaGrey,
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(10),),
                     ),
                   ),
                   SizedBox(

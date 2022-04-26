@@ -95,7 +95,8 @@ class _HomeState extends State<Home> {
         setState(() => isOpened = _isOpened);
       },
       child: Container(
-        color: brightGrey,
+        // color: brightGrey,
+        color: kPrimaryColorLight,
         child: SafeArea(
           top: false,
           child: Scaffold(
@@ -105,7 +106,7 @@ class _HomeState extends State<Home> {
               currentIndex: index,
               selectedItemColor: Colors.white,
               selectedBackgroundColor: darkGreyBlue,
-              backgroundColor: brightGrey,
+              backgroundColor: kPrimaryColorLight,
               unselectedItemColor: Colors.blueGrey,
               iconSize: 20.0,
               items: [

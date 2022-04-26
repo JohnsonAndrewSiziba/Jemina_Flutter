@@ -8,7 +8,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/landing/components/top_marquee.dart';
+import 'package:jemina_capital/views/orders/orders.dart';
+import 'package:jemina_capital/views/portfolio/portfolio.dart';
+import 'package:jemina_capital/views/settings/settings_page.dart';
 import 'package:jemina_capital/views/trading/trading_home.dart';
+import 'package:jemina_capital/views/wallet/wallet.dart';
 import 'package:ticker_text/ticker_text.dart';
 
 import '../../../controllers/misc_controller/MiscController.dart';
@@ -84,7 +88,7 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: kPrimaryColorLight,
       appBar: buildMainPageAppBar(context, onOpenMenu, "Jemina Capital"),
       body: Column(
         children: [
@@ -110,7 +114,7 @@ class _LandingPageState extends State<LandingPage> {
                       width: size.width,
                       padding:
                           EdgeInsets.symmetric(horizontal: 20.0),
-                      color: lightSteel,
+                      color: kPrimaryColorLight,
                       child: GridView.count(
                         padding: EdgeInsets.zero,
                         crossAxisCount: 2,
@@ -121,7 +125,7 @@ class _LandingPageState extends State<LandingPage> {
                         mainAxisSpacing: 10,
                         children: <Widget>[
                           MenuCard(
-                            title: "Board",
+                            title: "Markets",
                             image: "assets/svg/finance_app.svg",
                             press: () {
                               Navigator.push(
@@ -138,7 +142,7 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AccountPage()),
+                                    builder: (context) => Orders()),
                               );
                             },
                           ),
@@ -146,28 +150,44 @@ class _LandingPageState extends State<LandingPage> {
                             title: "Wallet",
                             image: "assets/svg/wallet.svg",
                             press: () {
-                              widget.toggleTab(0);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Wallet(),),
+                              );
                             },
                           ),
                           MenuCard(
                             title: "Portfolio",
                             image: "assets/svg/report_analysis.svg",
                             press: () {
-                              widget.toggleTab(1);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Portfolio(),),
+                              );
                             },
                           ),
                           MenuCard(
                             title: "Profile",
                             image: "assets/svg/personal_data.svg",
                             press: () {
-                              widget.toggleTab(3);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AccountPage(),),
+                              );
                             },
                           ),
                           MenuCard(
                             title: "Settings",
                             image: "assets/svg/settings.svg",
                             press: () {
-                              widget.toggleTab(4);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SettingsPage(),),
+                              );
                             },
                           ),
                         ],
@@ -225,7 +245,7 @@ class _LandingPageState extends State<LandingPage> {
                       quoteIsLoading: quoteIsLoading,
                     ),
 
-                    SizedBox(height: 100.0),
+                    SizedBox(height: 70.0),
 
                     // TOOLS
                   ],
@@ -253,7 +273,7 @@ class _LandingPageState extends State<LandingPage> {
                   Radius.circular(20.0),
                 ),
                 // color: Color(0xfff1f3f6),
-                color: Colors.white,
+                color: kPrimaryColorLight1,
               ),
               child: Center(
                 child: Container(
@@ -410,7 +430,7 @@ class QuotesContainer extends StatelessWidget {
         Container(
           height: size.height * .15,
           decoration: BoxDecoration(
-            color: brightGrey,
+            color: kPrimaryColorLight,
             image: DecorationImage(
               image: AssetImage("assets/images/forex-trading.png"),
               fit: BoxFit.fitWidth,
@@ -443,11 +463,11 @@ class MenuCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(8.0),
       child: Container(
         // padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: kPrimaryColorDark1,
           borderRadius: BorderRadius.circular(8.0),
           boxShadow: [
             BoxShadow(
@@ -460,7 +480,7 @@ class MenuCard extends StatelessWidget {
         ),
         child: Material(
           elevation: 1.0,
-          color: Colors.white,
+          color: kPrimaryColorLight1,
           child: InkWell(
             onTap: press,
             child: Padding(

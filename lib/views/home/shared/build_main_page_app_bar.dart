@@ -6,7 +6,8 @@ import '../../../widgets/go_to_profile.dart';
 AppBar buildMainPageAppBar(BuildContext context, Function onTap, String pageTitle) {
   return AppBar(
     centerTitle: true,
-    backgroundColor: jeminaGrey,
+    // backgroundColor: jeminaGrey,
+    backgroundColor: kPrimaryColorLight,
     elevation: 0,
     leading: IconButton(
       onPressed: () {

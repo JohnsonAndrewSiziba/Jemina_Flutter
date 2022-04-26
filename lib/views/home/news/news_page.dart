@@ -61,7 +61,7 @@ class _NewsPageState extends State<NewsPage> {
         skeleton: SkeletonListView(),
         isLoading: isLoading,
         child: Container(
-          color: lightSteel,
+          color: kPrimaryColorLight1,
           child: Column(
             children: [
               // HeaderWithSearchBar(placeholder: "Search news...", size: size),

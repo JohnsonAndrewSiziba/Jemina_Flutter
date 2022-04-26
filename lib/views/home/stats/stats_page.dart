@@ -1,14 +1,12 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jemina_capital/controllers/statistics/price_sheets_controller.dart';
 import 'package:skeletons/skeletons.dart';
 
 import '../../../data/constants/theme_colors.dart';
 import '../../../library/request_response.dart';
 import '../../../models/price.dart';
-import '../../../widgets/go_to_profile.dart';
 import '../shared/build_main_page_app_bar.dart';
 import '../shared/category_menu.dart';
 import 'components/prices_list_widget.dart';
@@ -56,7 +54,7 @@ class _StatsPageState extends State<StatsPage> {
   }
 
   List<String> categories = [
-    "Price Sheets",
+    "Share Prices",
     "Market Statistics",
   ];
 
@@ -76,14 +74,14 @@ class _StatsPageState extends State<StatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: brightGrey,
+      backgroundColor: kPrimaryColorLight1,
       appBar: buildMainPageAppBar(context, onOpenMenu, "Market Statistics"),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: BoxDecoration(
-              color: jeminaGrey,
+              color: kPrimaryColorLight,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(11.0),
                 bottomRight: Radius.circular(11.0),
@@ -111,7 +109,7 @@ class _StatsPageState extends State<StatsPage> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0,),
               child: Skeleton(
                 isLoading: isLoading,
                 skeleton: SkeletonListView(),
@@ -123,6 +121,7 @@ class _StatsPageState extends State<StatsPage> {
                   },
                   child: ListView.builder(
                     // physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.only(top: 10.0),
                       shrinkWrap: true,
                       itemCount: pricesList.length,
                       itemBuilder: (context, index) {

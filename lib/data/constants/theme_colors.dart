@@ -57,5 +57,17 @@ BoxShadow kBoxShadow = BoxShadow(
 );
 
 
+const Color tprimaryColor = Color(0xFFF67952);
+const Color tbgColor = Color(0xFFFBFBFD);
 
-// TEMPORARY
+const double tdefaultPadding = 16.0;
+const double tdefaultBorderRadius = 12.0;
+
+
+// Color palletes
+const kPrimaryColorLight = Color(0xFFF8F9FA);
+const kPrimaryColorLight1 = Color(0xFFE9ECEF);
+const kPrimaryColorLight2 = Color(0xFFDEE2E6);
+const kPrimaryColorDark = Color(0xFF6C757D);
+const kPrimaryColorDark1 = Color(0xFFADB5BD);
+const kPrimaryColorDark2 = Color(0xFFADB5BD);

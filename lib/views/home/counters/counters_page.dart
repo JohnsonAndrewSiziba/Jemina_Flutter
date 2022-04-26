@@ -89,7 +89,7 @@ class _CountersPageState extends State<CountersPage> {
         children: [
           // HeaderWithSearchBar(placeholder: "Search counter...", size: size),
           Container(
-            color: jeminaGrey,
+            color: kPrimaryColorLight,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: kDefaultPadding - 10.0,
@@ -110,10 +110,10 @@ class _CountersPageState extends State<CountersPage> {
               isLoading: isLoading,
               skeleton: SkeletonListView(),
               child: Container(
-                color: lightSteel,
+                color: kPrimaryColorLight1,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: kDefaultPadding - 10.0, vertical: 10.0,
+                      horizontal: kDefaultPadding - 10.0, vertical: 0.0,
                   ),
                   child: RefreshIndicator(
                     color: darkGreyBlue,
@@ -122,6 +122,7 @@ class _CountersPageState extends State<CountersPage> {
                       return Future.delayed(Duration(seconds: 1));
                     },
                     child: ListView.builder(
+                        padding: EdgeInsets.only(top: 10),
                         itemCount: companiesList.length,
                         itemBuilder: (context, index) {
                           return company(

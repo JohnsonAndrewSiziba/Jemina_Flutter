@@ -86,13 +86,14 @@ class _ReportsPageState extends State<ReportsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildMainPageAppBar(context, onOpenMenu, "Reports"),
-      backgroundColor: brightGrey,
+      backgroundColor: kPrimaryColorLight1,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             decoration: BoxDecoration(
-              color: jeminaGrey,
+              // color: jeminaGrey,
+              color: kPrimaryColorLight,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(defaultBorderRadius),
                 bottomRight: Radius.circular(defaultBorderRadius),
@@ -123,10 +124,9 @@ class _ReportsPageState extends State<ReportsPage> {
               isLoading: isLoading,
               skeleton: SkeletonListView(),
               child: Container(
-                margin: EdgeInsets.only(top: 10.0),
-                decoration: BoxDecoration(
-                ),
+                color: kPrimaryColorLight1,
                 child: ListView.builder(
+                    padding: EdgeInsets.only(top: 10.0),
                     itemCount: reportsList.length,
                     itemBuilder: (context, index) {
                       return Padding(
