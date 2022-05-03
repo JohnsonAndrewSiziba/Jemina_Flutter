@@ -31,9 +31,9 @@ class _CountersPageState extends State<CountersPage> {
   bool get wantKeepAlive => true;
 
   List<String> categories = [
-    "ZSE Equity Counters",
-    "VFEX Equity Counters",
-    "ZSE ETF Counters",
+    "ZSE",
+    "VFEX",
+    "ETF",
   ];
 
   List<IconData> icons = [
@@ -89,7 +89,7 @@ class _CountersPageState extends State<CountersPage> {
         children: [
           // HeaderWithSearchBar(placeholder: "Search counter...", size: size),
           Container(
-            color: kPrimaryColorLight,
+            color: kPrimaryColorLight1,
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: kDefaultPadding - 10.0,

@@ -71,3 +71,39 @@ const kPrimaryColorLight2 = Color(0xFFDEE2E6);
 const kPrimaryColorDark = Color(0xFF6C757D);
 const kPrimaryColorDark1 = Color(0xFFADB5BD);
 const kPrimaryColorDark2 = Color(0xFFADB5BD);
+
+
+const kStockColor = Color.fromRGBO(39, 50, 80, 1);
+const negativeColor = Color(0xFFBD4737);
+const positiveColor = Color(0xFF23A861);
+
+
+final kHintTextStyle = TextStyle(
+  color: Colors.blueGrey,
+  fontFamily: 'OpenSans',
+);
+
+final kLabelStyle = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'OpenSans',
+);
+
+final kBoxDecorationStyle = BoxDecoration(
+  // color: Color(0xFF6CA8F1),
+  color: kPrimaryColorLight,
+  borderRadius: BorderRadius.circular(10.0),
+  boxShadow: [
+    BoxShadow(
+      // color: Colors.black12,
+      color: kPrimaryColorLight2,
+      blurRadius: 6.0,
+      offset: Offset(0, 2),
+    ),
+  ],
+);
+
+const blueColor1 = Color(0xFF73AEF5);
+const blueColor2 = Color(0xFF61A4F1);
+const blueColor3 = Color(0xFF478DE0);
+const blueColor4 = Color(0xFF398AE5);

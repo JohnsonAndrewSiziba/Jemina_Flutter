@@ -10,7 +10,7 @@ import '../../data/shared_preference/shared_preference_manager.dart';
 
 final kTitleStyle = TextStyle(
   fontSize: 24.0,
-  color: techBlue,
+  color: blueColor3,
   fontWeight: FontWeight.bold,
 );
 
@@ -44,7 +44,7 @@ class _OnboardingState extends State<Onboarding> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: kPrimaryColorLight,
       body: SafeArea(
         child: Container(
           child: PageView(
@@ -132,35 +132,30 @@ class _OnboardingState extends State<Onboarding> {
                       child: Row(
                         children: [
                           Expanded(
-                            child: GestureDetector(
-                              onTap: () async {
-                                SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager();
-                                await sharedPreferenceManager.setShownWelcomeSlides(true);
-                                Navigator.pushReplacementNamed(context, '/initialize');
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 0.0),
+                              width: double.infinity,
+                              child: RaisedButton(
+                                elevation: 5.0,
+                                onPressed: () async {
+                                  SharedPreferenceManager sharedPreferenceManager = SharedPreferenceManager();
+                                  await sharedPreferenceManager.setShownWelcomeSlides(true);
+                                  Navigator.pushReplacementNamed(context, '/initialize');
                               },
-                              child: Container(
-                                padding: EdgeInsets.all(13.0),
-                                child: Center(
-                                  child: Text(
-                                    "Get Started",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16.0,
-                                    ),
-                                  ),
+                                padding: EdgeInsets.all(15.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
                                 ),
-                                decoration: BoxDecoration(
-                                  // color: Color(0XFF2596be),
-                                  color: techBlue,
-                                  borderRadius: BorderRadius.circular(100.0),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: techBlue,
-                                      offset: Offset(6, 2),
-                                      blurRadius: 1.0,
-                                      spreadRadius: 2.0,
-                                    ),
-                                  ],
+                                color: blueColor3,
+                                child: Text(
+                                  "GET STARTED",
+                                  style: TextStyle(
+                                    color: kPrimaryColorLight,
+                                    letterSpacing: 1.5,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "OpenSans",
+                                  ),
                                 ),
                               ),
                             ),
@@ -257,7 +252,7 @@ class ProgressButton extends StatelessWidget {
               onTap: onNext,
               child: Container(
                 decoration: BoxDecoration(
-                    color: techBlue, borderRadius: BorderRadius.circular(99.0)),
+                    color: blueColor3, borderRadius: BorderRadius.circular(99.0)),
                 height: 60,
                 width: 60,
                 child: Center(
@@ -344,11 +339,11 @@ class ProgressPainter extends CustomPainter {
     var linePaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3
-      ..color = techBlue;
+      ..color = blueColor3;
 
     var circlePaint = Paint()
       ..style = PaintingStyle.fill
-      ..color = techBlue;
+      ..color = blueColor3;
 
     final radians = (progress / 100) * 2 * pi;
     _drawShape(canvas, linePaint, circlePaint, -pi / 2, radians, size);

@@ -5,6 +5,7 @@ import 'package:jemina_capital/controllers/auth/auth_controller.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/data/shared_preference/shared_preference_manager.dart';
 import 'package:jemina_capital/library/request_response.dart';
+import 'package:jemina_capital/views/auth/terms_of_service.dart';
 
 // var accessToken = await prefsManager.getAccessToken();
 // if( accessToken != null){
@@ -29,7 +30,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: lightBackground,
+      backgroundColor: kPrimaryColorLight,
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: SingleChildScrollView(
@@ -57,40 +58,27 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 10.0),
                 Container(
-                  decoration: BoxDecoration(
-                    color: Color(0XFFEFF3F6),
-                    borderRadius: BorderRadius.circular(100.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.1),
-                        offset: Offset(6, 2),
-                        blurRadius: 6.0,
-                        spreadRadius: 3.0,
-                      ),
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 255, 255, 0.9),
-                        offset: Offset(-6, -2),
-                        blurRadius: 6.0,
-                        spreadRadius: 3.0,
-                      ),
-                    ],
-                  ),
+                  alignment: Alignment.centerLeft,
+                  decoration: kBoxDecorationStyle,
+                  height: 60.0,
                   child: TextField(
                     autocorrect: false,
                     textCapitalization: TextCapitalization.words,
                     controller: nameController,
+                    style: TextStyle(
+                      color: darkGreyBlue,
+                      fontFamily: 'OpenSans',
+                    ),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: "Full Name",
-                      contentPadding: EdgeInsets.only(
-                        left: 25.0,
-                        right: 25.0,
-                        top: 20.0,
-                        bottom: 20.0,
-                      ),
+                      contentPadding: EdgeInsets.only(top: 14.0),
+                      prefixIcon: Icon(Icons.person, color: blueColor3),
+                      hintText: "Enter Your Full Name",
+                      hintStyle: kHintTextStyle,
                     ),
                   ),
                 ),
+
                 SizedBox(height: 30.0),
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
@@ -98,38 +86,24 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 10.0),
                 Container(
-                  decoration: BoxDecoration(
-                    color: Color(0XFFEFF3F6),
-                    borderRadius: BorderRadius.circular(100.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.1),
-                        offset: Offset(6, 2),
-                        blurRadius: 6.0,
-                        spreadRadius: 3.0,
-                      ),
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 255, 255, 0.9),
-                        offset: Offset(-6, -2),
-                        blurRadius: 6.0,
-                        spreadRadius: 3.0,
-                      ),
-                    ],
-                  ),
+                  alignment: Alignment.centerLeft,
+                  decoration: kBoxDecorationStyle,
+                  height: 60.0,
                   child: TextField(
                     autocorrect: false,
                     keyboardType: TextInputType.emailAddress,
                     controller: emailController,
                     obscureText: false,
+                    style: TextStyle(
+                      color: darkGreyBlue,
+                      fontFamily: 'OpenSans',
+                    ),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: "Email Address",
-                      contentPadding: EdgeInsets.only(
-                        left: 25.0,
-                        right: 25.0,
-                        top: 20.0,
-                        bottom: 20.0,
-                      ),
+                      contentPadding: EdgeInsets.only(top: 14.0),
+                      prefixIcon: Icon(Icons.email, color: blueColor3),
+                      hintText: "Enter Your Email",
+                      hintStyle: kHintTextStyle,
                     ),
                   ),
                 ),
@@ -140,130 +114,124 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 10.0),
                 Container(
-                  decoration: BoxDecoration(
-                    color: Color(0XFFEFF3F6),
-                    borderRadius: BorderRadius.circular(100.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.1),
-                        offset: Offset(6, 2),
-                        blurRadius: 6.0,
-                        spreadRadius: 3.0,
-                      ),
-                      BoxShadow(
-                        color: Color.fromRGBO(255, 255, 255, 0.9),
-                        offset: Offset(-6, -2),
-                        blurRadius: 6.0,
-                        spreadRadius: 3.0,
-                      ),
-                    ],
-                  ),
+                  alignment: Alignment.centerLeft,
+                  decoration: kBoxDecorationStyle,
+                  height: 60.0,
                   child: TextField(
+                    obscureText: true,
                     autocorrect: false,
                     controller: passwordController,
-                    obscureText: true,
+                    style: TextStyle(
+                      color: darkGreyBlue,
+                      fontFamily: 'OpenSans',
+                    ),
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: "********",
-                      contentPadding: EdgeInsets.only(
-                        left: 25.0,
-                        right: 25.0,
-                        top: 20.0,
-                        bottom: 20.0,
-                      ),
+                      contentPadding: EdgeInsets.only(top: 14.0),
+                      prefixIcon: Icon(Icons.lock, color: blueColor3),
+                      hintText: "Enter Your Password",
+                      hintStyle: kHintTextStyle,
                     ),
                   ),
                 ),
                 SizedBox(height: 30.0),
                 Padding(
                   padding: const EdgeInsets.only(left: 10.0),
-                  child: Text("Forgot password?"),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TermsOfService(),
+                        ),
+                      );
+                    },
+                    child: Text("By clicking SUBMIT, you agree to our Terms of Service and Privacy Policy",
+                      style: TextStyle(
+                        color: blueColor3,
+                        fontFamily: 'OpenSans',
+                        fontSize: 12.0,
+                      ),
+                    ),
+                  ),
                 ),
                 SizedBox(height: 30.0),
                 Row(
                   children: [
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () async {
-                          if (loading == true) {
-                            return;
-                          }
-                          setState(() {
-                            loading = true;
-                          });
-                          // print("Email: " + );
-                          AuthController authController = AuthController();
-                          RequestResponse requestResponse =
-                              await authController.register(
-                            name: nameController.text,
-                            email: emailController.text,
-                            password: passwordController.text,
-                          );
-
-                          setState(() {
-                            loading = false;
-                          });
-
-                          var jsonBody = requestResponse.getJsonBody();
-
-                          String message;
-
-                          if (jsonBody['message'] == 'failed validation') {
-                            message = jsonBody['errors']
-                                    [jsonBody['errors'].keys.toList()[0]][0]
-                                .toString();
-                          } else {
-                            message = jsonBody['message'];
-                          }
-
-                          if (jsonBody['success'] == false) {
-                            showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                title: Text(
-                                  'Authentication Error',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline4
-                                      ?.copyWith(
-                                        color: techBlue,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                ),
-                                content: Text(message),
-                                actions: <Widget>[
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(context, 'OK'),
-                                    child: const Text('OK'),
-                                  ),
-                                ],
-                              ),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 0.0),
+                        width: double.infinity,
+                        child: RaisedButton(
+                          elevation: 5.0,
+                          onPressed: () async {
+                            if (loading == true) {
+                              return;
+                            }
+                            setState(() {
+                              loading = true;
+                            });
+                            // print("Email: " + );
+                            AuthController authController = AuthController();
+                            RequestResponse requestResponse =
+                            await authController.register(
+                              name: nameController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
                             );
-                          } else {
-                            var token = jsonBody['token'];
-                            prefsManager.setAccessToken(token);
-                            Navigator.pushNamed(context, '/verify-email');
-                          }
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(13.0),
-                          child: Center(
-                            child: buttonContent(),
+
+                            setState(() {
+                              loading = false;
+                            });
+
+                            var jsonBody = requestResponse.getJsonBody();
+
+                            String message;
+
+                            if (jsonBody['message'] == 'failed validation') {
+                              message = jsonBody['errors']
+                              [jsonBody['errors'].keys.toList()[0]][0]
+                                  .toString();
+                            } else {
+                              message = jsonBody['message'];
+                            }
+
+                            if (jsonBody['success'] == false) {
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  title: Text(
+                                    'Authentication Error',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headline4
+                                        ?.copyWith(
+                                      color: techBlue,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  content: Text(message),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(context, 'OK'),
+                                      child: const Text('OK'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            } else {
+                              var token = jsonBody['token'];
+                              prefsManager.setAccessToken(token);
+                              Navigator.pushNamed(context, '/verify-email');
+                            }
+                          },
+                          padding: EdgeInsets.all(15.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
                           ),
-                          decoration: BoxDecoration(
-                            // color: Color(0XFF2596be),
-                            color: techBlue,
-                            borderRadius: BorderRadius.circular(100.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: techBlue,
-                                offset: Offset(6, 2),
-                                blurRadius: 1.0,
-                                spreadRadius: 2.0,
-                              ),
-                            ],
-                          ),
+                          color: blueColor3,
+                          child: buttonContent(),
                         ),
                       ),
                     ),
@@ -284,7 +252,7 @@ class _RegisterState extends State<Register> {
                       child: Text(
                         "Sign In",
                         style: TextStyle(
-                            color: techBlue,
+                            color: blueColor3,
                             fontSize: 18.0,
                             fontWeight: FontWeight.w500),
                       ),
@@ -305,15 +273,18 @@ class _RegisterState extends State<Register> {
         height: 20.0,
         width: 20.0,
         child: CircularProgressIndicator(
-          color: complement,
+          color: kPrimaryColorLight,
         ),
       );
     }
     return Text(
-      "Register",
+      "SUBMIT",
       style: TextStyle(
-        color: Colors.white,
-        fontSize: 16.0,
+        color: kPrimaryColorLight,
+        letterSpacing: 1.5,
+        fontSize: 18.0,
+        fontWeight: FontWeight.bold,
+        fontFamily: "OpenSans",
       ),
     );
   }

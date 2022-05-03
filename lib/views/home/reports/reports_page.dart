@@ -67,10 +67,10 @@ class _ReportsPageState extends State<ReportsPage> {
   }
 
   List<String> categories = [
-    "Daily Updates",
-    "Weekly Updates",
-    "Monthly Updates",
-    "Economic Reviews"
+    "Daily",
+    "Weekly",
+    "Monthly",
+    "Reports"
   ];
 
   List<IconData> icons = [
@@ -85,7 +85,7 @@ class _ReportsPageState extends State<ReportsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildMainPageAppBar(context, onOpenMenu, "Reports"),
+      appBar: buildMainPageAppBar(context, onOpenMenu, "Trading Updates"),
       backgroundColor: kPrimaryColorLight1,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +93,7 @@ class _ReportsPageState extends State<ReportsPage> {
           Container(
             decoration: BoxDecoration(
               // color: jeminaGrey,
-              color: kPrimaryColorLight,
+              color: kPrimaryColorLight1,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(defaultBorderRadius),
                 bottomRight: Radius.circular(defaultBorderRadius),
@@ -186,7 +186,7 @@ Widget reportListWidget({required BuildContext context, required Report report})
                         // overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
-                          color: Colors.blueGrey,
+                          color: darkGreyBlue,
                         ),
                       ),
                     ],

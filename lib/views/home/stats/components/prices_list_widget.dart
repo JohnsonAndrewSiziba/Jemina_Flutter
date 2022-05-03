@@ -20,23 +20,23 @@ Widget pricesListWidget({required BuildContext context, required Price price}) {
                 children: [
                   Image.network(
                     Routes.serverHome + (price.logo ?? ""),
-                    width: 40.0,
+                    width: 50.0,
                   ),
                   const SizedBox(
                     width: 15.0,
                   ),
                   Text(
                     price.symbol,
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: darkGreyBlue, fontFamily: "Roboto",),
+                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500, color: darkGreyBlue, fontFamily: "Roboto",),
                   ),
                   const Spacer(),
                   getIcon(price.direction),
                   Text(
-                    price.close,
+                    price.change.toString(),
                     style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: getPriceColor(price.direction), fontFamily: "Roboto",),
                   ),
                   const SizedBox(
-                    width: 15.0,
+                    width: 8.0,
                   ),
                   Text(
                     "(${price.percentageChange}%)",
@@ -45,12 +45,8 @@ Widget pricesListWidget({required BuildContext context, required Price price}) {
                   // Spacer(),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding + 75.0),
-                child: Divider(
-                  color: Colors.blueGrey,
-                  thickness: 0.1,
-                ),
+              const SizedBox(
+                height: 10.0,
               ),
 
               Row(
@@ -60,44 +56,44 @@ Widget pricesListWidget({required BuildContext context, required Price price}) {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Open:", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text("Open:", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: darkGreyBlue, fontFamily: "Roboto",),),
                       const SizedBox(
                         height: 5.0,
                       ),
-                      Text(price.open, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text(price.open, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: kStockColor, fontFamily: "Roboto",),),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Close", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text("Close", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: darkGreyBlue, fontFamily: "Roboto",),),
                       SizedBox(
                         height: 5.0,
                       ),
-                      Text(price.close, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text(price.close, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: kStockColor, fontFamily: "Roboto",),),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Volume", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text("Volume", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: darkGreyBlue, fontFamily: "Roboto",),),
                       SizedBox(
                         height: 5.0,
                       ),
-                      Text(price.volume, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text(price.volume, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: kStockColor, fontFamily: "Roboto",),),
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("M. Cap. (M)", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text("M. Cap. (M)", style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w600, color: darkGreyBlue, fontFamily: "Roboto",),),
                       SizedBox(
                         height: 5.0,
                       ),
-                      Text(price.marketCap, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: Colors.blueGrey, fontFamily: "Roboto",),),
+                      Text(price.marketCap, style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400, color: kStockColor, fontFamily: "Roboto",),),
                     ],
                   ),
 

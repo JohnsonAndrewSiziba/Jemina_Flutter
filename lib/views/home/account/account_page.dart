@@ -31,8 +31,8 @@ class _AccountPageState extends State<AccountPage> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      brightGrey,
-                      brightGrey.withOpacity(0.7),
+                      kPrimaryColorLight1,
+                      kPrimaryColorLight1.withOpacity(0.7),
                     ],
                   ),
                 ),
@@ -103,7 +103,7 @@ class _AccountPageState extends State<AccountPage> {
                                       style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
-                                        color: techBlue,
+                                        color: blueColor3,
                                       ),
                                       children: [
                                         TextSpan(
@@ -128,7 +128,7 @@ class _AccountPageState extends State<AccountPage> {
               Expanded(
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
-                  color: lightSteel,
+                  color: kPrimaryColorLight,
                   child: ListView(
                     controller: ScrollController(),
                     padding: EdgeInsets.only(top: 75),
@@ -150,20 +150,20 @@ class _AccountPageState extends State<AccountPage> {
                           buildActivityButton(
                             Icons.checklist,
                             "Orders",
-                            techBlue.withOpacity(0.2),
-                            techBlue,
+                            blueColor3.withOpacity(0.2),
+                            blueColor3,
                           ),
                           buildActivityButton(
                             Icons.send_to_mobile_rounded,
                             "Transfers",
-                            techBlue.withOpacity(0.2),
-                            techBlue,
+                            blueColor3.withOpacity(0.2),
+                            blueColor3,
                           ),
                           buildActivityButton(
                             Icons.pie_chart,
                             "Statistics",
-                            techBlue.withOpacity(0.2),
-                            techBlue,
+                            blueColor3.withOpacity(0.2),
+                            blueColor3,
                           ),
                         ],
                       ),
@@ -340,7 +340,7 @@ class _AccountPageState extends State<AccountPage> {
                             "See more",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: techBlue,
+                              color: blueColor3,
                             ),
                           ),
                           SizedBox(
@@ -348,7 +348,7 @@ class _AccountPageState extends State<AccountPage> {
                           ),
                           Icon(
                             Icons.arrow_forward,
-                            color: techBlue,
+                            color: blueColor3,
                           ),
                         ],
                       ),
@@ -366,7 +366,7 @@ class _AccountPageState extends State<AccountPage> {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
-      backgroundColor: brightGrey,
+      backgroundColor: kPrimaryColorLight1,
       centerTitle: true,
       iconTheme: IconThemeData(
         color: darkGreyBlue,
@@ -396,18 +396,18 @@ class _AccountPageState extends State<AccountPage> {
                 border: Border(
                   bottom: BorderSide(
                     width: 4,
-                    color: techBlue,
+                    color: blueColor3,
                   ),
                 ),
                 gradient: LinearGradient(colors: [
-                  techBlue.withOpacity(0.3),
+                  blueColor3.withOpacity(0.3),
                   palatinanteBlue.withOpacity(0.016),
                 ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
               )
             : BoxDecoration(),
         child: Icon(
           icon,
-          color: index == _selectedItemIndex ? techBlue : grey,
+          color: index == _selectedItemIndex ? blueColor3 : grey,
         ),
       ),
     );

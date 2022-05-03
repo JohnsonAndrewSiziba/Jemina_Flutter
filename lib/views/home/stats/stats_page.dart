@@ -54,8 +54,8 @@ class _StatsPageState extends State<StatsPage> {
   }
 
   List<String> categories = [
-    "Share Prices",
-    "Market Statistics",
+    "Prices",
+    "Statistics",
   ];
 
   List<IconData> icons = [
@@ -80,20 +80,7 @@ class _StatsPageState extends State<StatsPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            decoration: BoxDecoration(
-              color: kPrimaryColorLight,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(11.0),
-                bottomRight: Radius.circular(11.0),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, 4),
-                  blurRadius: 12,
-                  color: scaffoldBackgroundColor,
-                ),
-              ],
-            ),
+
             child: Padding(
               padding:
               const EdgeInsets.symmetric(vertical: kDefaultPadding - 10.0, horizontal: 10.0),

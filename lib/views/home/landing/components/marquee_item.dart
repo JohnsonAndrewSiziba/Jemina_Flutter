@@ -44,13 +44,15 @@ class MarqueeItem extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 1.0),
-            color: Colors.green,
+            // color: Colors.green,
+            color: positiveColor,
             child: Text(change.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 12.0,),),
           ),
           SizedBox(width: 5.0),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 1.0),
-            color: Colors.green,
+            // color: Colors.green,
+            color: positiveColor,
             child: Text("$percentageChange%", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 12.0,),),
           ),
         ],
@@ -62,13 +64,15 @@ class MarqueeItem extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 1.0),
-            color: Colors.red,
+            // color: Colors.red,
+            color: negativeColor,
             child: Text(change.toString(), style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 12.0,),),
           ),
           SizedBox(width: 5.0),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 3.0, vertical: 1.0),
-            color: Colors.red,
+            // color: Colors.red,
+            color: negativeColor,
             child: Text("$percentageChange%", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400, fontSize: 12.0,),),
           ),
         ],

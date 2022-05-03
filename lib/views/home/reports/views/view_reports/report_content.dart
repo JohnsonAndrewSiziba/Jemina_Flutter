@@ -65,14 +65,14 @@ class _ReportContentState extends State<ReportContent> {
                         width: 40.0,
                         padding: const EdgeInsets.all(5.0),
                         decoration: BoxDecoration(
-                          color: kPrimaryColorLight2,
+                          color: blueColor3,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Icon(
                             Icons.arrow_back_ios,
-                            color: darkGreyBlue,
+                            color: kPrimaryColorLight2,
                             size: 20,
                           ),
                         ),
@@ -115,7 +115,7 @@ class _ReportContentState extends State<ReportContent> {
                       width: 150,
                       height: 7,
                       decoration: BoxDecoration(
-                          color: jeminaGrey,
+                          color: darkGreyBlue,
                           borderRadius: BorderRadius.circular(10),),
                     ),
                   ),
@@ -149,7 +149,7 @@ class _ReportContentState extends State<ReportContent> {
                           ),
                            child: Icon(
                               Icons.download,
-                              color: Colors.blueGrey,
+                              color: blueColor3,
                             )
                         ),
                       ),
@@ -171,7 +171,7 @@ class _ReportContentState extends State<ReportContent> {
                           ),
                           Row(
                             children: [
-                              Icon(Icons.calendar_month, color: Colors.blueGrey, size: 15,),
+                              Icon(Icons.calendar_month, color: blueColor2, size: 15,),
                               SizedBox(
                                 width: 5,
                               ),
@@ -201,7 +201,7 @@ class _ReportContentState extends State<ReportContent> {
                             children: [
                               Icon(
                                 Icons.person,
-                                color: Colors.blueGrey,
+                                color: blueColor2,
                               ),
                               SizedBox(
                                 width: 5,
@@ -228,7 +228,7 @@ class _ReportContentState extends State<ReportContent> {
                             children: [
                               Icon(
                                 Icons.reply_outlined,
-                                color: Colors.blueGrey,
+                                color: blueColor2,
                               ),
                               SizedBox(
                                 width: 5,
@@ -264,9 +264,9 @@ class _ReportContentState extends State<ReportContent> {
                       color: darkGreyBlue,
                       fontSize: 17.0,
                       fontFamily: 'Times New Roman',
-                      fontWeight: FontWeight.w300,
-                      letterSpacing: 0.5,
-                      wordSpacing: 1.5,
+                      fontWeight: FontWeight.w400,
+                      // letterSpacing: 0.5,
+                      // wordSpacing: 1.5,
                     ),
                   ),
                   SizedBox(
@@ -290,9 +290,9 @@ class _ReportContentState extends State<ReportContent> {
                       color: darkGreyBlue,
                       fontSize: 17.0,
                       fontFamily: 'Times New Roman',
-                      fontWeight: FontWeight.w300,
-                      letterSpacing: 0.5,
-                      wordSpacing: 1.5,
+                      fontWeight: FontWeight.w400,
+                      // letterSpacing: 0.5,
+                      // wordSpacing: 1.5,
                     ),
                   ),
                   SizedBox(

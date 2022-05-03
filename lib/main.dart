@@ -84,6 +84,7 @@ class MyApp extends StatelessWidget {
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.fade,
         nextScreen: Initialize(),
+        // nextScreen: Onboarding(),
       ),
 
       //routes

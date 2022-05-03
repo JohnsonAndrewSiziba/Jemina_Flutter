@@ -24,25 +24,31 @@ class _VerifyEmailState extends State<VerifyEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: scaffoldBackgroundColor,
+      // resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: kPrimaryColorLight,
+        iconTheme: IconThemeData(color: darkGreyBlue),
+        title: Text('Verify Email', style: TextStyle(color: darkGreyBlue),),
+      ),
+      backgroundColor: kPrimaryColorLight,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 24, horizontal: 32),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Icon(
-                      Icons.arrow_back,
-                      size: 22,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.topLeft,
+                //   child: GestureDetector(
+                //     onTap: () => Navigator.pop(context),
+                //     child: Icon(
+                //       Icons.arrow_back,
+                //       size: 22,
+                //       color: Colors.black54,
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   height: 18,
                 ),
@@ -64,6 +70,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   'Email Verification',
                   style: TextStyle(
                     fontSize: 22,
+                    color: darkGreyBlue,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -178,7 +185,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                             foregroundColor:
                                 MaterialStateProperty.all<Color>(Colors.white),
                             backgroundColor: MaterialStateProperty.all<Color>(
-                              techBlue,
+                              blueColor3,
                             ),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
@@ -216,7 +223,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: techBlue,
+                    color: blueColor3,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -237,15 +244,18 @@ class _VerifyEmailState extends State<VerifyEmail> {
         height: 20.0,
         width: 20.0,
         child: CircularProgressIndicator(
-          color: complement,
+          color: kPrimaryColorLight,
         ),
       );
     }
     return Text(
-      "Verify",
+      "SUBMIT",
       style: TextStyle(
-        color: Colors.white,
-        fontSize: 16.0,
+        color: kPrimaryColorLight,
+        letterSpacing: 1.5,
+        fontSize: 18.0,
+        fontWeight: FontWeight.bold,
+        fontFamily: "OpenSans",
       ),
     );
   }

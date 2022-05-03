@@ -105,7 +105,7 @@ class _HomeState extends State<Home> {
               onTap: (int val) => setState(() => index = val),
               currentIndex: index,
               selectedItemColor: Colors.white,
-              selectedBackgroundColor: darkGreyBlue,
+              selectedBackgroundColor: blueColor4,
               backgroundColor: kPrimaryColorLight,
               unselectedItemColor: Colors.blueGrey,
               iconSize: 20.0,

@@ -88,7 +88,7 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: kPrimaryColorLight,
+      backgroundColor: kPrimaryColorLight1,
       appBar: buildMainPageAppBar(context, onOpenMenu, "Jemina Capital"),
       body: Column(
         children: [
@@ -96,7 +96,7 @@ class _LandingPageState extends State<LandingPage> {
           Expanded(
             child: RefreshIndicator(
               color: darkGreyBlue,
-              backgroundColor: brightGrey,
+              backgroundColor: Colors.white,
               onRefresh: () {
                 setState(() {
                   quoteIsLoading = true;
@@ -114,7 +114,7 @@ class _LandingPageState extends State<LandingPage> {
                       width: size.width,
                       padding:
                           EdgeInsets.symmetric(horizontal: 20.0),
-                      color: kPrimaryColorLight,
+                      color: kPrimaryColorLight1,
                       child: GridView.count(
                         padding: EdgeInsets.zero,
                         crossAxisCount: 2,
@@ -199,7 +199,7 @@ class _LandingPageState extends State<LandingPage> {
 
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
-                      color: lightSteel,
+                      color: kPrimaryColorLight1,
                       width: size.width,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -278,10 +278,15 @@ class _LandingPageState extends State<LandingPage> {
               child: Center(
                 child: Container(
                   margin: EdgeInsets.all(5.0),
+                  padding: EdgeInsets.all(15.0),
                   decoration: BoxDecoration(
+                    color: kPrimaryColorLight,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(2.0),
+                    ),
                     image: DecorationImage(
                       image: AssetImage(img),
-                      fit: BoxFit.fill,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -430,7 +435,7 @@ class QuotesContainer extends StatelessWidget {
         Container(
           height: size.height * .15,
           decoration: BoxDecoration(
-            color: kPrimaryColorLight,
+            color: kPrimaryColorLight1,
             image: DecorationImage(
               image: AssetImage("assets/images/forex-trading.png"),
               fit: BoxFit.fitWidth,
@@ -440,7 +445,7 @@ class QuotesContainer extends StatelessWidget {
         Container(
           height: size.height * .15,
           decoration: BoxDecoration(
-            color: lightSteel.withOpacity(0.89),
+            color: kPrimaryColorLight1.withOpacity(0.89),
           ),
         ),
         QuoteComponent(size: size, quote: quote, isLoading: quoteIsLoading),
@@ -462,50 +467,37 @@ class MenuCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8.0),
-      child: Container(
-        // padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: kPrimaryColorDark1,
-          borderRadius: BorderRadius.circular(8.0),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, 17),
-              blurRadius: 17,
-              spreadRadius: -23,
-              color: grayBackground,
-            ),
-          ],
+    return Material(
+        elevation: 0.3,
+        color: Colors.white,
+        shadowColor: kPrimaryColorLight1,
+        borderOnForeground: false,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
         ),
-        child: Material(
-          elevation: 1.0,
-          color: kPrimaryColorLight1,
-          child: InkWell(
-            onTap: press,
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: <Widget>[
-                  Spacer(),
-                  // Image.asset(image),
-                  SvgPicture.asset(image, height: 100),
-                  Spacer(),
-                  Text(
-                    title.toUpperCase(),
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline5?.copyWith(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: darkGreyBlue,
-                        ),
-                  )
-                ],
-              ),
+        child: InkWell(
+          onTap: press,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: <Widget>[
+                Spacer(),
+                // Image.asset(image),
+                SvgPicture.asset(image, height: 100),
+                Spacer(),
+                Text(
+                  title.toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline5?.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: darkGreyBlue,
+                      ),
+                )
+              ],
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }

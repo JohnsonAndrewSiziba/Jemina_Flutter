@@ -17,9 +17,9 @@ class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: kPrimaryColorLight,
       appBar: AppBar(
-        backgroundColor: brightGrey,
+        backgroundColor: kPrimaryColorLight,
         centerTitle: true,
         elevation: 0.0,
         iconTheme: IconThemeData(
@@ -29,12 +29,6 @@ class _ContactState extends State<Contact> {
           "Contact Us",
           style: TextStyle(color: darkGreyBlue),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: NotificationsIcon(),
-          ),
-        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -83,12 +77,12 @@ class _ContactState extends State<Contact> {
                         children: [
                           Icon(
                             Icons.alternate_email,
-                            color: techBlue,
+                            color: blueColor3,
                             size: 50.0,
                           ),
                           Text(
                             "Write to us: ",
-                            style: TextStyle(color: techBlue),
+                            style: TextStyle(color: blueColor3),
                           ),
                           Text("info@jemina.capital"),
                         ],
@@ -116,12 +110,12 @@ class _ContactState extends State<Contact> {
                         children: [
                           Icon(
                             Icons.phone_enabled,
-                            color: techBlue,
+                            color: blueColor3,
                             size: 50.0,
                           ),
                           Text(
                             "Call Us: ",
-                            style: TextStyle(color: techBlue),
+                            style: TextStyle(color: blueColor3),
                           ),
                           Text("+263 7843 10119"),
                         ],
@@ -154,12 +148,12 @@ class _ContactState extends State<Contact> {
                         children: [
                           Icon(
                             Icons.whatsapp_sharp,
-                            color: techBlue,
+                            color: blueColor3,
                             size: 50.0,
                           ),
                           Text(
                             "Chat with us",
-                            style: TextStyle(color: techBlue),
+                            style: TextStyle(color: blueColor3),
                           ),
                           Text(
                             "+263 7843 10119",
@@ -190,12 +184,12 @@ class _ContactState extends State<Contact> {
                         children: [
                           Icon(
                             Icons.location_on,
-                            color: techBlue,
+                            color: blueColor3,
                             size: 50.0,
                           ),
                           Text(
                             "Visit us",
-                            style: TextStyle(color: techBlue),
+                            style: TextStyle(color: blueColor3),
                           ),
                           Text(
                             "9 Coull Drive, Mt Pleasant, Hre",

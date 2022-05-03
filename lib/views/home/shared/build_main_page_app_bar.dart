@@ -7,7 +7,7 @@ AppBar buildMainPageAppBar(BuildContext context, Function onTap, String pageTitl
   return AppBar(
     centerTitle: true,
     // backgroundColor: jeminaGrey,
-    backgroundColor: kPrimaryColorLight,
+    backgroundColor: kPrimaryColorLight1,
     elevation: 0,
     leading: IconButton(
       onPressed: () {
