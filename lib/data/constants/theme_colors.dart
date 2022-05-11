@@ -107,3 +107,7 @@ const blueColor1 = Color(0xFF73AEF5);
 const blueColor2 = Color(0xFF61A4F1);
 const blueColor3 = Color(0xFF478DE0);
 const blueColor4 = Color(0xFF398AE5);
+
+
+const bidColor = Color(0xFF0C71A1);
+const askColor = Color(0xFFB93363);

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, unused_element, sized_box_for_whitespace, must_be_immutable
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jemina_capital/controllers/counters/counters_controller.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:flutter_svg/svg.dart';
@@ -174,7 +175,7 @@ Widget company({required BuildContext context, required Company company}) {
                     children: [
                       Text(
                         company.name ?? "",
-                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: darkGreyBlue),
+                        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.0, color: darkGreyBlue, fontFamily: GoogleFonts.robotoCondensed().fontFamily),
                       ),
 
                       Text(
