@@ -21,10 +21,15 @@ class Routes {
   static Uri getNewsRoute = Uri.parse("$apiHome/mobile/v/news");
 
   //REPORTS ROUTES
-  static Uri getAllReportsRoute = Uri.parse("$apiHome/mobile/v/reports");
+  static Uri getDailyTradingUpdatesRoute = Uri.parse("$apiHome/research/daily-trading-updates");
+  static Uri getWeeklyTradingUpdatesRoute = Uri.parse("$apiHome/research/weekly-trading-updates");
+  static Uri getMonthlyTradingUpdatesRoute = Uri.parse("$apiHome/research/monthly-trading-updates");
+  static Uri getSpecialReportsRoute = Uri.parse("$apiHome/research/special-reports");
 
   //COUNTERS ROUTES
-  static Uri getZSECountersRoute = Uri.parse("$apiHome/mobile/v/zse-counters");
+  static Uri getZseEquityCountersRoute = Uri.parse("$apiHome/research/zse-equity-counters");
+  static Uri getZseEtfCountersRoute = Uri.parse("$apiHome/research/zse-etf-counters");
+  static Uri getVfexEquityCountersRoute = Uri.parse("$apiHome/research/vfex-equity-counters");
 
   //MARKET STATISTICS ROUTES
   static Uri getTopMarqueePrices = Uri.parse("$apiHome/mobile/v/marquee-prices");
@@ -33,5 +38,10 @@ class Routes {
 
   //MISC ROUTES
   static Uri getQuote = Uri.parse("$apiHome/quote");
+
+
+  //TRADING ROUTES
+  static Uri getZSETradingCountersRoute = Uri.parse("$apiHome/trading/zse-trading-counters");
+  static Uri getZseEtfTradingCountersRoute = Uri.parse("$apiHome/trading/zse-etf-trading-counters");
 
 }

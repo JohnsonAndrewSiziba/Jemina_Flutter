@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/widgets/card.dart';
+import 'package:skeletons/skeletons.dart';
+import '../../controllers/trading/counters_list_controller.dart';
+import '../../data/constants/api_routes.dart';
+import '../../library/request_response.dart';
+import '../../models/trading_counter_list_item.dart';
 import '../../widgets/go_to_profile.dart';
+import '../home/shared/category_menu.dart';
 import 'components/search_form.dart';
 
 class TradingHome extends StatefulWidget {
@@ -15,6 +21,77 @@ class TradingHome extends StatefulWidget {
 }
 
 class _TradingHomeState extends State<TradingHome> {
+
+  int selectedIndex = 0;
+  bool isLoading = true;
+
+  List<String> categories = [
+    "ZSE Equities",
+    "ZSE ETFs",
+  ];
+
+  List<IconData> icons = [
+    Icons.business_sharp,
+    Icons.business_sharp,
+    Icons.business_sharp,
+  ];
+
+  void categortMenuTap(int index){
+    setState(() {
+      selectedIndex = index;
+
+      if (index == 0) {
+        selectedCountersList = zseCountersList;
+      }
+      else if (index == 1) {
+        selectedCountersList = zseEtfCountersList;
+      }
+
+    });
+  }
+
+  late RequestResponse requestResponse;
+  List<TradingCounterListItem> zseCountersList = [];
+  List<TradingCounterListItem> zseEtfCountersList = [];
+
+  List<TradingCounterListItem> selectedCountersList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getZseCounters();
+  }
+
+  void getZseCounters() async {
+    CountersListController countersController = CountersListController();
+
+    requestResponse = await countersController.getZSECounters();
+    var jsonBody = requestResponse.getJsonBody();
+
+    var jsonZseCountersList = jsonBody['counters'];
+
+
+    requestResponse = await countersController.getZseEtfCounters();
+    jsonBody = requestResponse.getJsonBody();
+
+    var jsonZseEtfCountersList = jsonBody['counters'];
+
+
+    setState(() {
+      zseCountersList = TradingCounterListItem.jsonDecode(jsonZseCountersList);
+      zseEtfCountersList = TradingCounterListItem.jsonDecode(jsonZseEtfCountersList);
+
+      if (selectedIndex == 0) {
+        selectedCountersList = zseCountersList;
+      }
+      else if (selectedIndex == 1) {
+        selectedCountersList = zseEtfCountersList;
+      }
+
+      isLoading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,33 +103,61 @@ class _TradingHomeState extends State<TradingHome> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                "Market Status: Open",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.lato(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.green,
+              // Text(
+              //   "Market Status: Open",
+              //   textAlign: TextAlign.center,
+              //   style: GoogleFonts.lato(
+              //     fontSize: 14.0,
+              //     fontWeight: FontWeight.w500,
+              //     color: Colors.green,
+              //   ),
+              // ),
+              // SizedBox(height: 10.0),
+
+              Container(
+                color: kPrimaryColorLight1,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: kDefaultPadding - 10.0,
+                    horizontal: 10.0,
+                  ),
+                  child: SizedBox(
+                    height: 34,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) => buildCategoryItem(index, categortMenuTap, selectedIndex, icons, categories),
+                    ),
+                  ),
                 ),
               ),
-              SizedBox(height: 10.0),
-              SearchForm(),
 
-              SizedBox(height: 10.0),
+              SearchForm(),
+              SizedBox(height: 8.0),
               Expanded(
-                child: SingleChildScrollView(
-                    child: Column(
-                  children: [
-                    MarketListItem(),
-                    MarketListItem(),
-                    MarketListItem(),
-                    MarketListItem(),
-                    MarketListItem(),
-                    MarketListItem(),
-                    MarketListItem(),
-                    MarketListItem(),
-                  ],
-                )),
+                child: Skeleton(
+                  isLoading: isLoading,
+                  skeleton: SkeletonListView(),
+                  child: RefreshIndicator(
+                    color: darkGreyBlue,
+                    backgroundColor: brightGrey,
+                    onRefresh: () {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      getZseCounters();
+                      return Future.delayed(Duration(seconds: 1));
+                    },
+                    child: ListView.builder(
+                        padding: EdgeInsets.only(top: 10, bottom: 10),
+                        itemCount: selectedCountersList.length,
+                        itemBuilder: (context, index) {
+                          return MarketListItem(
+                            counter: selectedCountersList[index],
+                          );
+                        }),
+                  ),
+                ),
               ),
             ],
           ),
@@ -80,8 +185,9 @@ class _TradingHomeState extends State<TradingHome> {
 }
 
 class MarketListItem extends StatelessWidget {
-  const MarketListItem({
-    Key? key,
+  TradingCounterListItem counter;
+  MarketListItem({
+    Key? key, required this.counter,
   }) : super(key: key);
 
   @override
@@ -103,7 +209,7 @@ class MarketListItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "African Distillers Limited",
+                          counter.name ?? "",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16.0,
@@ -147,7 +253,7 @@ class MarketListItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network(
-                              'https://www.thecreativecollective.com.au/wp-content/uploads/2022/01/Z99_lSr5iJDhKwYuuM-SdGh6g6iDm8v5fgg9DQ-1024x724.png',
+                              Routes.serverHome + (counter.logoPath ?? ""),
                               width: 37,
                             ),
                             SizedBox(height: 2.0),

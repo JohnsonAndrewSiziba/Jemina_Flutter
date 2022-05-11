@@ -32,9 +32,9 @@ class _CountersPageState extends State<CountersPage> {
   bool get wantKeepAlive => true;
 
   List<String> categories = [
-    "ZSE",
-    "VFEX",
-    "ETF",
+    "ZSE Equities",
+    "ZSE Etfs",
+    "VFEX Equities",
   ];
 
   List<IconData> icons = [
@@ -47,6 +47,7 @@ class _CountersPageState extends State<CountersPage> {
     setState(() {
       selectedIndex = index;
     });
+    setSelectedCountersList(index);
   }
 
   void onOpenMenu() {
@@ -57,7 +58,10 @@ class _CountersPageState extends State<CountersPage> {
   bool isLoading = true;
 
   late RequestResponse requestResponse;
-  List<Company> companiesList = [];
+  List<Company> zseEquityCountersList = [];
+  List<Company> zseEtfCountersList = [];
+  List<Company> vfexEquityCountersList = [];
+  List<Company> selectedCountersList = [];
 
   @override
   void initState() {
@@ -65,16 +69,48 @@ class _CountersPageState extends State<CountersPage> {
     getCompanies();
   }
 
+  void setSelectedCountersList(value) {
+    setState(() {
+      if (value == 0) {
+        selectedCountersList = zseEquityCountersList;
+      }
+      else if (value == 1) {
+        selectedCountersList = zseEtfCountersList;
+      }
+      else if (value == 2) {
+        selectedCountersList = vfexEquityCountersList;
+      }
+    });
+  }
+
+
   void getCompanies() async {
     CountersController countersController = CountersController();
-    requestResponse = await countersController.getZSECounters();
-    var jsonBody = requestResponse.getJsonBody();
 
-    var jsonCompaniesList = jsonBody['companies'];
+    // ZSE
+    requestResponse = await countersController.getZseEquityCounters();
+    var jsonBody = requestResponse.getJsonBody();
+    var jsonZseEquitiesList = jsonBody['counters'];
+
+    // ETF
+    requestResponse = await countersController.getZseEtfCounters();
+    jsonBody = requestResponse.getJsonBody();
+    var jsonZseEtfList = jsonBody['counters'];
+
+    // VFEX
+    requestResponse = await countersController.getVfexEquityCounters();
+    jsonBody = requestResponse.getJsonBody();
+    var jsonVfexEquitiesList = jsonBody['counters'];
+
+
 
     setState(() {
-      companiesList = Company.jsonDecode(jsonCompaniesList);
-      // print("The Counters: " + companiesList.toString());
+      zseEquityCountersList = Company.jsonDecode(jsonZseEquitiesList);
+      zseEtfCountersList = Company.jsonDecode(jsonZseEtfList);
+      vfexEquityCountersList = Company.jsonDecode(jsonVfexEquitiesList);
+
+      setSelectedCountersList(selectedIndex);
+
       isLoading = false;
     });
   }
@@ -123,12 +159,12 @@ class _CountersPageState extends State<CountersPage> {
                       return Future.delayed(Duration(seconds: 1));
                     },
                     child: ListView.builder(
-                        padding: EdgeInsets.only(top: 10),
-                        itemCount: companiesList.length,
+                        padding: EdgeInsets.only(top: 10, bottom: 70.0),
+                        itemCount: selectedCountersList.length,
                         itemBuilder: (context, index) {
                           return company(
                             context: context,
-                            company: companiesList[index],
+                            company: selectedCountersList[index],
                           );
                         }),
                   ),

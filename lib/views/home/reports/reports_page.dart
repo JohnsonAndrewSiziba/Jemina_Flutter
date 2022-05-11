@@ -43,7 +43,7 @@ class _ReportsPageState extends State<ReportsPage> {
 
   void getAllReports() async {
     ReportsController reportsController = ReportsController();
-    requestResponse = await reportsController.getAllReports();
+    requestResponse = await reportsController.getDailyTradingUpdates();
     var jsonBody = requestResponse.getJsonBody();
 
     var jsonReportsList = jsonBody['reports'];
