@@ -12,6 +12,7 @@ import 'package:jemina_capital/views/help/help_page.dart';
 import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/counters/counters_page.dart';
 import 'package:jemina_capital/views/home/landing/landing_page.dart';
+import 'package:jemina_capital/views/home/landing/main_page.dart';
 import 'package:jemina_capital/views/home/news/news_page.dart';
 import 'package:jemina_capital/views/home/reports/reports_page.dart';
 import 'package:jemina_capital/views/notifications/notifications_page.dart';
@@ -95,7 +96,6 @@ class _HomeState extends State<Home> {
         setState(() => isOpened = _isOpened);
       },
       child: Container(
-        // color: brightGrey,
         color: kPrimaryColorLight,
         child: SafeArea(
           top: false,
@@ -122,7 +122,8 @@ class _HomeState extends State<Home> {
               children: <Widget>[
                 StatsPage(onOpenMenu: toggleMenu, state: value),
                 ReportsPage(onOpenMenu: toggleMenu, state: value),
-                LandingPage(onOpenMenu: toggleMenu, state: value, toggleTab: toggleTab),
+                // LandingPage(onOpenMenu: toggleMenu, state: value, toggleTab: toggleTab),
+                MainPage(onOpenMenu: toggleMenu, state: value, toggleTab: toggleTab),
                 CountersPage(onOpenMenu: toggleMenu, state: value),
                 NewsPage(onOpenMenu: toggleMenu, state: value),
               ],

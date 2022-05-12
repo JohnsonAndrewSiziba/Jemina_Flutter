@@ -3,19 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/models/news.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../widgets/card.dart';
-import '../view_news/view_news.dart';
 
 Widget newsListWidget({required BuildContext context, required News news}) {
   return GestureDetector(
     onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ViewNews(article: news),
-        ),
-      );
+      _launchURL(news.url);
     },
     child: Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
@@ -84,4 +79,12 @@ Widget newsListWidget({required BuildContext context, required News news}) {
       ),
     ),
   );
+}
+
+// _launchURL(newsList[index].url);
+
+void _launchURL(String url) async {
+  if (!await launch(url)) {
+    throw 'Could not launch $url';
+  }
 }

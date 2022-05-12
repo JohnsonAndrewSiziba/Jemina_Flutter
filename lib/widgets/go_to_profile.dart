@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import '../data/constants/theme_colors.dart';
 
 class GotoProfile extends StatelessWidget {
-  const GotoProfile({
-    Key? key,
+  double size;
+  GotoProfile({
+    Key? key, this.size = 40,
   }) : super(key: key);
 
   @override
@@ -14,8 +15,8 @@ class GotoProfile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 10.0, top: 9.0, bottom: 6.0),
       child: Container(
-        width: 40.0,
-        height: 40.0,
+        width: size,
+        height: size,
         decoration: BoxDecoration(
           color: grayBackground,
           boxShadow: [

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../data/constants/theme_colors.dart';
 import '../../../widgets/go_to_profile.dart';
 
-AppBar buildMainPageAppBar(BuildContext context, Function onTap, String pageTitle) {
+AppBar buildMainPageAppBar(BuildContext context, Function onTap, String pageTitle, {bool showProfile = true}) {
   return AppBar(
     centerTitle: true,
     // backgroundColor: jeminaGrey,
@@ -19,8 +19,8 @@ AppBar buildMainPageAppBar(BuildContext context, Function onTap, String pageTitl
       ),
     ),
     title: Text(pageTitle, style: TextStyle(color: darkGreyBlue),),
-    actions: const [
-      GotoProfile(),
+    actions: [
+      showProfile ? GotoProfile() : Container(),
     ],
   );
 }

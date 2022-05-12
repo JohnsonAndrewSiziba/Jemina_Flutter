@@ -177,7 +177,7 @@ class _TradingHomeState extends State<TradingHome> {
         pageTitle,
         style: TextStyle(color: darkGreyBlue),
       ),
-      actions: const [
+      actions: [
         GotoProfile(),
       ],
     );

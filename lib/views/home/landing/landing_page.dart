@@ -435,7 +435,7 @@ class QuotesContainer extends StatelessWidget {
         Container(
           height: size.height * .15,
           decoration: BoxDecoration(
-            color: kPrimaryColorLight1,
+            color: kPrimaryColorLight,
             image: DecorationImage(
               image: AssetImage("assets/images/forex-trading.png"),
               fit: BoxFit.fitWidth,
@@ -445,7 +445,7 @@ class QuotesContainer extends StatelessWidget {
         Container(
           height: size.height * .15,
           decoration: BoxDecoration(
-            color: kPrimaryColorLight1.withOpacity(0.89),
+            color: kPrimaryColorLight.withOpacity(0.89),
           ),
         ),
         QuoteComponent(size: size, quote: quote, isLoading: quoteIsLoading),

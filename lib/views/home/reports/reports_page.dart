@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, avoid_unnecessary_containers, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:jemina_capital/controllers/reports/reports_controller.dart';
 import 'package:jemina_capital/data/constants/api_routes.dart';
@@ -10,13 +9,11 @@ import 'package:jemina_capital/data/constants/values.dart';
 import 'package:jemina_capital/library/request_response.dart';
 import 'package:jemina_capital/models/report.dart';
 import 'package:jemina_capital/views/home/reports/views/view_reports/report_content.dart';
-import 'package:jemina_capital/views/home/reports/views/view_reports/view_report.dart';
 import 'package:skeletons/skeletons.dart';
-
 import '../../../widgets/card.dart';
-import '../../../widgets/go_to_profile.dart';
 import '../shared/build_main_page_app_bar.dart';
 import '../shared/category_menu.dart';
+
 
 class ReportsPage extends StatefulWidget {
   VoidCallback onOpenMenu;
@@ -31,35 +28,76 @@ class ReportsPage extends StatefulWidget {
 
 class _ReportsPageState extends State<ReportsPage> {
   late RequestResponse requestResponse;
-  List<Report> reportsList = [];
+
+  List<Report> dailyTradingUpdatesList = [];
+  List<Report> weeklyTradingUpdatesList = [];
+  List<Report> monthlyTradingUpdatesList = [];
+  List<Report> specialReportsList = [];
+  List<Report> selectedReportsList = [];
 
   bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    getAllReports();
+    getReports();
   }
 
-  void getAllReports() async {
+  void getReports() async {
     ReportsController reportsController = ReportsController();
+
     requestResponse = await reportsController.getDailyTradingUpdates();
     var jsonBody = requestResponse.getJsonBody();
+    var jsonDailyTradingUpdatesList = jsonBody['reports'];
 
-    var jsonReportsList = jsonBody['reports'];
+    requestResponse = await reportsController.getWeeklyTradingUpdates();
+    jsonBody = requestResponse.getJsonBody();
+    var jsonWeeklyTradingUpdatesList = jsonBody['reports'];
 
+    requestResponse = await reportsController.getMonthlyTradingUpdates();
+    jsonBody = requestResponse.getJsonBody();
+    var jsonMonthlyTradingUpdatesList = jsonBody['reports'];
+
+
+    requestResponse = await reportsController.getSpecialReports();
+    jsonBody = requestResponse.getJsonBody();
+    var jsonSpecialReportsList = jsonBody['reports'];
 
 
     setState(() {
-      reportsList = Report.jsonDecode(jsonReportsList);
+      dailyTradingUpdatesList = Report.jsonDecode(jsonDailyTradingUpdatesList);
+      weeklyTradingUpdatesList = Report.jsonDecode(jsonWeeklyTradingUpdatesList);
+      monthlyTradingUpdatesList = Report.jsonDecode(jsonMonthlyTradingUpdatesList);
+      specialReportsList = Report.jsonDecode(jsonSpecialReportsList);
+
       isLoading = false;
     });
+    activateSelectedCategory(selectedIndex);
+  }
+
+  void activateSelectedCategory(index){
+    setState( () {
+      if (index == 0){
+        selectedReportsList = dailyTradingUpdatesList;
+      }
+      else if (index == 1){
+        selectedReportsList = weeklyTradingUpdatesList;
+      }
+      else if (index == 2){
+        selectedReportsList = monthlyTradingUpdatesList;
+      }
+      else if (index == 3){
+        selectedReportsList = specialReportsList;
+      }
+     }
+    );
   }
 
   void categortMenuTap(int index){
     setState(() {
       selectedIndex = index;
     });
+    activateSelectedCategory(index);
   }
 
   void onOpenMenu() {
@@ -126,12 +164,12 @@ class _ReportsPageState extends State<ReportsPage> {
               child: Container(
                 color: kPrimaryColorLight1,
                 child: ListView.builder(
-                    padding: EdgeInsets.only(top: 10.0),
-                    itemCount: reportsList.length,
+                    padding: EdgeInsets.only(top: 10.0, bottom: 70.0),
+                    itemCount: selectedReportsList.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: reportListWidget(context: context, report: reportsList[index]),
+                        child: reportListWidget(context: context, report: selectedReportsList[index]),
                       );
                     }),
               ),

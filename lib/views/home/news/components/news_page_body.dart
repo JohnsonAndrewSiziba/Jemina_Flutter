@@ -3,7 +3,6 @@ import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/models/news.dart';
 import 'package:jemina_capital/views/home/news/components/list_widget.dart';
 import 'package:jemina_capital/views/home/news/components/news_item.dart';
-import 'package:jemina_capital/views/home/news/view_news/view_news.dart';
 
 class NewsPageBody extends StatelessWidget {
   List<News> newsList;
@@ -19,28 +18,17 @@ class NewsPageBody extends StatelessWidget {
           return Future.delayed(Duration(seconds: 1));
         },
         child: ListView.builder(
-          padding: const EdgeInsets.only(top: 10.0),
+          padding: const EdgeInsets.only(top: 10.0, bottom: 70.0),
           itemCount: newsList.length,
           itemBuilder: (context, index) {
-            return InkWell(
-              splashColor: techBlue,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ViewNews(article: newsList[index]),
-                  ),
-                );
-              },
-              // child: listWidget(newsTiles[index]),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: newsListWidget(news: newsList[index], context: context),
-              ),
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: newsListWidget(news: newsList[index], context: context),
             );
           },
         ),
       ),
     );
   }
+
 }

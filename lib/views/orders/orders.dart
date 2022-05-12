@@ -30,7 +30,7 @@ class _OrdersState extends State<Orders> {
       elevation: 0,
       iconTheme: IconThemeData(color: darkGreyBlue),
       title: Text(pageTitle, style: TextStyle(color: darkGreyBlue),),
-      actions: const [
+      actions: [
         GotoProfile(),
       ],
     );

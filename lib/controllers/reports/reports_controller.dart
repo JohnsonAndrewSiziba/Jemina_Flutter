@@ -9,4 +9,23 @@ class ReportsController extends Controller {
         makeGetRequest(url: Routes.getDailyTradingUpdatesRoute);
     return response;
   }
+
+  Future<RequestResponse> getWeeklyTradingUpdates() {
+    Future<RequestResponse> response =
+        makeGetRequest(url: Routes.getWeeklyTradingUpdatesRoute);
+    return response;
+  }
+
+  Future<RequestResponse> getMonthlyTradingUpdates() {
+    Future<RequestResponse> response =
+        makeGetRequest(url: Routes.getMonthlyTradingUpdatesRoute);
+    return response;
+  }
+
+  Future<RequestResponse> getSpecialReports() {
+    Future<RequestResponse> response =
+        makeGetRequest(url: Routes.getSpecialReportsRoute);
+    return response;
+  }
+
 }
