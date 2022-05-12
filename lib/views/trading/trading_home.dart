@@ -9,6 +9,7 @@ import '../../controllers/trading/counters_list_controller.dart';
 import '../../data/constants/api_routes.dart';
 import '../../library/request_response.dart';
 import '../../models/trading_counter_list_item.dart';
+import '../../widgets/custom_search_field.dart';
 import '../../widgets/go_to_profile.dart';
 import '../home/shared/category_menu.dart';
 import 'components/search_form.dart';
@@ -103,17 +104,6 @@ class _TradingHomeState extends State<TradingHome> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Text(
-              //   "Market Status: Open",
-              //   textAlign: TextAlign.center,
-              //   style: GoogleFonts.lato(
-              //     fontSize: 14.0,
-              //     fontWeight: FontWeight.w500,
-              //     color: Colors.green,
-              //   ),
-              // ),
-              // SizedBox(height: 10.0),
-
               Container(
                 color: kPrimaryColorLight1,
                 child: Padding(
@@ -132,7 +122,11 @@ class _TradingHomeState extends State<TradingHome> {
                 ),
               ),
 
-              SearchForm(),
+              // SearchForm(),
+              CustomSearchField(
+                hintField: "Try 'African Distillers'",
+                backgroundColor: Colors.white,
+              ),
               SizedBox(height: 8.0),
               Expanded(
                 child: Skeleton(
@@ -149,7 +143,7 @@ class _TradingHomeState extends State<TradingHome> {
                       return Future.delayed(Duration(seconds: 1));
                     },
                     child: ListView.builder(
-                        padding: EdgeInsets.only(top: 10, bottom: 10),
+                        padding: EdgeInsets.only(top: 5, bottom: 10),
                         itemCount: selectedCountersList.length,
                         itemBuilder: (context, index) {
                           return MarketListItem(

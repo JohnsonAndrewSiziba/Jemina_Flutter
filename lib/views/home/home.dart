@@ -9,13 +9,13 @@ import 'package:flutter/services.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/views/contact/contact.dart';
 import 'package:jemina_capital/views/help/help_page.dart';
-import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/counters/counters_page.dart';
 import 'package:jemina_capital/views/home/landing/landing_page.dart';
 import 'package:jemina_capital/views/home/landing/main_page.dart';
 import 'package:jemina_capital/views/home/news/news_page.dart';
 import 'package:jemina_capital/views/home/reports/reports_page.dart';
 import 'package:jemina_capital/views/notifications/notifications_page.dart';
+import 'package:jemina_capital/views/profile/profile.dart';
 import 'package:jemina_capital/views/settings/settings_page.dart';
 import 'package:jemina_capital/views/home/stats/stats_page.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
@@ -23,7 +23,6 @@ import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 
 import '../about/about_page.dart';
-
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -82,13 +81,14 @@ class _HomeState extends State<Home> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return SideMenu(
       key: _sideMenuKey,
-      closeIcon: Icon(Icons.close, color: darkGreyBlue,),
+      closeIcon: Icon(
+        Icons.close,
+        color: darkGreyBlue,
+      ),
       background: brightGrey,
       menu: buildMenu(),
       type: SideMenuType.slideNRotate,
@@ -113,17 +113,19 @@ class _HomeState extends State<Home> {
                 FloatingNavbarItem(icon: Icons.pie_chart, title: 'Stats.'),
                 FloatingNavbarItem(icon: Icons.history_edu, title: 'Reports'),
                 FloatingNavbarItem(icon: Icons.home, title: 'Home'),
-                FloatingNavbarItem(icon: Icons.business_center, title: 'Counters'),
-                FloatingNavbarItem(icon: Icons.chrome_reader_mode, title: 'News'),
+                FloatingNavbarItem(
+                    icon: Icons.business_center, title: 'Counters'),
+                FloatingNavbarItem(
+                    icon: Icons.chrome_reader_mode, title: 'News'),
               ],
             ),
-
             body: IndexedStack(
               children: <Widget>[
                 StatsPage(onOpenMenu: toggleMenu, state: value),
                 ReportsPage(onOpenMenu: toggleMenu, state: value),
                 // LandingPage(onOpenMenu: toggleMenu, state: value, toggleTab: toggleTab),
-                MainPage(onOpenMenu: toggleMenu, state: value, toggleTab: toggleTab),
+                MainPage(
+                    onOpenMenu: toggleMenu, state: value, toggleTab: toggleTab),
                 CountersPage(onOpenMenu: toggleMenu, state: value),
                 NewsPage(onOpenMenu: toggleMenu, state: value),
               ],
@@ -153,7 +155,7 @@ class _HomeState extends State<Home> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AccountPage(),
+                        builder: (context) => Profile(),
                       ),
                     );
                   },
@@ -181,7 +183,10 @@ class _HomeState extends State<Home> {
               });
             },
             leading: Icon(Icons.home, size: 20.0, color: darkGreyBlue),
-            title: Text("Home", style: TextStyle(color: darkGreyBlue),),
+            title: Text(
+              "Home",
+              style: TextStyle(color: darkGreyBlue),
+            ),
             textColor: darkGreyBlue,
             dense: true,
           ),
@@ -190,7 +195,7 @@ class _HomeState extends State<Home> {
               toggleMenu();
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AccountPage()),
+                MaterialPageRoute(builder: (context) => Profile()),
               );
             },
             leading: Icon(
@@ -198,7 +203,10 @@ class _HomeState extends State<Home> {
               size: 20.0,
               color: darkGreyBlue,
             ),
-            title: Text("My Account", style: TextStyle(color: darkGreyBlue),),
+            title: Text(
+              "My Account",
+              style: TextStyle(color: darkGreyBlue),
+            ),
             textColor: darkGreyBlue,
             dense: true,
             // padding: EdgeInsets.zero,
@@ -230,8 +238,11 @@ class _HomeState extends State<Home> {
                 MaterialPageRoute(builder: (context) => NotificationsPage()),
               );
             },
-            leading: Icon(Icons.notifications,
-                size: 20.0, color: darkGreyBlue,),
+            leading: Icon(
+              Icons.notifications,
+              size: 20.0,
+              color: darkGreyBlue,
+            ),
             title: Text("Notifications"),
             textColor: darkGreyBlue,
             dense: true,
@@ -246,7 +257,11 @@ class _HomeState extends State<Home> {
                 MaterialPageRoute(builder: (context) => Contact()),
               );
             },
-            leading: Icon(Icons.call, size: 20.0, color: darkGreyBlue,),
+            leading: Icon(
+              Icons.call,
+              size: 20.0,
+              color: darkGreyBlue,
+            ),
             title: const Text("Contact"),
             textColor: darkGreyBlue,
             dense: true,
@@ -261,8 +276,11 @@ class _HomeState extends State<Home> {
                 MaterialPageRoute(builder: (context) => SettingsPage()),
               );
             },
-            leading:
-                 Icon(Icons.settings, size: 20.0, color: darkGreyBlue,),
+            leading: Icon(
+              Icons.settings,
+              size: 20.0,
+              color: darkGreyBlue,
+            ),
             title: const Text("Settings"),
             textColor: darkGreyBlue,
             dense: true,
@@ -277,7 +295,11 @@ class _HomeState extends State<Home> {
                 MaterialPageRoute(builder: (context) => AboutPage()),
               );
             },
-            leading: Icon(Icons.info, size: 20.0, color: darkGreyBlue,),
+            leading: Icon(
+              Icons.info,
+              size: 20.0,
+              color: darkGreyBlue,
+            ),
             title: const Text("About"),
             textColor: darkGreyBlue,
             dense: true,
@@ -292,8 +314,11 @@ class _HomeState extends State<Home> {
                 exit(0);
               }
             },
-            leading:
-            Icon(Icons.exit_to_app, size: 20.0, color: darkGreyBlue,),
+            leading: Icon(
+              Icons.exit_to_app,
+              size: 20.0,
+              color: darkGreyBlue,
+            ),
             title: const Text("Exit"),
             textColor: darkGreyBlue,
             dense: true,

@@ -7,11 +7,11 @@ import 'package:jemina_capital/views/auth/login.dart';
 import 'package:jemina_capital/views/auth/register.dart';
 import 'package:jemina_capital/views/auth/verify_email.dart';
 import 'package:jemina_capital/views/contact/contact.dart';
-import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/account/wallet/wallet.dart';
 import 'package:jemina_capital/views/home/home.dart';
 import 'package:jemina_capital/views/onboarding/onboarding.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:jemina_capital/views/profile/profile.dart';
 import 'package:jemina_capital/widgets/sidenav.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
         '/verify-email': (context) => const VerifyEmail(),
         '/sidenav': (context) => const SideNav(),
         '/sidenav-design': (context) => const SidenavDesign(),
-        '/account': (context) => AccountPage(),
+        '/account': (context) => Profile(),
         '/wallet': (context) => Wallet(),
         //mockups
       },

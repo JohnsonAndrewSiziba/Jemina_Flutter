@@ -1,19 +1,15 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:jemina_capital/views/home/account/account_page.dart';
 import 'package:jemina_capital/views/home/landing/components/top_marquee.dart';
 import 'package:jemina_capital/views/orders/orders.dart';
 import 'package:jemina_capital/views/portfolio/portfolio.dart';
+import 'package:jemina_capital/views/profile/profile.dart';
 import 'package:jemina_capital/views/settings/settings_page.dart';
 import 'package:jemina_capital/views/trading/trading_home.dart';
 import 'package:jemina_capital/views/wallet/wallet.dart';
-import 'package:ticker_text/ticker_text.dart';
 
 import '../../../controllers/misc_controller/MiscController.dart';
 import '../../../controllers/statistics/price_sheets_controller.dart';
@@ -21,7 +17,6 @@ import '../../../data/constants/theme_colors.dart';
 import '../../../library/request_response.dart';
 import '../../../models/quote.dart';
 import '../../../models/top_marquee_price.dart';
-import '../../../widgets/go_to_profile.dart';
 import '../shared/build_main_page_app_bar.dart';
 import 'components/quote.dart';
 
@@ -112,8 +107,7 @@ class _LandingPageState extends State<LandingPage> {
                     Balances(),
                     Container(
                       width: size.width,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
                       color: kPrimaryColorLight1,
                       child: GridView.count(
                         padding: EdgeInsets.zero,
@@ -153,7 +147,8 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Wallet(),),
+                                  builder: (context) => Wallet(),
+                                ),
                               );
                             },
                           ),
@@ -164,7 +159,8 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Portfolio(),),
+                                  builder: (context) => Portfolio(),
+                                ),
                               );
                             },
                           ),
@@ -175,7 +171,8 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AccountPage(),),
+                                  builder: (context) => Profile(),
+                                ),
                               );
                             },
                           ),
@@ -186,7 +183,8 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SettingsPage(),),
+                                  builder: (context) => SettingsPage(),
+                                ),
                               );
                             },
                           ),
@@ -204,7 +202,9 @@ class _LandingPageState extends State<LandingPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 20.0,),
+                          SizedBox(
+                            height: 20.0,
+                          ),
                           Center(
                             child: Text(
                               "TOOLS",
@@ -217,7 +217,9 @@ class _LandingPageState extends State<LandingPage> {
                               ),
                             ),
                           ),
-                          SizedBox(height: 5.0,),
+                          SizedBox(
+                            height: 5.0,
+                          ),
                           GridView.count(
                             crossAxisCount: 4,
                             childAspectRatio: 0.7,
@@ -225,10 +227,14 @@ class _LandingPageState extends State<LandingPage> {
                             shrinkWrap: true,
                             padding: EdgeInsets.zero,
                             children: [
-                              serviceWidget("assets/images/calculator.png", "Investment\nCalculator"),
-                              serviceWidget("assets/images/calendar.png", "Investor\nDiary"),
-                              serviceWidget("assets/images/book.png", "Investment\nHandbook"),
-                              serviceWidget("assets/images/question.png", "FAQ\nCenter"),
+                              serviceWidget("assets/images/calculator.png",
+                                  "Investment\nCalculator"),
+                              serviceWidget("assets/images/calendar.png",
+                                  "Investor\nDiary"),
+                              serviceWidget("assets/images/book.png",
+                                  "Investment\nHandbook"),
+                              serviceWidget(
+                                  "assets/images/question.png", "FAQ\nCenter"),
                               // serviceWidget("assets/images/calculator.png", "Cashback\nOffer"),
                               // serviceWidget("assets/images/calculator.png", "Movie\nTicket"),
                               // serviceWidget("more", "More\n"),
@@ -237,7 +243,9 @@ class _LandingPageState extends State<LandingPage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(
+                      height: 10.0,
+                    ),
 
                     QuotesContainer(
                       size: size,
@@ -468,36 +476,36 @@ class MenuCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        elevation: 0.3,
-        color: Colors.white,
-        shadowColor: kPrimaryColorLight1,
-        borderOnForeground: false,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        child: InkWell(
-          onTap: press,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: <Widget>[
-                Spacer(),
-                // Image.asset(image),
-                SvgPicture.asset(image, height: 100),
-                Spacer(),
-                Text(
-                  title.toUpperCase(),
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline5?.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: darkGreyBlue,
-                      ),
-                )
-              ],
-            ),
+      elevation: 0.3,
+      color: Colors.white,
+      shadowColor: kPrimaryColorLight1,
+      borderOnForeground: false,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      child: InkWell(
+        onTap: press,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: <Widget>[
+              Spacer(),
+              // Image.asset(image),
+              SvgPicture.asset(image, height: 100),
+              Spacer(),
+              Text(
+                title.toUpperCase(),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline5?.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: darkGreyBlue,
+                    ),
+              )
+            ],
           ),
         ),
-      );
+      ),
+    );
   }
 }

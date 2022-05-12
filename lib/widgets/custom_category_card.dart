@@ -17,7 +17,13 @@ class CustomCategoryCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: List.generate(menu.length, (index) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => menu[index]['destination']),
+              );
+            },
             child: Container(
               height: size.width * .25,
               width: size.width * .25,
@@ -60,14 +66,6 @@ class CustomCategoryCard extends StatelessWidget {
                         size: 20.0,
                       ),
                     ),
-                    // child: Container(
-                    //   child: SvgPicture.asset(
-                    //     menu[index]['icon'],
-                    //     color: textWhite,
-                    //     width: 15.0,
-                    //   ),
-                    // ),
-                    //
                   ),
                   Text(
                     menu[index]['title'],
