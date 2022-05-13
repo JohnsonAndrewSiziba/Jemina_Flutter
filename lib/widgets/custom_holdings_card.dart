@@ -35,7 +35,7 @@ class _CustomHoldingsCardState extends State<CustomHoldingsCard> {
       padding: const EdgeInsets.all(15.0),
       margin: EdgeInsets.only(top: 10.0),
       decoration: BoxDecoration(
-        color: textWhite,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Column(

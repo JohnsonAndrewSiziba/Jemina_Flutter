@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../data/constants/theme_colors.dart';
 
-Widget buildCategoryItem(int index, Function onTap, int selectedIndex, List<IconData> icons, List<String> categories) {
+Widget buildCategoryItem(int index, Function onTap, int selectedIndex,
+    List<IconData> icons, List<String> categories) {
   return GestureDetector(
     onTap: () {
       onTap(index);
@@ -22,7 +23,10 @@ Widget buildCategoryItem(int index, Function onTap, int selectedIndex, List<Icon
           SizedBox(
             height: 32.0,
             // width: 20.0,
-            child: Icon(icons[index], color: selectedIndex == index ? kPrimaryColorLight : darkGreyBlue, size: 15.0),
+            child: Icon(icons[index],
+                color:
+                    selectedIndex == index ? kPrimaryColorLight : darkGreyBlue,
+                size: 15.0),
           ),
           const SizedBox(width: 4.0),
           Text(

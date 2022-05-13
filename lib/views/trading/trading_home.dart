@@ -22,7 +22,6 @@ class TradingHome extends StatefulWidget {
 }
 
 class _TradingHomeState extends State<TradingHome> {
-
   int selectedIndex = 0;
   bool isLoading = true;
 
@@ -37,17 +36,15 @@ class _TradingHomeState extends State<TradingHome> {
     Icons.business_sharp,
   ];
 
-  void categortMenuTap(int index){
+  void categortMenuTap(int index) {
     setState(() {
       selectedIndex = index;
 
       if (index == 0) {
         selectedCountersList = zseCountersList;
-      }
-      else if (index == 1) {
+      } else if (index == 1) {
         selectedCountersList = zseEtfCountersList;
       }
-
     });
   }
 
@@ -71,21 +68,19 @@ class _TradingHomeState extends State<TradingHome> {
 
     var jsonZseCountersList = jsonBody['counters'];
 
-
     requestResponse = await countersController.getZseEtfCounters();
     jsonBody = requestResponse.getJsonBody();
 
     var jsonZseEtfCountersList = jsonBody['counters'];
 
-
     setState(() {
       zseCountersList = TradingCounterListItem.jsonDecode(jsonZseCountersList);
-      zseEtfCountersList = TradingCounterListItem.jsonDecode(jsonZseEtfCountersList);
+      zseEtfCountersList =
+          TradingCounterListItem.jsonDecode(jsonZseEtfCountersList);
 
       if (selectedIndex == 0) {
         selectedCountersList = zseCountersList;
-      }
-      else if (selectedIndex == 1) {
+      } else if (selectedIndex == 1) {
         selectedCountersList = zseEtfCountersList;
       }
 
@@ -109,14 +104,15 @@ class _TradingHomeState extends State<TradingHome> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: kDefaultPadding - 10.0,
-                    horizontal: 10.0,
+                    // horizontal: 10.0,
                   ),
                   child: SizedBox(
                     height: 34,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: categories.length,
-                      itemBuilder: (context, index) => buildCategoryItem(index, categortMenuTap, selectedIndex, icons, categories),
+                      itemBuilder: (context, index) => buildCategoryItem(index,
+                          categortMenuTap, selectedIndex, icons, categories),
                     ),
                   ),
                 ),
@@ -181,7 +177,8 @@ class _TradingHomeState extends State<TradingHome> {
 class MarketListItem extends StatelessWidget {
   TradingCounterListItem counter;
   MarketListItem({
-    Key? key, required this.counter,
+    Key? key,
+    required this.counter,
   }) : super(key: key);
 
   @override

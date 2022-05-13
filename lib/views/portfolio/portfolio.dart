@@ -31,146 +31,142 @@ class _PortfolioState extends State<Portfolio> {
 
   Widget getBody() {
     var size = MediaQuery.of(context).size;
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          //header
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: appPadding),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 0.0),
-                  child: CustomTitle(
-                    title: 'Portfolio Value',
-                    color: secondary,
-                    extend: false,
-                  ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: appPadding),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 0.0),
+                child: CustomTitle(
+                  title: 'Portfolio Value',
+                  color: secondary,
+                  extend: false,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 25, top: 10.0),
-                  child: Column(
-                    children: [
-                      PortfolioSummary(
-                        title: "Holdings",
-                        value: "10",
-                      ),
-                      Divider(),
-                      PortfolioSummary(
-                        title: "Portfolio Value",
-                        value: "\$10,000,000",
-                      ),
-                      Divider(),
-                      PortfolioSummary(
-                        title: "Day Gain/Loss",
-                        value: "\$1,000",
-                      ),
-                      Divider(),
-                      PortfolioSummary(
-                          title: "% Day Gain/Loss", value: "\$1,000"),
-                    ],
-                  ),
-                ),
-                SizedBox(height: spacer - 30),
-
-                //search
-                CustomSearchField(
-                  hintField: 'Try Counter Name',
-                  backgroundColor: Colors.white,
-                ),
-                SizedBox(height: spacer - 25),
-
-                //title
-                CustomTitle(title: 'All Holdings', extend: false),
-                SizedBox(height: smallSpacer - 13),
-              ],
-            ),
-          ),
-
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.only(
-                  left: appPadding - 11, right: appPadding - 11, bottom: 0),
-              width: MediaQuery.of(context).size.width,
-              color: kPrimaryColorLight1,
-              child: SingleChildScrollView(
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 25, top: 10.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: CustomHoldingsCard(
-                        image:
-                            "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
-                        title: "Afdis",
-                        instructor: "one",
-                        videoAmount: "Two",
-                        percentage: 33,
-                      ),
+                    PortfolioSummary(
+                      title: "Holdings",
+                      value: "10",
                     ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: CustomHoldingsCard(
-                        image:
-                            "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
-                        title: "Afdis",
-                        instructor: "one",
-                        videoAmount: "Two",
-                        percentage: 33,
-                      ),
+                    Divider(),
+                    PortfolioSummary(
+                      title: "Portfolio Value",
+                      value: "\$10,000,000",
                     ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: CustomHoldingsCard(
-                        image:
-                            "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
-                        title: "Afdis",
-                        instructor: "one",
-                        videoAmount: "Two",
-                        percentage: 33,
-                      ),
+                    Divider(),
+                    PortfolioSummary(
+                      title: "Day Gain/Loss",
+                      value: "\$1,000",
                     ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: CustomHoldingsCard(
-                        image:
-                            "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
-                        title: "Afdis",
-                        instructor: "one",
-                        videoAmount: "Two",
-                        percentage: 33,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: CustomHoldingsCard(
-                        image:
-                            "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
-                        title: "Afdis",
-                        instructor: "one",
-                        videoAmount: "Two",
-                        percentage: 33,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: CustomHoldingsCard(
-                        image:
-                            "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
-                        title: "Afdis",
-                        instructor: "one",
-                        videoAmount: "Two",
-                        percentage: 33,
-                      ),
-                    ),
+                    Divider(),
+                    PortfolioSummary(
+                        title: "% Day Gain/Loss", value: "\$1,000"),
                   ],
                 ),
               ),
+              SizedBox(height: spacer - 30),
+
+              //search
+              CustomSearchField(
+                hintField: 'Try Counter Name',
+                backgroundColor: Colors.white,
+              ),
+              SizedBox(height: spacer - 25),
+
+              //title
+              CustomTitle(title: 'All Holdings', extend: false),
+              SizedBox(height: smallSpacer - 13),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.only(
+                left: appPadding - 11, right: appPadding - 11, bottom: 0),
+            width: MediaQuery.of(context).size.width,
+            color: kPrimaryColorLight1,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: CustomHoldingsCard(
+                      image:
+                          "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+                      title: "Afdis",
+                      instructor: "one",
+                      videoAmount: "Two",
+                      percentage: 33,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: CustomHoldingsCard(
+                      image:
+                          "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+                      title: "Afdis",
+                      instructor: "one",
+                      videoAmount: "Two",
+                      percentage: 33,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: CustomHoldingsCard(
+                      image:
+                          "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+                      title: "Afdis",
+                      instructor: "one",
+                      videoAmount: "Two",
+                      percentage: 33,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: CustomHoldingsCard(
+                      image:
+                          "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+                      title: "Afdis",
+                      instructor: "one",
+                      videoAmount: "Two",
+                      percentage: 33,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: CustomHoldingsCard(
+                      image:
+                          "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+                      title: "Afdis",
+                      instructor: "one",
+                      videoAmount: "Two",
+                      percentage: 33,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: CustomHoldingsCard(
+                      image:
+                          "https://images.unsplash.com/photo-1575089976121-8ed7b2a54265?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=987&q=80",
+                      title: "Afdis",
+                      instructor: "one",
+                      videoAmount: "Two",
+                      percentage: 33,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

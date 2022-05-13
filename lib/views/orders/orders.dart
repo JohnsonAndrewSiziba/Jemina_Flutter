@@ -65,7 +65,7 @@ class _OrdersState extends State<Orders> {
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: kDefaultPadding - 10.0,
-                horizontal: 10.0,
+                // horizontal: 10.0,
               ),
               child: SizedBox(
                 height: 34,
