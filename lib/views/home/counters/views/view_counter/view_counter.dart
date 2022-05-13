@@ -1,12 +1,12 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, prefer_const_constructors_in_immutables, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 import 'package:jemina_capital/models/company.dart';
-import 'package:jemina_capital/views/home/counters/views/view_counter/components/body.dart';
-
-import '../../../../../data/constants/api_routes.dart';
-import '../../../../../widgets/notification_icon.dart';
+import 'package:jemina_capital/theme/colors.dart';
+import 'package:jemina_capital/theme/padding.dart';
+import 'package:jemina_capital/widgets/go_to_profile.dart';
 
 class ViewCounter extends StatefulWidget {
   Company company;
@@ -20,88 +20,81 @@ class _ViewCounterState extends State<ViewCounter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: kPrimaryColorLight,
       appBar: buildAppBar(context),
       body: SafeArea(
+        child: getBody(),
+      ),
+    );
+  }
+
+  Widget getBody() {
+    return Padding(
+      padding: EdgeInsets.only(
+          left: appPadding, right: appPadding, bottom: appPadding),
+      child: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
-            SizedBox(height: 20),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: Material(
-                    elevation: 0.1,
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
-                      // width: MediaQuery.of(context).size.width * 0.4,
-                      height: MediaQuery.of(context).size.height * 0.1,
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.network(
-                              Routes.serverHome + (widget.company.logoPath ?? ""),
-                              height: 60,
-                            ),
-                            SizedBox(width: 10),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(
-                                      widget.company.name ?? "",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkGreyBlue,
-                                      ),
-                                    ),
-                                    SizedBox(width: 10),
-                                    Text(
-                                      "(${widget.company.symbol?.toUpperCase()})",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: darkGreyBlue,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            topPiceAndChange(),
           ],
         ),
       ),
     );
   }
 
+  Center topPiceAndChange() {
+    return Center(
+      child: Column(
+        children: [
+          Text(
+            "\$31.23",
+            style: TextStyle(
+              color: secondary,
+              fontWeight: FontWeight.w500,
+              fontSize: 30.0,
+              fontFamily: GoogleFonts.bitter().fontFamily,
+            ),
+          ),
+          SizedBox(height: 1.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.arrow_upward,
+                color: successGreen,
+                size: 16.0,
+              ),
+              SizedBox(width: 5.0),
+              Text(
+                "2.05%",
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16.0,
+                  color: successGreen,
+                  fontFamily: GoogleFonts.bitter().fontFamily,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: jeminaGrey,
+      backgroundColor: kPrimaryColorLight,
       elevation: 0,
       iconTheme: IconThemeData(color: darkGreyBlue),
+      centerTitle: true,
       title: Text(
         widget.company.name ?? 'Counter',
         overflow: TextOverflow.ellipsis,
         style: TextStyle(color: darkGreyBlue),
       ),
-      actions: const [
-        Padding(
-          padding: EdgeInsets.only(right: 8.0),
-          child: NotificationsIcon(),
-        ),
+      actions: [
+        GotoProfile(),
       ],
     );
   }
