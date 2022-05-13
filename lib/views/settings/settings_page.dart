@@ -5,7 +5,6 @@ import 'package:jemina_capital/data/constants/theme_colors.dart';
 
 import '../../widgets/notification_icon.dart';
 
-
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
@@ -17,12 +16,15 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: kPrimaryColorLight1,
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        backgroundColor: brightGrey,
-        title: Text('Settings', style: TextStyle(color: darkGreyBlue),),
+        backgroundColor: kPrimaryColorLight1,
+        title: Text(
+          'Settings',
+          style: TextStyle(color: darkGreyBlue),
+        ),
         iconTheme: IconThemeData(color: darkGreyBlue),
         actions: [
           Padding(

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 import '../../data/constants/theme_colors.dart';
+import '../../widgets/go_to_profile.dart';
 import '../../widgets/notification_icon.dart';
-
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({Key? key}) : super(key: key);
@@ -16,13 +16,19 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: kPrimaryColorLight1,
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        backgroundColor: brightGrey,
-        title: Text('Notifications', style: TextStyle(color: darkGreyBlue),),
+        backgroundColor: kPrimaryColorLight1,
+        title: Text(
+          'Notifications',
+          style: TextStyle(color: darkGreyBlue),
+        ),
         iconTheme: IconThemeData(color: darkGreyBlue),
+        actions: [
+          GotoProfile(),
+        ],
       ),
       body: Center(
         child: Text('Notifications Page'),

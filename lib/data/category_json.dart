@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jemina_capital/views/profile/profile.dart';
-
-import '../views/home/account/wallet/wallet.dart';
+import 'package:jemina_capital/views/wallet/wallet.dart';
 import '../views/orders/orders.dart';
 import '../views/portfolio/portfolio.dart';
 import '../views/settings/settings_page.dart';

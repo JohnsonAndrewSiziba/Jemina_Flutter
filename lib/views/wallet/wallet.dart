@@ -15,25 +15,31 @@ class _WalletState extends State<Wallet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightSteel,
+      backgroundColor: kPrimaryColorLight1,
       appBar: buildTradingPageAppBar(context, () {}, 'Wallet'),
       body: Center(
-        child: Text('Coming Soon', style: TextStyle(color: darkGreyBlue),),
+        child: Text(
+          'Coming Soon',
+          style: TextStyle(color: darkGreyBlue),
+        ),
       ),
     );
   }
 
-  AppBar buildTradingPageAppBar(BuildContext context, Function onTap, String pageTitle) {
+  AppBar buildTradingPageAppBar(
+      BuildContext context, Function onTap, String pageTitle) {
     return AppBar(
       centerTitle: true,
-      backgroundColor: jeminaGrey,
+      backgroundColor: kPrimaryColorLight1,
       elevation: 0,
       iconTheme: IconThemeData(color: darkGreyBlue),
-      title: Text(pageTitle, style: TextStyle(color: darkGreyBlue),),
+      title: Text(
+        pageTitle,
+        style: TextStyle(color: darkGreyBlue),
+      ),
       actions: [
         GotoProfile(),
       ],
     );
   }
-
 }

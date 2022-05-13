@@ -7,7 +7,8 @@ import '../data/constants/theme_colors.dart';
 class GotoProfile extends StatelessWidget {
   double size;
   GotoProfile({
-    Key? key, this.size = 40,
+    Key? key,
+    this.size = 40,
   }) : super(key: key);
 
   @override
