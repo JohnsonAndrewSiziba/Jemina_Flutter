@@ -32,9 +32,9 @@ class MainPage extends StatefulWidget {
   double state;
   MainPage(
       {Key? key,
-        required this.onOpenMenu,
-        required this.state,
-        required this.toggleTab})
+      required this.onOpenMenu,
+      required this.state,
+      required this.toggleTab})
       : super(key: key);
 
   @override
@@ -42,7 +42,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   Quote quote = Quote(text: "", author: "");
   bool quoteIsLoading = true;
 
@@ -89,7 +88,8 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: kPrimaryColorLight,
       // extendBodyBehindAppBar: true,
-      appBar: buildMainPageAppBar(context, onOpenMenu, "Jemina Capital" , showProfile: false),
+      appBar: buildMainPageAppBar(context, onOpenMenu, "Jemina Capital",
+          showProfile: false),
       body: getBody(),
     );
   }
@@ -132,14 +132,15 @@ class _MainPageState extends State<MainPage> {
                         height: 10.0,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: appPadding - 3.0),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: appPadding - 3.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children:  [
+                          children: [
                             CustomHeading(
                               title: "Hi, Johnson",
                               subTitle:
-                              "Walet Balance: ZWL\$ 20, 000.05 \nMarket Status: Open",
+                                  "Walet Balance: ZWL\$ 20, 000.05 \nMarket Status: Open",
                               color: kStockColor,
                             ),
                             GotoProfile(
@@ -148,12 +149,12 @@ class _MainPageState extends State<MainPage> {
                           ],
                         ),
                       ),
-
                       SizedBox(height: spacer - 30),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: appPadding),
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: appPadding),
                         child: CustomSearchField(
-                          hintField: "Try 'African Distillers'",
+                          hintField: "Try Company Name",
                           backgroundColor: Colors.white,
                         ),
                       ),
@@ -161,7 +162,8 @@ class _MainPageState extends State<MainPage> {
                         height: spacer - 30,
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: appPadding),
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: appPadding),
                         child: CustomCategoryCard(
                           menu: menuRow1,
                         ),
@@ -170,7 +172,8 @@ class _MainPageState extends State<MainPage> {
                         height: spacer - 30,
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: appPadding),
+                        padding:
+                            const EdgeInsets.symmetric(horizontal: appPadding),
                         child: CustomCategoryCard(
                           menu: menuRow2,
                         ),
@@ -183,7 +186,6 @@ class _MainPageState extends State<MainPage> {
             SizedBox(height: spacer - 20),
             PortfolioCard(),
             SizedBox(height: spacer - 20),
-
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               color: kPrimaryColorLight,
@@ -191,7 +193,9 @@ class _MainPageState extends State<MainPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20.0,),
+                  SizedBox(
+                    height: 20.0,
+                  ),
                   Center(
                     child: Text(
                       "TOOLS",
@@ -204,7 +208,9 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5.0,),
+                  SizedBox(
+                    height: 5.0,
+                  ),
                   GridView.count(
                     crossAxisCount: 4,
                     childAspectRatio: 0.7,
@@ -212,10 +218,14 @@ class _MainPageState extends State<MainPage> {
                     shrinkWrap: true,
                     padding: EdgeInsets.zero,
                     children: [
-                      serviceWidget("assets/images/calculator.png", "Investment\nCalculator"),
-                      serviceWidget("assets/images/calendar.png", "Investor\nDiary"),
-                      serviceWidget("assets/images/book.png", "Investment\nHandbook"),
-                      serviceWidget("assets/images/question.png", "FAQ\nCenter"),
+                      serviceWidget("assets/images/calculator.png",
+                          "Investment\nCalculator"),
+                      serviceWidget(
+                          "assets/images/calendar.png", "Investor\nDiary"),
+                      serviceWidget(
+                          "assets/images/book.png", "Investment\nHandbook"),
+                      serviceWidget(
+                          "assets/images/question.png", "FAQ\nCenter"),
                       // serviceWidget("assets/images/calculator.png", "Cashback\nOffer"),
                       // serviceWidget("assets/images/calculator.png", "Movie\nTicket"),
                       // serviceWidget("more", "More\n"),

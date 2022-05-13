@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:easy_actions/easy_actions.dart';
 import 'package:jemina_capital/data/constants/theme_colors.dart';
 
 import '../data/promotion.dart';
@@ -54,30 +55,13 @@ class PortfolioCard extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                Container(
-                  height: 35.0,
-                  width: 100.0,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: kStockColor.withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(100.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: kStockColor.withOpacity(0.5),
-                        spreadRadius: 0.0,
-                        blurRadius: 6.0,
-                        offset: Offset(0, 2),
-                      )
-                    ],
-                  ),
-                  child: Text(
-                    'Details',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: textWhite,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                EasyElevatedButton(
+                  label: 'Details',
+                  isRounded: true,
+                  color: kStockColor.withOpacity(0.7),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/portfolio');
+                  },
                 ),
               ],
             ),

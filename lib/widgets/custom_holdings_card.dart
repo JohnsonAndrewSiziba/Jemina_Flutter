@@ -41,11 +41,11 @@ class _CustomHoldingsCardState extends State<CustomHoldingsCard> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
+          SizedBox(
             height: size.width * .13,
             child: Row(
               children: [
-                Container(
+                SizedBox(
                   height: size.width * .13,
                   width: size.width * .13,
                   child: ClipRRect(

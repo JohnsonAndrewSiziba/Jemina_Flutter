@@ -10,6 +10,7 @@ import 'package:jemina_capital/views/contact/contact.dart';
 import 'package:jemina_capital/views/home/home.dart';
 import 'package:jemina_capital/views/onboarding/onboarding.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:jemina_capital/views/portfolio/portfolio.dart';
 import 'package:jemina_capital/views/profile/profile.dart';
 import 'package:jemina_capital/views/wallet/wallet.dart';
 import 'package:jemina_capital/widgets/sidenav.dart';
@@ -101,6 +102,7 @@ class MyApp extends StatelessWidget {
         '/sidenav-design': (context) => const SidenavDesign(),
         '/account': (context) => Profile(),
         '/wallet': (context) => Wallet(),
+        '/portfolio': (context) => Portfolio(),
         //mockups
       },
     );
