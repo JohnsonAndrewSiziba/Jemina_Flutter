@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:jemina_capital/views/profile/profile.dart';
 
-import '../views/home/account/account_page.dart';
-import '../views/home/account/profile/profile.dart';
 import '../views/home/account/wallet/wallet.dart';
 import '../views/orders/orders.dart';
 import '../views/portfolio/portfolio.dart';
 import '../views/settings/settings_page.dart';
 import '../views/trading/trading_home.dart';
-import 'category_list_json.dart';
 
 List menuRow1 = [
   {
